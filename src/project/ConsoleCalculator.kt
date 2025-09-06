@@ -19,18 +19,48 @@ fun main() {
     // paso 3: Cálculo
     val result = performCalculation(number1, number2, operation)
 
-
+    // paso 4: mostrar el resultado
+    println("Resultado: $number1 $operation $number2 = $result")
 }
 
-fun getArithmeticOperation() : String {
-    TODO("Not yet implemented")
+fun performCalculation(number1: Double, number2: Double, operation: String): Double {
+    return when (operation) {
+        "+" -> number1 + number2
+        "-" -> number1 - number2
+        "*" -> number1 * number2
+        "/" -> if (number2 != 0.0) number1 / number2 else {
+            println("No se permite la division por cero")
+            exitProcess(3)
+        }
+
+        else -> {
+            println("Error no esperado")
+            exitProcess(4)
+        }
+    }
+}
+
+fun getArithmeticOperation(): String {
+    print("Introduce una operacion aritmetica (+.-,*,/): ")
+    val operation = readln()
+
+    if (!"+-*/".contains(operation, true)) {
+        println("Operacion no valida. Saliendo...")
+        exitProcess(2)
+    }
+    return operation
 }
 
 fun showChoices() {
+    println("\nOperaciones:")
+    println("1. Sumar (+)")
+    println("2. Restar (-)")
+    println("3. Multiplicar (*)")
+    println("4. Dividir (/)")
 
 }
 
-fun readDoubleInput(prompt: String) : Double {
+fun readDoubleInput(prompt: String): Double {
     print(prompt)
     val input = readln()
     try {
