@@ -1,4 +1,4 @@
-package functions
+package imperative.functions
 
 /**
  * Para hacer referencia a una función por su nombre se usa el operador ::

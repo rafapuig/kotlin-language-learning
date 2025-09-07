@@ -1,4 +1,4 @@
-package functions
+package imperative.functions
 
 fun calculatePrice(
     basePrice: Double,

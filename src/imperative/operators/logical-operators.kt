@@ -12,55 +12,64 @@ fun main() {
     val orResult = x || y
     val notResult = !x
 
-    shortCircuitAnd()
+    testShortCircuitAnd()
     shortCircuitOr()
 }
 
-fun shortCircuitAnd() {
-    val x = true
-    val y = false
+fun testShortCircuitAnd() {
+    val examPassed = true
+    val tasksDone = false
 
     // Como el primer operando es verdadero
     // el resultado depende del valor del segundo operando
     // hay que evaluar el segundo operando
-    val andResult = evaluate(x) && evaluate(y)
+    val andResult = evaluate(examPassed) && evaluate(tasksDone)
 
     println("&& cortocircuita cuando el primero es falso...")
     // Como el primer operando es falso
     // da lo mismo cuál sea el valor del segundo operando
     // el resultado ya se sabe que será falso
     // no se evalúa el segundo operando
-    val andResult2 = evaluate(y) && evaluate(x)
+    val andResult2 = evaluate(tasksDone) && evaluate(examPassed)
 
     println("Mediante la función and... no hay cortocircuito")
     // Con la función and no hay cortocircuito
     // se evalúan ambos operandos
-    val andResult3 = evaluate(y) and evaluate(x)
+    val andResult3 = evaluate(tasksDone) and evaluate(examPassed)
 }
 
 fun shortCircuitOr() {
-    val x = true
-    val y = false
+    val isHandsome = true
+    val isWealthy = false
 
     // Como el primer operando es falso
     // el resultado depende del valor del segundo operando
     // hay que evaluar el segundo operando
-    val orResult = evaluate(y) || evaluate(x)
+    val orResult = evaluate(isWealthy) || evaluate(isHandsome)
 
     println("|| cortocircuita cuando el primero es verdadero...")
     // Como el primer operando es verdadero
     // da lo mismo cuál sea el valor del segundo operando
     // el resultado ya se sabe que será verdadero
     // no se evalúa el segundo operando
-    val orResult2 = evaluate(x) || evaluate(y)
+    val orResult2 = evaluate(isHandsome) || evaluate(isWealthy)
 
     println("Mediante la función or... no hay cortocircuito")
     // Con la función or no hay cortocircuito
     // se evalúan ambos operandos
-    val orResult3 = evaluate(x) or evaluate(y)
+    val orResult3 = evaluate(isHandsome) or evaluate(isWealthy)
 }
 
-fun evaluate(expr : Boolean) : Boolean {
+/**
+ * La función evaluate imprime por consola el valor booleano que se esta avaluando por el operador lógico
+ * y lo devuelve sin más
+ */
+fun evaluate(expr : Boolean) : Boolean  {
     println("Evaluando operando... $expr")
     return expr
+}
+
+fun evaluateExprBody(expr : Boolean) = run {
+    println("Evaluando operando... $expr")
+    expr
 }

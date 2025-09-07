@@ -31,3 +31,7 @@ val greetingCopy = greeting
  - los tipos de los valores de retorno de las llamadas
  */
 
+
+/*
+if, when, try, throw y return son expresiones
+ */

@@ -1,4 +1,4 @@
-package controlflow
+package imperative.controlflow
 
 fun getRandomNumber(): Int = (1..10).random()
 

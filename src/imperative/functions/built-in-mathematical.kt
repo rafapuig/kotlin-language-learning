@@ -1,4 +1,4 @@
-package functions
+package imperative.functions
 
 import kotlin.math.pow
 import kotlin.math.sqrt
