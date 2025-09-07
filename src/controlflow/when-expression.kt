@@ -1,8 +1,13 @@
 package controlflow
 
+import com.sun.org.apache.xalan.internal.lib.ExsltDatetime.year
 import controlflow.Month.*
 import kotlin.random.Random
 
+/**
+ * La expresión when sin un argumento
+ * Cada rama es una expresión de tipo Boolean
+ */
 fun testWhenExpression() {
     val number = Random.nextInt(-1, 2)
     println("El numero es $number")
@@ -67,7 +72,22 @@ enum class Month(val days: Int) {
     }
 }
 
-fun getSpanishNames(month: Month): String {
+fun isLeapYear(year: Int): Boolean =
+    year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+
+@JvmInline
+value class Year(val value: Int) {
+    fun isLeapYear(): Boolean = isLeapYear(value)
+}
+
+fun getDaysInMonth(month: Month, year: Year): Int =
+    if (month == FEBRUARY && year.isLeapYear()) month.days + 1
+    else month.days
+
+fun Month.getDaysYear(year: Year): Int = if (year.isLeapYear()) getDaysLeapYear() else days
+
+
+fun getNameInSpanish(month: Month): String {
     return when (month) {
         JANUARY -> "Enero"
         FEBRUARY -> "Febrero"
@@ -82,6 +102,16 @@ fun getSpanishNames(month: Month): String {
         NOVEMBER -> "Noviembre"
         DECEMBER -> "Diciembre"
     }
+}
+
+fun Month.getSpanishName(): String {
+    return getNameInSpanish(this)
+}
+
+fun testGetSpanishNames() {
+    val month = Month.FEBRUARY
+    println(getNameInSpanish(month))
+    println(month.getSpanishName())
 }
 
 fun main() {
