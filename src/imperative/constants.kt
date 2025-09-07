@@ -1,4 +1,4 @@
-// palabra clave const
+package imperative// palabra clave const
 
 const val PI = 3.14159265359 // Por convención identificador todas en mayúsculas
 

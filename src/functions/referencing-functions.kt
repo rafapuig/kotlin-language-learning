@@ -27,6 +27,6 @@ fun main() {
     println("Resultado: $result")
 
     selectedOperation = ::divide
-    result = selectedOperation(x,y)
+    result = selectedOperation.invoke(x,y)
     println("Resultado: $result")
 }

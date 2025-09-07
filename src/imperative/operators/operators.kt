@@ -1,4 +1,4 @@
-//OPERADORES
+package imperative.operators//OPERADORES
 
 // Realizan operaciones matemáticas, lógicas o de texto
 
@@ -53,7 +53,7 @@ fun operationWithTypeConversion() {
     val quotientInt = anInt / divider
     val quotientDouble = aDouble / divider
 
-    // Se convierte el valor de la variable anInt al tipo Long
+    // Se convierte el valor de la variable imperative.types.anInt al tipo Long
     val sum = anInt + longNumber
 }
 

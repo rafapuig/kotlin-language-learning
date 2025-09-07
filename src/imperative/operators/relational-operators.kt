@@ -1,4 +1,4 @@
-// Comparan dos valores
+package imperative.operators// Comparan dos valores
 // El resultado es de tipo Boolean
 
 // Igualdad (por valor) --> ==

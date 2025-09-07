@@ -1,4 +1,4 @@
-// Son los operadores del tipo Boolean
+package imperative.operators// Son los operadores del tipo Boolean
 
 // AND && y and
 // OR || y or
