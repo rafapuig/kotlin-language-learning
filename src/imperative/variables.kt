@@ -1,6 +1,6 @@
 package imperative
 
-/*
+/**
 Una variable es un contenedor de un dato en la memoria
 Se le asigna un nombre: identificador
 Se usa el nombre para acceder al valor del dato almacenado
@@ -9,8 +9,8 @@ Se usa el nombre para acceder al valor del dato almacenado
 // El nombre de la variable (identificador) debe ser significativo:
 // Debe describir el dato al que se accede
 /* Ejemplos
-imperative.types.name -> para guardar en nombre de una persona
-imperative.types.age -> para la edad
+name -> para guardar en nombre de una persona
+age -> para la edad
  */
 
 // Convenciones de nombres --> camelCase
@@ -20,7 +20,7 @@ imperative.types.age -> para la edad
 - la segunda y siguientes empiezan por mayúscula
 
 Ejemplos:
-imperative.types.age
+age
 firstName
 ageInYears
 weightInKilograms
@@ -39,15 +39,15 @@ weightInKilograms
 /* Su valor puede cambiarse por otro diferente varias veces */
 
 fun valDemo() {
-    val name = "Rafa" // Se declara la variable imperative.types.name y se inicializa al valor Rafa
-    val age = 48    // Se declara la variable imperative.types.age y se inicializa con el valor 48
+    val name = "Rafa" // Se declara la variable name y se inicializa al valor Rafa
+    val age = 48    // Se declara la variable age y se inicializa con el valor 48
 
     // Se usa una template de texto con el signo $ antes del nombre de una variable
     // para que sea sustituida por su valor
     println("$name tiene $age años") // Consola: Rafa tiene 48 años
 
-    // Que pasa si queremos cambiar el valor de la variable imperative.types.age?
-    //imperative.types.age = 32 //val cannot be reassigned
+    // Que pasa si queremos cambiar el valor de la variable age?
+    // age = 32 //val cannot be reassigned
 }
 
 // Operación de asignación --sintaxis--> variable = valor
@@ -64,8 +64,8 @@ fun varDemo() {
     // para que sea sustituida por su valor
     println("$name tiene $age años") // Consola: Rafa tiene 48 años
 
-    name = "Rafael" // se cambiar el valor de la variable imperative.types.name por Rafael
-    age = 32  // se reasigna el valor de imperative.types.age de 48 a 32, mutamos la variable
+    name = "Rafael" // se cambiar el valor de la variable name por Rafael
+    age = 32  // se reasigna el valor de age de 48 a 32, mutamos la variable
 }
 
 
