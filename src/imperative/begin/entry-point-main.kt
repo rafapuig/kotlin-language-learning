@@ -8,9 +8,10 @@ en la template de running configurations de Kotlin
  * Las funciones se pueden declarar en el nivel top
  * (no es necesario ponerlas dentro de una clase)
  * fun palabra clave para declarar una función
- * functions.main es el nombre de la función punto de entrada
+ * main es el nombre de la función punto de entrada del programa
  * definida en el nivel top
- * Se puede declarar sin parámetros de entrada adicionales (el típico array con los argumentos de la línea de comandos)
+ * Se puede declarar sin parámetros de entrada adicionales
+ * (el típico array con los argumentos de la línea de comandos)
  */
 fun main() {
     // println, función para imprimir por la consola (wrapper de System.out.println)

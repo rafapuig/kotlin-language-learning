@@ -1,4 +1,4 @@
-package project
+package imperative.project
 
 import kotlin.system.exitProcess
 

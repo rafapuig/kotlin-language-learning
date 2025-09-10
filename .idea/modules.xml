@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/kotlin-from-scratch.iml" filepath="$PROJECT_DIR$/kotlin-from-scratch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kotlin Language.iml" filepath="$PROJECT_DIR$/Kotlin Language.iml" />
     </modules>
   </component>
 </project>
