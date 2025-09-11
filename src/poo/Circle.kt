@@ -6,7 +6,7 @@ class Circle {
 
     var radius: Double = 0.0
 
-    constructor(radius: Double) {
+    constructor(radius: Double = 0.0) {
         this.radius = radius
     }
 
