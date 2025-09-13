@@ -1,4 +1,4 @@
-package intro.poo
+package poo.intro
 
 /**
  * val en la declaración del parámetro crea una propiedad de solo lectura (getter)

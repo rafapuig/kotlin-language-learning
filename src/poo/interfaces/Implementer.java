@@ -1,6 +1,5 @@
 package poo.interfaces;
 
-import interfaces.DominoTile;
 import org.jetbrains.annotations.NotNull;
 
 public class Implementer implements DominoTile {

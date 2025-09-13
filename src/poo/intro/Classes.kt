@@ -1,4 +1,4 @@
-package intro.poo
+package poo.intro
 
 fun main() {
     val person = Person1("John", isStudent = true)

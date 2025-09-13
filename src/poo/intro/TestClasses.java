@@ -1,8 +1,5 @@
 package poo.intro;
 
-import intro.poo.Person;
-import intro.poo.Person1;
-
 public class TestClasses {
 
     public static void main(String[] args) {
