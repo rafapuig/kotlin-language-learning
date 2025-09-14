@@ -1,4 +1,4 @@
-package `object`.`companion`
+package poo.objects.companion.factory
 
 open class Person private constructor (val name: String, val gender: Gender) {
 

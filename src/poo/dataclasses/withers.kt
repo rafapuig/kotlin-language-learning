@@ -1,4 +1,4 @@
-package poo
+package poo.dataclasses.withers
 
 /**
  * En Kotlin no hace falta crear métodos withers

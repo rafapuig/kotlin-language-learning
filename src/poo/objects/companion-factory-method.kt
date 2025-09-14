@@ -1,4 +1,4 @@
-package `object`
+package poo.objects
 
 /**
  * El objeto companion tiene acceso a todos los miembros privados de la clase contenedora

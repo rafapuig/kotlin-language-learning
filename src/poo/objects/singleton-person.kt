@@ -1,4 +1,4 @@
-package `object`.singleton
+package poo.objects.singleton
 
 data class Person(val name: String, val age: Int) {
 
