@@ -1,6 +1,4 @@
-package poo.inheritance2
-
-
+package poo.inheritance.composition.superclass
 
 open class Person (open var name: String, open var age: Int)
 
@@ -23,11 +21,13 @@ class Employee(name: String, age: Int, var salary: Int) : Person(name, age) {
 }
 
 fun main() {
-    val employee = Employee("John", 35, 1900)
+    val employee = Employee("Perico Palotes", 33, 1900)
 
-    println(employee.name)
-    println(employee.age)
-    println(employee.salary)
+    with(employee) {
+        println(name)
+        println(age)
+        println(salary)
+    }
 
     val person: Person = employee
 

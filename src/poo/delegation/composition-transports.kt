@@ -5,11 +5,12 @@ abstract class Transport(
 ) {
     private var driver: Driver? = null
 
-    fun setDriver(driver: Driver) = apply { this.driver = driver }
+    fun setDriver(driver: Driver) =
+        apply { this.driver = driver }
 
-    fun deliver(destination: String?, cargo: String?) {
-        if(driver == null) throw IllegalStateException("No driver set")
-        println("Delivering by ${this.javaClass.simpleName} $cargo to $destination")
+    fun deliver(destination: String, cargo: String) {
+        if (driver == null) throw IllegalStateException("No se ha establecido conductor")
+        println("Entregando por ${this.javaClass.simpleName} $cargo a $destination")
         driver!!.navigate()
         engine.move()
     }
@@ -30,25 +31,25 @@ abstract class Driver {
 
 class CombustionEngine : Engine() {
     override fun move() {
-        println("Moving with Combustion Engine")
+        println("Moviendose mediante un motor de Combustion")
     }
 }
 
 class ElectricEngine : Engine() {
     override fun move() {
-        println("Moving with Electric Engine")
+        println("Moviendose mediante un motor Electrico")
     }
 }
 
 class Robot : Driver() {
     override fun navigate() {
-        println("Robot navigated")
+        println("Navegado por Robot")
     }
 }
 
 class Human : Driver() {
     override fun navigate() {
-        println("Human navigated")
+        println("Navegado por Human")
     }
 }
 

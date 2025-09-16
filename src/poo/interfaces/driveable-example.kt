@@ -34,7 +34,7 @@ fun startJourney(vehicle: Drivable) {
     vehicle.stop()
 }
 
-// Función functions.main para probar el código
+// Función main para probar el código
 fun main() {
     val myCar = Car()
     val myBike = Bike()

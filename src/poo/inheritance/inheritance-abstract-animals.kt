@@ -33,11 +33,17 @@ fun useAnimal(animal: Animal) {
     animal.makeSound()
 }
 
+fun Animal.use() {
+    useAnimal(this)
+}
+
 fun main() {
     val cat = Cat("Garfield")
     val dog = Dog("Pluto")
 
-    var animal : Animal = cat
+    var animal : Animal
+
+    animal = cat
     animal.makeSound()
 
     animal = dog
@@ -45,4 +51,7 @@ fun main() {
 
     useAnimal(cat)
     useAnimal(dog)
+
+    cat.use()
+    dog.use()
 }
