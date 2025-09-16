@@ -3,17 +3,17 @@ package poo.objects.members
 class Person(val name: String) {
 
     init {
-        count++
+        population++
     }
 
     companion object {
-        var count = 0
+        var population = 0
             private set
     }
 }
 
 fun printNumPeople() {
-    println("Número de personas: ${Person.count}")
+    println("Número de personas: ${Person.population}")
 }
 
 fun main() {
@@ -29,7 +29,7 @@ fun main() {
     // Obtener una referencia al objeto companion
     val ref = Person.Companion
 
-    println(ref.count)
+    println(ref.population)
 
 }
 

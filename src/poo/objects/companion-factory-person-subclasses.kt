@@ -6,7 +6,7 @@ open class Person private constructor (val name: String, val gender: Gender) {
         MALE, FEMALE
     }
 
-    companion object {
+    companion object Factory {
         fun createPerson(name: String, gender: Gender): Person {
             return when (gender) {
                 Gender.MALE -> Man(name)
@@ -19,15 +19,16 @@ open class Person private constructor (val name: String, val gender: Gender) {
 
     private class Man (name: String) : Person(name, Gender.MALE) {
         override fun describe() {
-            println("$name is a Man")
+            println("$name es un hombre")
         }
     }
 
     private class Woman (name: String) : Person(name, Gender.FEMALE) {
         override fun describe() {
-            println("$name is a Woman")
+            println("$name es una mujer")
         }
     }
+
 }
 
 fun main() {

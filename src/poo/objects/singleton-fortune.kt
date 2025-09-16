@@ -1,4 +1,4 @@
-package `object`
+package poo.objects.singleton.fortune
 
 object FortuneCookieMachine {
     private val messages = listOf(

@@ -1,4 +1,4 @@
-package `object`
+package poo.objects.singleton.comparator
 
 import java.io.File
 

@@ -34,10 +34,15 @@ data class Person(
 
     }
 
+    /**
+     * Si lo dejamos aquí cada objeto Person tiene su propia instancia...
+     */
     val fullNameComparator =
         compareBy<Person> { it.lastName }.thenBy { it.firstName }
 
-    //val ageComparator = compareBy<Person> { it.age }
+    val byAgeComparator = compareBy<Person> { it.age }
+
+    val byBirthComparator = compareByDescending<Person> { it.birth }
 }
 
 
