@@ -1,18 +1,19 @@
-package poo.delegation
+package poo.delegation.withvardelegate
 
 interface Person {
     val name: String
     val gender: String
 
+    /**
+     * Método con implementación por defecto
+     */
     fun greet() {
         println("Hola me llamo $name")
     }
-
 }
 
 class Man(override val name: String) : Person {
-    override val gender: String
-        get() = "masculino"
+    override val gender: String = "masculino"
 
     override fun greet() {
         println("Hola soy el señor $name")
@@ -34,37 +35,34 @@ class Woman(override val name: String) : Person {
  * Cuando cambia la referencia a otro objeto implementador de Person
  * no afecta al objeto en el que se ha delegado al inicio
  * (el objeto en que se delega queda establecido y fijado en el momento
- * de la inicializacion de la instancia Programmer)
+ * de la inicialización de la instancia Programmer)
  */
-class Programmer(var person: Person) : Person by person {
-    /**
-     * Mientras la clase Programmer no reemplace un método de la interface Person
-     * será como si la implementación del método de reemplazo
-     * delegara manualmente en la referencia de la propiedad person
-     * pero la genera automáticamente el compilador
-     */
+class Programmer(var person: Person) : Person {
+
+    /** Esto es el código que autogeneraría el compilador */
+    /*val _delegate = person
+
+    override val gender: String = _delegate.gender
+
+    override val name: String = _delegate.name
+
+    override fun greet() = _delegate.greet()*/
 
     /**
-     * Esto es el código que autogeneraría el compilador
-     *
-     * El compilador
-     * cachea al inicializar la instancia Programmer en un campo: delegate
-     * (Por eso si cambiar el valor de la propiedad person se obtiene informacion
-     * diferente)
+     * Si la propiedad delegada no es de solo lectura,
+     * Tendríamos que realizar la delegación manualmente miembro a miembro
      */
+    override val name: String get() = person.name
 
-    private val delegate = person
+    override val gender: String get() = person.gender
 
-    override val gender: String = delegate.gender
+    override fun greet() = person.greet()
 
-    override val name: String = delegate.name
-
-    override fun greet() = delegate.greet()
 
 }
 
 
-fun Programmer.printInfo(){
+fun Programmer.printInfo() {
     this.greet()
     print("Informacion via delegación: ")
     print(javaClass.simpleName)
@@ -81,7 +79,6 @@ fun main() {
 
     val manProgrammer = Programmer(man)
     manProgrammer.printInfo()
-
 
 
     val womanProgrammer = Programmer(woman)
