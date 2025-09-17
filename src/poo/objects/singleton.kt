@@ -1,7 +1,7 @@
-package `object`
+package poo.objects
 
 /**
- * Los objetos singleton pueden contener declaraciones de propiedades, metodos, bloques de inicialización,etc
+ * Los objetos singleton pueden contener declaraciones de propiedades, métodos, bloques de inicialización,etc
  * Los que NO pueden tener son constructores (primario o secundario)
  */
 

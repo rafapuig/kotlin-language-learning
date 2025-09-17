@@ -1,4 +1,4 @@
-package `object`
+package poo.objects
 
 object PowerUpDispenser {
     private val powerUps = listOf(
