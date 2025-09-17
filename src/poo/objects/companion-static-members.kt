@@ -1,19 +1,19 @@
-package `object`
+package poo.objects.companion
 
 /**
- * Para escribir una funcion que se pueda llamar sin tener una instancia
+ * Para escribir una función que se pueda llamar sin tener una instancia,
  * pero que pueda acceder a los miembros privados de la clase
- * escribimos la funcion como un miembro de un objeto declarado dentro de la clase
+ * escribimos la función como un miembro de un objeto declarado dentro de la clase
  *
  * Uno de estos objetos se puede marcar con la palabra clave companion
  * Con ello se puede acceder a los miembros del objeto directamente mediante el nombre de la clase contenedora
- * sin tener que especificar el nombre el objeto explicitamente.
+ * sin tener que especificar el nombre el objeto explícitamente.
  */
 
 class MyClass {
     companion object {
         fun callMe() {
-            println("Companion object called")
+            println("Llamada al Companion object")
         }
     }
 }

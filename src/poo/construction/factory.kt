@@ -17,7 +17,7 @@ data class Person private constructor(val name: String, val age: Int) {
 /**
  * Podemos crear una función top-level que llame al método factoría del companion object
  */
-fun person(name:String,age:Int) = Person.Factory.create(name, age)
+fun person(name: String, age: Int) = Person.Factory.create(name, age)
 
 
 fun main() {
@@ -25,7 +25,7 @@ fun main() {
     println(person)
 
     val factory = Person.Factory
-    val otherPerson = factory.create("Armando Bronca",56)
+    val otherPerson = factory.create("Armando Bronca", 56)
 
     val another = Person.Factory.create("Esther Malgin", 26)
 

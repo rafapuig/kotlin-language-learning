@@ -3,7 +3,7 @@ package poo.objects
 /**
  * El objeto companion tiene acceso a todos los miembros privados de la clase contenedora
  * incluido el constructor privado
- * Esto la hace ideal para implementar el patron metodo factoría
+ * Esto la hace ideal para implementar el patron método factoría
  */
 
 class User {
