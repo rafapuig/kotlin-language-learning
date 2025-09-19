@@ -5,7 +5,7 @@ interface Person {
     val gender: String
 
     /**
-     * Método con implementación por defecto
+     * Método greet con implementación por defecto
      */
     fun greet() {
         println("Hola me llamo $name")
@@ -57,8 +57,6 @@ class Programmer(var person: Person) : Person {
     override val gender: String get() = person.gender
 
     override fun greet() = person.greet()
-
-
 }
 
 
@@ -90,5 +88,4 @@ fun main() {
      */
     manProgrammer.person = Woman("Loreto")
     manProgrammer.printInfo()
-
 }
