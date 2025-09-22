@@ -62,7 +62,7 @@ fun main() {
 */
 
 /**
- * La funcion printFirst NO es una función generica
+ * La función printFirst NO es una función generica
  * A printFirst se le puede pasar cualquier lista
  */
 fun printFirst(list: List<*>) {
@@ -78,7 +78,7 @@ fun printFirst(list: List<*>) {
  * Tenemos la alternativa de crear una version generica de la función
  */
 
-fun <T> printFirst(list: List<T>) {
+fun <T> printFirstGeneric(list: List<T>) {
     if (list.isNotEmpty()) {
         println(list.first()) // Aquí first devuelve un valor de tipo T
     }
