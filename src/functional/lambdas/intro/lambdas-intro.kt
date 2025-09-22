@@ -19,6 +19,8 @@ package functional.lambdas.intro
  * se denomina función de orden superior
  *
  */
+val f: (Int) -> Boolean = { it > 2 }
+
 fun demo1() {
     val sum = { x: Int, y: Int -> x + y }
     println(sum(3, 4))
@@ -39,7 +41,7 @@ fun demo4() {
     run { println("Hola lambdas") }
 }
 
-fun demo5()  {
+fun demo5() {
     val favoriteNumber = run {
         println("Pensando un numero...")
         println("Ya casi lo tenemos...")
