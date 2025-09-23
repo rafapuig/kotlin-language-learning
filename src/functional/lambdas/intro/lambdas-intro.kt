@@ -11,15 +11,26 @@ package functional.lambdas.intro
  * { x: Double, y : Double -> x.pow(y) }
  *
  * Es, por tanto, una expresión
- * y se puede usar para inicializar o asignar una variable
- * como argumento en la llamada a una función
- * como valor de retorno de una función
+ * y se puede usar para
+ * - inicializar o asignar una variable
+ * - como argumento en la llamada a una función
+ * - como valor de retorno de una función
  *
  * Una función que recibe como parámetro una función o devuelve una función
- * se denomina función de orden superior
+ * se denomina función de orden superior (high order function - HOF)
  *
  */
+
+/**
+ * Cuando la función tiene un único parámetro de entrada
+ * El nombre por defecto del parámetro es it
+ * y no es necesario escribir explícitamente la lista de parámetros de entrada y la flecha
+ */
 val f: (Int) -> Boolean = { it > 2 }
+val g: (String) -> Int = { it.length }
+
+val h: (String) -> Boolean = { f(g(it)) }
+
 
 fun demo1() {
     val sum = { x: Int, y: Int -> x + y }

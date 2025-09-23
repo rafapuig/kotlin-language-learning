@@ -9,6 +9,8 @@ package functional.functiontypes
 /**
  * La función twoAndFive es una función de orden superior
  * declara un parámetro de tipo función (Int, Int)-> Int
+ *
+ * Se puede especificar nombres a los parámetros de entrada de un tipo de función
  */
 
 fun twoAndFive(operation: (operand1: Int, operand2: Int) -> Int) {

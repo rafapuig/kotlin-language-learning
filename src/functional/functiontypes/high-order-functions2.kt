@@ -1,8 +1,8 @@
 package functional.hof2
 
 /**
- * La funcion de orden superior filterBy
- * Recibe un parametro de tipo funcion
+ * La función de orden superior filterBy
+ * Recibe un parámetro de tipo función
  */
 
 fun IntArray.filterBy(predicate: (Int) -> Boolean): IntArray {
