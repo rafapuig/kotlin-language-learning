@@ -3,7 +3,7 @@ package functional.intro.operation.structure.selector.interfacelambdas
 data class Person(val name: String, val age: Int)
 
 fun interface KeySelector<T, K : Comparable<K>> {
-    fun extract(t: T): K
+    fun extract(element: T): K
 }
 
 

@@ -3,7 +3,7 @@ package functional.intro.operation.structure.selector.expression.objects
 data class Person(val name: String, val age: Int)
 
 fun interface KeySelector<T, K : Comparable<K>> {
-    fun extract(t: T): K
+    fun extract(element: T): K
 }
 
 /*val ageExtractor = fun(p: Person, key: KeySelector<String, Int>): Int {
@@ -11,26 +11,26 @@ fun interface KeySelector<T, K : Comparable<K>> {
 }*/
 
 val ageExtractor: KeySelector<Person, Int> = object : KeySelector<Person, Int> {
-    override fun extract(t: Person): Int = t.age
+    override fun extract(element: Person): Int = element.age
 }
 
 val nameExtractor: KeySelector<Person, String> = object : KeySelector<Person, String> {
-    override fun extract(t: Person): String = t.name
+    override fun extract(element: Person): String = element.name
 }
 
 
 fun <T, K : Comparable<K>> Array<T>.findMaxBy(keySelector: KeySelector<T, K>): T? {
     if (isEmpty()) return null
-    var max: T = this[0]
-    var maxKey = keySelector.extract(max)
+    var maxElement: T = this[0]
+    var maxKey = keySelector.extract(maxElement)
     for (i in 1 until size) {
         val key = keySelector.extract(this[i])
         if (key > maxKey) {
-            max = this[i]
+            maxElement = this[i]
             maxKey = key
         }
     }
-    return max
+    return maxElement
 }
 
 val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))

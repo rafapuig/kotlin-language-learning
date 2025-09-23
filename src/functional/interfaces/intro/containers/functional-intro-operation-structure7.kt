@@ -3,7 +3,7 @@ package functional.intro.operation.structure.selector.lambdas.implicit.outside
 data class Person(val name: String, val age: Int)
 
 fun interface KeySelector<T, K : Comparable<K>> {
-    fun extract(t: T): K
+    fun extract(element: T): K
 }
 
 fun <T, K : Comparable<K>> Array<T>.findMaxBy(keySelector: KeySelector<T, K>): T? {
