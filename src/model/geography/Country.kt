@@ -16,9 +16,10 @@ data class Country(
     override fun hashCode() = iso3.hashCode()
 
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
+        return (other as? Country)?.let { iso3 == it.iso3 } ?: false
+        /*if (this === other) return true
         if (other !is Country) return false
-        return iso3 == other.iso3
+        return iso3 == other.iso3*/
     }
 
     override fun compareTo(other: Country) =
