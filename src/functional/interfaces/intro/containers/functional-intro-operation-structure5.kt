@@ -1,41 +1,47 @@
-package functional.intro.operation.structure.selector.lambdas.explicit.inside
+package functional.intro.operation.structure.comparator.interfacelambdas
 
 data class Person(val name: String, val age: Int)
 
-fun interface KeySelector<T, K : Comparable<K>> {
-    fun extract(element: T): K
-}
+val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
 
-fun <T,K: Comparable<K>> Array<T>.findMaxBy(keySelector: KeySelector<T, K>): T? {
+
+fun Array<Person>.findMax(comparator: Comparator<Person>): Person? {
     if (isEmpty()) return null
-    var max : T = this[0]
-    var maxKey = keySelector.extract(max)
-    for (i in 1 until size) {
-        val key = keySelector.extract(this[i])
-        if (key > maxKey) {
-            max = this[i]
-            maxKey = key
+    var max: Person = this[0]
+    for (person in slice(1 until size)) {
+        if (comparator.compare(person, max) > 0) {
+            max = person
         }
     }
     return max
 }
 
-val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
 
-
-fun findMaxPersonByAge() {
-    val oldest = friends.findMaxBy({ person -> person.age })
+fun findMaxByAge() {
+    /**
+     * Podemos pasar de manera literal el argumento para el parámetro comparator
+     * si hacemos uso de una expresión lambda
+     */
+    val oldest = friends.findMax ({ p1, p2 ->
+        compareValues(p1.age, p2.age)
+    })
     println("Más Viejo = $oldest")
 }
 
-
-fun findMaxPersonByName() {
-    val maxPerson = friends.findMaxBy({ person -> person.name })
-    println("Máximo = $maxPerson")
+fun findMaxByName() {
+    /**
+     * Como la expresión lambda es el argumento del último parámetro
+     * la podemos sacar fuera de los paréntesis de llamada
+     * Y como los paréntesis se quedan vacíos podemos eliminarlos
+     */
+    val max = friends.findMax { p1, p2 ->
+        compareValues(p1.name, p2.name)
+    }
+    println("Último alfabeticamente = $max")
 }
 
 
 fun main() {
-    findMaxPersonByAge()
-    findMaxPersonByName()
+    findMaxByAge()
+    findMaxByName()
 }

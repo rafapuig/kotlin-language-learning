@@ -1,12 +1,19 @@
-package functional.intro.operation.structure
+package functional.intro.operation.structure.globalfunctions
 
 data class Person(val name: String, val age: Int)
 
-fun Array<Person>.findOldest(): Person? {
-    if (isEmpty()) return null
+val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
+
+
+/**
+ * función global, que busca la persona con la mayor edad
+ * en el array de personas proporcionado como argumento para el parámetro people
+ */
+fun findOldest(people: Array<Person>): Person? {
+    if (people.isEmpty()) return null
     var maxAge = 0
     var oldestPerson: Person? = null
-    for (person in this) {
+    for (person in people) {
         if (person.age > maxAge) {
             maxAge = person.age
             oldestPerson = person
@@ -15,10 +22,31 @@ fun Array<Person>.findOldest(): Person? {
     return oldestPerson
 }
 
-fun Array<Person>.findOldest2(): Person? {
-    if (isEmpty()) return null
-    var oldestPerson: Person = this[0]
-    for (person in slice(1 until size)) {
+/**
+ * Otra implementación
+ * Asumimos que si el array no esta vacío
+ * La persona de mayor edad es la primera del array
+ * Y comparamos su edad con las del resto
+ */
+fun findOldest2(people: Array<Person>): Person? {
+    if (people.isEmpty()) return null
+    var oldestPerson: Person = people[0]
+    for (i in 1 until people.size) {
+        if (people[i].age > oldestPerson.age) {
+            oldestPerson = people[i]
+        }
+    }
+    return oldestPerson
+}
+
+/**
+ * Otra implementación
+ * Utilizando la función de extension slice
+ */
+fun findOldest3(people: Array<Person>): Person? {
+    if (people.isEmpty()) return null
+    var oldestPerson: Person = people[0]
+    for (person in people.slice(1 until people.size)) {
         if (person.age > oldestPerson.age) {
             oldestPerson = person
         }
@@ -26,19 +54,7 @@ fun Array<Person>.findOldest2(): Person? {
     return oldestPerson
 }
 
-fun Array<Person>.findOldestPerson3(): Person? {
-    if (isEmpty()) return null
-    var oldestPerson: Person = this[0]
-    for (i in 1 until size) {
-        if (this[i].age > oldestPerson.age) {
-            oldestPerson = this[i]
-        }
-    }
-    return oldestPerson
-}
-
 fun main() {
-    val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
-    val oldestPerson = friends.findOldest()
+    val oldestPerson = findOldest(friends)
     println("Más Viejo = $oldestPerson")
 }

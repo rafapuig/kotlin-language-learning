@@ -1,50 +1,48 @@
-package functional.intro.operation.structure.selector.interfacelambdas
+package functional.intro.operation.structure.comparator.sam.contructor
 
 data class Person(val name: String, val age: Int)
-
-fun interface KeySelector<T, K : Comparable<K>> {
-    fun extract(element: T): K
-}
-
-
-fun <T : Comparable<T>> Array<Person>.findMaxBy(keySelector: KeySelector<Person, T>): Person? {
-    if (isEmpty()) return null
-    var maxPerson: Person = this[0]
-    var max = keySelector.extract(maxPerson)
-    for (person in slice(1 until size)) {
-        val personKey = keySelector.extract(person)
-        if (personKey > max) {
-            maxPerson = person
-            max = keySelector.extract(person)
-        }
-    }
-    return maxPerson
-}
-
-
 
 val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
 
 
-fun findMaxPersonByAge() {
-
-    val ageExtractor = KeySelector<Person, Int> { person -> person.age }
-
-    val oldest = friends.findMaxBy(ageExtractor)
-    println("Más Viejo = $oldest")
+fun Array<Person>.findMax(comparator: Comparator<Person>): Person? {
+    if (isEmpty()) return null
+    var max: Person = this[0]
+    for (person in slice(1 until size)) {
+        if (comparator.compare(person, max) > 0) {
+            max = person
+        }
+    }
+    return max
 }
 
 
-fun findMaxPersonByName() {
+fun findMaxByAge() {
+    /**
+     * Para crear el objeto comparador usamos un SAM constructor
+     */
+    val byAgeComparator: Comparator<Person> = Comparator<Person> { p1, p2 ->
+        compareValues(p1.age, p2.age)
+    }
 
-    val nameExtractor = KeySelector<Person, String> { person -> person.name }
+    val oldest = friends.findMax(byAgeComparator)
+    println("Más Viejo = $oldest")
+}
 
-    val maxPerson = friends.findMaxBy(nameExtractor)
-    println("Máximo = $maxPerson")
+fun findMaxByName() {
+    /**
+     * Para crear el objeto comparador usamos un SAM constructor
+     */
+    val byNameComparator = Comparator<Person> { p1, p2 ->
+        compareValues(p1.name, p2.name)
+    }
+
+    val max = friends.findMax(byNameComparator)
+    println("Último alfabeticamente = $max")
 }
 
 
 fun main() {
-    findMaxPersonByAge()
-    findMaxPersonByName()
+    findMaxByAge()
+    findMaxByName()
 }

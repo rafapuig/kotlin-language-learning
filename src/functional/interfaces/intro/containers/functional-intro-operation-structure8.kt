@@ -1,42 +1,58 @@
-package functional.intro.operation.structure.selector.member.reference
+package functional.intro.operation.structure.selector.interfacelambdas
 
 data class Person(val name: String, val age: Int)
 
-fun interface KeySelector<T, K : Comparable<K>> {
+val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
+
+/**
+ * Si hacemos que interface sea funcional
+ * (añadiendo la palabra fun antes de interface)
+ * Podremos usar expresiones lambda y SAM Constructor (como con Comparator)
+ */
+fun interface KeyExtractor<T, K : Comparable<K>> {
     fun extract(element: T): K
 }
 
-fun <T, K : Comparable<K>> Array<T>.findMaxBy(keySelector: KeySelector<T, K>): T? {
+fun <T ,K: Comparable<K>> Array<T>.findMaxBy(extractor: KeyExtractor<T,K>): T? {
     if (isEmpty()) return null
-    var max: T = this[0]
-    var maxKey = keySelector.extract(max)
-    for (i in 1 until size) {
-        val key = keySelector.extract(this[i])
-        if (key > maxKey) {
-            max = this[i]
-            maxKey = key
+    var maxElement: T = this[0] // Aqui this se refiere al objeto receiver, el array
+    /**
+     * Dentro del bloque lambda de la scope function with
+     * this se refiere al primer argumento de la llamada a with, en este caso extractor
+     */
+    with(extractor) {
+        var maxKey : K = this.extract(maxElement)
+        for (elem in slice(1 until size)) {
+            val key = this.extract(elem)
+            if (key > maxKey) {
+                maxElement = elem
+                maxKey = this.extract(elem)
+            }
         }
     }
-    return max
-}
 
-val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
+    return maxElement
+}
 
 
 fun findMaxPersonByAge() {
+
     /**
-     * Llamada al metodo de extension genérico findMaxBy
-     * los argumentos de los parámetros de tipo se especifican de forma explícita
-     * se usa una referencia a metodo como argumento para el parámetro selector
+     * Utilizando un SAM Constructor
      */
-    val oldest = friends.findMaxBy<Person, Int>(Person::age)
+    val ageExtractor = KeyExtractor<Person, Int> { person -> person.age }
+
+    val oldest = friends.findMaxBy(ageExtractor)
     println("Más Viejo = $oldest")
 }
 
 
 fun findMaxPersonByName() {
-    val maxPerson = friends.findMaxBy(Person::name)
-    println("Máximo = $maxPerson")
+
+    val nameExtractor = KeyExtractor<Person, String> { person -> person.name }
+
+    val max = friends.findMaxBy(nameExtractor)
+    println("Último alfabeticamente = $max")
 }
 
 
