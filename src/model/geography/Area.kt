@@ -3,7 +3,7 @@ package model.geography
 import imperative.functions.power
 import java.text.DecimalFormat
 
-data class Area(val value: Long, val units: SIUnit = SIUnit.NONE) {
+data class Area(val value: Long, val units: SIUnit = SIUnit.NONE) : Comparable<Area> {
 
     companion object {
         const val BASE_UNIT = "m²"
@@ -16,7 +16,12 @@ data class Area(val value: Long, val units: SIUnit = SIUnit.NONE) {
 
     override fun toString() = value.toAreaString(units)
 
+    fun to(units: SIUnit) = scalarValue / units.multiplier.power(2)
+
     val scalarValue get() = value * units.multiplier.power(2)
+
+    override fun compareTo(other: Area) =
+         scalarValue.compareTo(other.scalarValue)
 }
 
 fun main() {
@@ -24,6 +29,8 @@ fun main() {
     println(area)
     val area2 = Area(5_000_000_000)
     println(area2)
+    println(area.scalarValue)
+    println(area2.scalarValue)
 }
 
 

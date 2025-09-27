@@ -1,6 +1,7 @@
 package model.geography
 
 import sun.java2d.Surface
+import java.text.NumberFormat
 
 data class Country(
     val iso3: String,
@@ -11,7 +12,15 @@ data class Country(
     val population: Int? = null
 ) : Comparable<Country> {
 
-    val populationDensity get() = population?.div(surface?.scalarValue ?: 1.0)
+    val continent: Continent? = region?.continent
+
+    val populationDensity
+        get() = run {
+            if (population == null) return@run null
+            if (surface == null) return@run null
+            population / (surface.to(SIUnit.KILO))
+        }
+
 
     override fun hashCode() = iso3.hashCode()
 
@@ -25,23 +34,64 @@ data class Country(
     override fun compareTo(other: Country) =
         compareValuesBy(this, other) { it.name }
 
+    override fun toString(): String {
+        return "Country(" +
+                "$iso3, " +
+                "$name, " +
+                "$continent, " +
+                "$region, " +
+                "capital=$capital, " +
+                "surface=$surface, " +
+                "population=${NumberFormat.getNumberInstance().format(population)}, " +
+                "density=${"%.2f".format(populationDensity)} habs/Km²" +
+                ")"
+    }
 
-    class CapitalBuilder
+
+    class CapitalBuilder {
+        var name: String? = null
+        var population: Int? = null
+
+        fun build() = run {
+            require(!name.isNullOrBlank()) { "El nombre de la ciudad po puede ser nulo o vacio" }
+            City(name!!, population)
+        }
+    }
+
+    class AreaBuilder {
+        var value: Long? = null
+        var units: SIUnit = SIUnit.KILO
+
+        fun build() = run {
+            require(value != null) { "El valor del area no puede ser nulo" }
+            Area(value!!, units)
+        }
+    }
 
     class Builder(val iso3: String, val name: String) {
-        private var region: Region? = null
+        var region: Region? = null
         private var capital: City? = null
         private var surface: Area? = null
-        private var population: Int? = null
+        var population: Int? = null
 
-        fun population(population: Int) =
-            apply { this.population = population }
+        //fun region(region: Region) = apply { this.region = region }
+
+        fun capital(block: CapitalBuilder.() -> Unit) = apply {
+            capital = CapitalBuilder().apply { block() }.build()
+        }
+
+        fun surface(block: AreaBuilder.() -> Unit) = apply {
+            surface = AreaBuilder().apply { block() }.build()
+        }
+
+        //fun population(population: Int) =
+        //    apply { this.population = population }
 
 
         fun build(): Country =
             Country(iso3, name, region, capital, surface, population)
-
     }
+
 }
 
 fun buildCountry(iso3: String, name: String, block: Country.Builder.() -> Unit) =
