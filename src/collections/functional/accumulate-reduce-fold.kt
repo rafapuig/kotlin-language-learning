@@ -1,6 +1,5 @@
 package collections
 
-import collections.model.Person
 import collections.model.people
 
 /**
