@@ -47,6 +47,10 @@ fun testMap2() {
 fun testMaxByOrNull() {
     // Edad de la persona más vieja
     val maxAge = people.maxByOrNull { it.age }?.age
+
+    val maxAge1 = people.map { it.age }.max()
+    val maxAge2 = people.maxOfOrNull { it.age }
+
     //Personas que tienen la misma edad que la persona más vieja
     val result = people.filter { it.age == maxAge }
     println(result)
