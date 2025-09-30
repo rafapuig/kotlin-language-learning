@@ -2,15 +2,21 @@ package functional.lambdas.memeber.references
 
 data class Person(val name: String, val age: Int)
 
+// Expresión lambda
 val getAge = { p: Person -> p.age }
 
+// Función anónima con block-body
 val getAgeFunBB = fun(p: Person): Int { return p.age }
 
+// Función anónima con expression-body
 val getAgeFunEB = fun(p: Person) = p.age
 
+// Referencia a miembro
 val getAgeMR = Person::age
 
-fun greet() { print("Hola!") }
+fun greet() {
+    print("Hola!")
+}
 
 fun sendMail(person: Person, message: String) {}
 
@@ -18,8 +24,8 @@ fun sendMail(person: Person, message: String) {}
  * Si una lambda lo único que hace es delegar en función que recibe como argumentos
  * los parámetros declarados en la lambda
  */
-val action = { person:Person , message:String ->
-    sendMail(person,message)
+val action = { person: Person, message: String ->
+    sendMail(person, message)
 }
 
 /**
@@ -39,7 +45,7 @@ val createPerson = ::Person
  */
 fun Person.isAdult() = age >= 18
 
-val isPersonAdult =  Person::isAdult
+val isPersonAdult = Person::isAdult
 
 fun main() {
     val person = Person("Raul", 29)
@@ -49,7 +55,7 @@ fun main() {
     println(getAgeMR(person))
 
     /**
-     * Podemos tener una referencia a una función declara a nivel de paquete
+     * Podemos tener una referencia a una función declarada a nivel de paquete
      */
     val greetFun = ::greet
     println(greetFun())
