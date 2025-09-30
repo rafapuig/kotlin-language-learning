@@ -3,7 +3,7 @@ package functional.lambdas.withreceivers
 /**
  * Permiten llamar a los métodos de un objeto
  * dentro del cuerpo de la lambda
- * sin tener que usar cualificadores
+ * sin tener que usar cualificadores (this)
  */
 
 /**
@@ -26,38 +26,34 @@ fun alphabet(): String {
 }
 
 /**
- * Ahora usando with
+ * Ahora usando la scope function with
  */
-fun alphabetWith(): String {
-    with(StringBuilder()) {
-        for (letter in 'A'..'Z') {
-            append(letter)
-        }
-        append("\nNow I know the alphabet!")
-        return toString()
-    }
-}
+
+
+/**
+ * La función with que recibe dos parámetros:
+ * un receiver de tipo T
+ * una lambda con receiver
+ * with convierte el primer argumento
+ * en el receiver de la lambda pasada como segundo
+ * dentro del bloque lambda se accede al receiver con la
+ * referencia this
+ */
 
 fun alphabetWithVerbose(): String {
     with(
         receiver = StringBuilder(),
         block = {
             for (letter in 'A'..'Z') {
-                append(letter)
+                this.append(letter)
             }
-            append("\nNow I know the alphabet!")
+            this.append("\nNow I know the alphabet!")
             return toString()
         })
 }
 
 /**
- * La función with que recibe dos parámetros:
- * un receiver de tipo T
- * una lambda con receiver
- * with convierte el primer argumento en el receiver
- * de la lambda pasada como segundo
- * dentro del bloque lambda se accede al receiver con la
- * referencia this
+ * Sacamos el segundo argumento (al ser una lambda) fuera de los paréntesis
  */
 fun alphabetWithExplicitThis(): String {
     with(StringBuilder()) {
@@ -66,6 +62,22 @@ fun alphabetWithExplicitThis(): String {
         }
         this.append("\nNow I know the alphabet!")
         return this.toString()
+    }
+}
+
+
+/**
+ * Más simplificada
+ * no hace falta calificar las llamadas a métodos del objeto con this.metodo
+ * podemos llamar directamente al método
+ */
+fun alphabetWith(): String {
+    with(StringBuilder()) {
+        for (letter in 'A'..'Z') {
+            append(letter)
+        }
+        append("\nNow I know the alphabet!")
+        return toString()
     }
 }
 
@@ -86,12 +98,23 @@ fun alphabetWithExpresionBody() = with(StringBuilder()) {
 
 /**
  * apply
+ *
  * Se diferencia de with en que
- * - devuelve el objeto receiver
+ * - devuelve el objeto receiver (no el resultado de la lambda)
  * - es una función de extensión
  * Su uso más característico es el de inicializar y configurar objetos
  * Ayuda a implementar el patron de diseño Builder
  */
+
+fun alphabetApplyVerbose() = StringBuilder().apply(
+    block = {
+        for (letter in 'A'..'Z') {
+            this.append(letter)
+        }
+        this.append("\nNow I know the alphabet!")
+    }
+).toString()
+
 fun alphabetApply() = StringBuilder().apply {
     for (letter in 'A'..'Z') {
         append(letter)
@@ -117,15 +140,30 @@ fun buildPerson(name: String, age: Int): Person =
         this.age = age
     }.build()
 
-fun alphabetFun() = buildString {
+/**
+ * función build
+ *
+ * Muy común que Kotlin exista una función buildXXX siendo XXX el nombre de una
+ * clase de objetos, que ayuda a construir una instancia de esa clase de objetos
+ */
+fun alphabetBuild() = buildString {
     for (letter in 'A'..'Z') {
         append(letter)
     }
     append("\nNow I know the alphabet!")
 }
 
+fun alphabetBuildVerbose() = buildString(
+    builderAction = {
+        for (letter in 'A'..'Z') {
+            this.append(letter)
+        }
+        this.append("\nNow I know the alphabet!")
+    })
+
 fun buildPerson(builderAction: PersonBuilder.() -> Unit) =
     PersonBuilder().apply(builderAction).build()
+
 
 /**
  * En Kotlin hay funciones builder que ayudan a crear
@@ -136,6 +174,7 @@ val fibonacci = buildList {
     addAll(listOf(1, 2))
     add(3)
     add(index = 0, element = 1)
+    this += 5
 }
 
 const val shouldAdd = true
@@ -148,7 +187,7 @@ val fruits = buildSet {
 }
 
 val medals = buildMap {
-    put("Oro",1)
+    put("Oro", 1)
     putAll(listOf("Plata" to 2, "Bronce" to 3))
 }
 
@@ -157,17 +196,21 @@ val medals = buildMap {
  * also
  *
  * Realizar acciones adicionales con un objeto
- * Es como apply, pero en este caso se accede al receptor
+ * Es como apply, pero en este caso se accede al receptor de also
  * como argumento de la lambda (dando un nombre o usando el nombre por defecto it)
  * Es más conveniente que apply cuando
  * vamos a llamar a métodos para pasarles como argumento el objeto receiver
  *
- * Devuelve el objeto mediante el cual se llamó a also
+ * Devuelve el objeto receptor mediante el cual se llamó a also
  */
 
 fun alsoDemo() {
     val fruits = listOf("manzana", "banana", "cereza")
+
+    // Creamos una lista para guardar los nombres en mayúscula
     val uppercaseFruits = mutableListOf<String>()
+
+    // Lista en orden inverso con los nombres de frutas de más de 5 letras
     val reversedLongFruits = fruits
         .map { it.uppercase() }
         .also { uppercaseFruits.addAll(it) } // acción adicional
@@ -177,4 +220,8 @@ fun alsoDemo() {
 
     println(uppercaseFruits)
     println(reversedLongFruits)
+}
+
+fun main() {
+    alsoDemo()
 }

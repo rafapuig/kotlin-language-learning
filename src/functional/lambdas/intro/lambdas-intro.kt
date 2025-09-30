@@ -1,24 +1,36 @@
 package functional.lambdas.intro
 
+import imperative.functions.power
+
 /**
  * Una expresión lambda es un literal de función
+ *
  * Sintaxis:
  * { <lista de parámetros de entrada> -> <expresión que usa los parámetros> }
+ *
  * Ejemplos:
  * { text : String -> println(text) }
  * { text : String -> text.length }
  * { x : Int -> x * 2 }
  * { x: Double, y : Double -> x.pow(y) }
- *
- * Es, por tanto, una expresión
+ */
+
+/** Es, por tanto, una expresión
  * y se puede usar para
  * - inicializar o asignar una variable
  * - como argumento en la llamada a una función
  * - como valor de retorno de una función
- *
- * Una función que recibe como parámetro una función o devuelve una función
+ */
+
+val printText = { text: String -> println(text) }
+val len = { text: String -> text.length }
+val double = { x: Int -> x * 2 }
+val power = { x: Double, n: Int -> x.power(n) }
+
+/** Una función que
+ * - recibe como parámetro una función
+ * - o devuelve una función
  * se denomina función de orden superior (high order function - HOF)
- *
  */
 
 /**
