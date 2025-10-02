@@ -1,6 +1,5 @@
-package collections.functional
+package collections.operations
 
-import collections.model.Person
 import collections.model.people
 
 
