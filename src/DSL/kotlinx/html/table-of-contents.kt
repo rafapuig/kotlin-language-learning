@@ -9,11 +9,16 @@ import kotlinx.html.p
 import kotlinx.html.stream.createHTML
 import kotlinx.html.ul
 
+/**
+ * Supongamos que queremos escribir una función
+ * encargada de generar un listado con información de libros en HTML
+ * con una tabla de contenidos al principio
+ */
 fun buildBookList() = createHTML().body {
     ul {
-        li { a("#1") { "Kotlin in Action" } }
-        li { a("#2") { "Programming Kotlin" } }
-        li { a("#3") { "Android Studio Essentials" } }
+        li { a("#1") { +"Kotlin in Action" } }
+        li { a("#2") { +"Programming Kotlin" } }
+        li { a("#3") { +"Android Studio Essentials" } }
     }
     h2 { id = "1"; +"Kotlin in-action" }
     p { +"El libro que explica temas avanzados de Kotlin" }

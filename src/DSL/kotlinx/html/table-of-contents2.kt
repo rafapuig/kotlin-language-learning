@@ -11,6 +11,10 @@ import kotlinx.html.p
 import kotlinx.html.stream.createHTML
 import kotlinx.html.ul
 
+/**
+ * Pero podemos hacerlo mejor que en ejemplo anterior
+ * aprovechando que ul y h2 son simplemente funciones a las que llamar
+ */
 @HtmlTagMarker
 class LISTWITHTOC {
     val entries = mutableListOf<Pair<String,String>>()
@@ -20,6 +24,10 @@ class LISTWITHTOC {
     }
 }
 
+/**
+ * Esta función listWithToc
+ * codifica la lógica para crear la tabla de contenidos
+ */
 fun BODY.listWithToc(block:LISTWITHTOC.()->Unit) {
     with(LISTWITHTOC()) {
         this.block()
