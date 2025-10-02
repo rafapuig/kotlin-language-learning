@@ -1,8 +1,21 @@
 package DSL.html
 
+/**
+ * Clase base de todas las etiquetas de la gramática de HTML
+ */
 open class Tag(val name: String) {
+
+    /**
+     * Lista de etiquetas hijas de esta etiqueta actuando de padre
+     */
     private val children = mutableListOf<Tag>()
 
+    /**
+     * El método doInit
+     * invoca al objeto función de extensión para receptor de tipo T
+     * usando como receptor el objeto child recibido como argumento de llamada
+     * Y a continuación añade el objeto child a la lista children de hijos
+     */
     protected fun <T : Tag> doInit(child: T, init: T.() -> Unit) {
         child.init()
         children.add(child)
@@ -84,7 +97,7 @@ fun createSimpleTable() =
  * Por ejemplo,
  * En la lambda proporcionada como argumento de llamada a la
  * función builder td
- * Los tres rceptores this@table, this@tr y this@td están disponibles
+ * Los tres receptores this@table, this@tr y this@td están disponibles
  */
 fun createSimpleTableExplicitReceivers() =
     table {
