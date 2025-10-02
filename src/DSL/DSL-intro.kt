@@ -55,7 +55,7 @@ fun main() {
     set += 2   // Sobrecarga de operadores
 
     val map = mutableMapOf("uno" to 1, "dos" to 2)
-    val mvrs = map.get("dos") // Sintaxis regular de llamada al metodo get de un Map
+    val mvrs = map.get("dos") // Sintaxis regular de llamada al método get de un Map
     val mvcs = map["dos"] // Clean sintaxis con operador de indexación sobrecargado
 
     val file = FileReader("/users/rafapuig/text.txt")
@@ -63,13 +63,13 @@ fun main() {
     file.use { it.read() } // Clean sintaxis, lambda fuera de los paréntesis y uso de it
 
     val sb = StringBuilder()
-    // Sintaxis regular, se indica el objeto receptor el punto y el metodo cada vez
+    // Sintaxis regular, se indica el objeto receptor el punto y el método cada vez
     sb.append("si")
     sb.append("no")
 
     with(sb) { // Clean sintaxis, lambda con receptor
         append("si")    // Dentro del bloque lambda el receiver es this
-        append("no")    // no es necesario usar explícitamente this para llamar a un metodo
+        append("no")    // no es necesario usar explícitamente this para llamar a un método
     }
 
     // Sintaxis regular para fabricar una lista inmutable paso a paso

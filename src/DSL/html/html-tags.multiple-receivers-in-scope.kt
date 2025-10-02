@@ -3,7 +3,7 @@ package DSL.html.multiple_receivers_in_scope
 /**
  * @DslMarker (meta-anotación)
  * Restringe la disponibilidad de acceder a los receptores más externos en
- * las lambdas
+ * una lambda anidada dentro de otra u otras lambdas con receptor
  *
  * Las meta-anotaciones se aplican a las anotaciones
  */
@@ -83,4 +83,5 @@ fun createBody() =
 
 fun main() {
     println(createTable())
+    println(createBody())
 }

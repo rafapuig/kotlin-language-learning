@@ -1,7 +1,5 @@
 package DSL.buildString.lambda.receiver
 
-import java.util.Locale
-
 /**
  * Podemos dar a uno de los parameters de una lambda el status especial
  * de objeto receptor
@@ -13,20 +11,6 @@ import java.util.Locale
  * de los paréntesis donde se indican los parámetros de la función
  * y lo colocamos antes de los paréntesis y un punto
  */
-
-val capitalize: String.() -> String =
-    { this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }
-
-val triple: Int.() -> Int = { this * 3 }
-val power: Int.(Int) -> Int = { this.power(it) }
-
-fun test() {
-    val string = "rafael"
-    println(string.capitalize())
-
-    println(5.triple())
-    println(2.power(10))
-}
 
 /**
  * La función buildString declara
@@ -41,13 +25,13 @@ fun test() {
  */
 fun buildString(builderAction: StringBuilder.() -> Unit): String {
     val stringBuilder = StringBuilder()
-    stringBuilder.builderAction() // pasamos el stringBuilder como receptor de la lambda
+    stringBuilder.builderAction() // pasamos el stringBuilder como RECEPTOR al invocar al objeto función
     return stringBuilder.toString()
 }
 
 fun main() {
     val string = buildString {
-        this.append("Hola, ") // this hace referencia al receptor de la lambda
+        this.append("Hola, ") // this hace referencia al StringBuilder que se ha usado como receptor al invocar al objeto builderAction
         append("Kotlin!") // podemos omitir this
     }
     println(string)

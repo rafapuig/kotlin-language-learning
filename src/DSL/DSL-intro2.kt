@@ -20,3 +20,21 @@ fun createSimpleTable() = createHTML()
         }
     }
 
+fun createAnotherTable() = createHTML()
+    .table {
+        val numbers = mapOf(1 to "uno", 2 to "dos")
+        for (number in numbers) {
+            tr {
+                td { +"${number.key}" }
+                td { +number.value }
+            }
+        }
+    }
+
+@OptIn(ExperimentalTime::class)
+fun main() {
+    println(yesterday)
+    println(createSimpleTable())
+    println(createAnotherTable())
+}
+
