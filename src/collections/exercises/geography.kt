@@ -1,8 +1,5 @@
 package collections.exercises.geography
 
-import kotlin.collections.LinkedHashMap
-
-import generics.functions.display
 import model.geography.Area
 import model.geography.Continent
 import model.geography.Countries
@@ -77,7 +74,7 @@ fun printAllAmericanCountriesSortedByName3() {
 fun printAllEuropeanCountriesSortedBySurfaceDescending() {
     val result = Countries.WORLD_COUNTRIES
         .filter { it.continent == Continent.EUROPE }
-        .sortedByDescending { it.surface }
+        .sortedByDescending { it.area }
 
     println("Todos los países de ${Continent.EUROPE} ordenados por superficie descendente:")
     println("-----------------------------------------------------------------------------")
@@ -102,12 +99,12 @@ fun printCountriesNamesByContinentSorted() {
 
 fun printAllCountriesWithKnownSurface() {
     val result = Countries.WORLD_COUNTRIES
-        .filter { it.surface != null }
+        .filter { it.area != null }
 
     data class NameSurfaceTuple(val name: String, val surface: Area?)
 
     result
-        .map { NameSurfaceTuple(it.name, it.surface) }
+        .map { NameSurfaceTuple(it.name, it.area) }
         .display("Todos los países con superficie conocida:")
 }
 

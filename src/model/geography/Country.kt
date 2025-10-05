@@ -1,6 +1,5 @@
 package model.geography
 
-import sun.java2d.Surface
 import java.text.NumberFormat
 
 data class Country(
@@ -8,7 +7,8 @@ data class Country(
     val name: String,
     val region: Region? = null,
     val capital: City? = null,
-    val surface: Area? = null,
+    val area: Area? = null,
+    val surface: Surface? = null,
     val population: Int? = null
 ) : Comparable<Country> {
 
@@ -17,8 +17,8 @@ data class Country(
     val populationDensity
         get() = run {
             if (population == null) return@run null
-            if (surface == null) return@run null
-            population / (surface.to(SIUnit.KILO))
+            if (area == null) return@run null
+            population / (area.to(SIUnit.KILO))
         }
 
 
@@ -41,7 +41,7 @@ data class Country(
                 "$continent, " +
                 "$region, " +
                 "capital=$capital, " +
-                "surface=$surface, " +
+                "surface=$area, " +
                 "population=${NumberFormat.getNumberInstance().format(population)}, " +
                 "density=${"%.2f".format(populationDensity)} habs/Km²" +
                 ")"
@@ -71,7 +71,8 @@ data class Country(
     class Builder(val iso3: String, val name: String) {
         var region: Region? = null
         private var capital: City? = null
-        private var surface: Area? = null
+        private var area: Area? = null
+        var surface: Surface? = null
         var population: Int? = null
 
         //fun region(region: Region) = apply { this.region = region }
@@ -80,16 +81,19 @@ data class Country(
             capital = CapitalBuilder().apply { block() }.build()
         }
 
-        fun surface(block: AreaBuilder.() -> Unit) = apply {
-            surface = AreaBuilder().apply { block() }.build()
+        fun area(block: AreaBuilder.() -> Unit) = apply {
+            area = AreaBuilder().apply { block() }.build()
         }
+
+        fun surface(block: () -> Surface) =
+            apply { surface = block() }
 
         //fun population(population: Int) =
         //    apply { this.population = population }
 
 
         fun build(): Country =
-            Country(iso3, name, region, capital, surface, population)
+            Country(iso3, name, region, capital, area, surface, population)
     }
 
 }

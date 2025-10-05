@@ -1,6 +1,5 @@
 package model.geography
 
-import model.geography.SIUnit.*
 import model.geography.Region.*
 
 object Countries {
@@ -11,7 +10,8 @@ object Countries {
             name = "Madrid"
             population = 3_339_931
         }
-        surface { value = 505_935 }
+        area { value = 505_935 }
+        surface { 505_935.km2 }
         population = 47_519_628
     }
 
@@ -22,7 +22,7 @@ object Countries {
             name = "Moscú"
             population = 10_450_109
         }
-        surface { value = 17_098_250 }
+        area { value = 17_098_250 }
         population = 144_444_359
     }
 
@@ -32,7 +32,7 @@ object Countries {
             name = "Ottawa"
             population = 853_920
         }
-        surface { value = 9_984_670 }
+        area { value = 9_984_670 }
         population = 38_781_292
     }
 
@@ -42,7 +42,7 @@ object Countries {
             name = "Pekín"
             population = 12_238_285
         }
-        surface { value = 9_562_910 }
+        area { value = 9_562_910 }
         population = 1_425_671_352
     }
 
@@ -53,13 +53,13 @@ object Countries {
             name = "Lisboa"
             population = 537_616
         }
-        surface { value = 92_226 }
+        area { value = 92_226 }
         population = 10_247_605
     }
 
     val ITALY = buildCountry("ITA", "Italy") {
         region = SOUTHERN_EUROPE
-        surface { value = 301_340 }
+        area { value = 301_340 }
         population = 58_870_763
         capital {
             name = "Roma"
@@ -70,7 +70,7 @@ object Countries {
 
     val NEW_ZEALAND = buildCountry("NZL", "Nueva Zelanda") {
         region = AUSTRALIA_NEW_ZEALAND
-        surface { value = 267_710 }
+        area { value = 267_710 }
         population = 5_228_100
         capital {
             name = "Wellington"
