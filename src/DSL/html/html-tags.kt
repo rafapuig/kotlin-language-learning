@@ -27,7 +27,7 @@ open class Tag(val name: String) {
 }
 
 /**
- * Las clases TABLE, TR y TD son clases de utilidad interna y no
+ * Las clases TABLEScope, TRScope y TDScope son clases de utilidad interna y no
  * deberán aparecer explícitamente en el código que usa el DSL
  * para generar un código HTML
  *
@@ -47,12 +47,12 @@ open class Tag(val name: String) {
  * por tanto, la lambda que se use como argumento tendrá como receptor un objeto TD
  */
 
-class TD : Tag("td") {
+class TDScope : Tag("td") {
 
     private var content = ""
 
     operator fun String.unaryPlus() {
-        this@TD.content = this // this es el String receptor
+        this@TDScope.content = this // this es el String receptor
     }
 
     override fun toString(): String {
@@ -60,15 +60,15 @@ class TD : Tag("td") {
     }
 }
 
-class TR : Tag("tr") {
-    fun td(init: TD.() -> Unit) = doInit(TD(), init)
+class TRScope : Tag("tr") {
+    fun td(init: TDScope.() -> Unit) = doInit(TDScope(), init)
 }
 
-class TABLE : Tag("table") {
-    fun tr(init: TR.() -> Unit) = doInit(TR(), init)
+class TableScope : Tag("table") {
+    fun tr(init: TRScope.() -> Unit) = doInit(TRScope(), init)
 }
 
-fun table(init: TABLE.() -> Unit) = TABLE().apply(init)
+fun table(init: TableScope.() -> Unit) = TableScope().apply(init)
 
 
 /**
