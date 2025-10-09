@@ -36,9 +36,9 @@ open class Tag(val name: String) {
  * Cada clase define los métodos para crear las etiquetas html
  * permitidas dentro de ese elemento HTML
  * Por ejemplo,
- * TABLE define un método tr porque según la gramática de HTML
+ * TABLEScope define un método tr porque según la gramática de HTML
  * dentro de una etiqueta <table> se puede contener elementos tr
- * TR define un método td por la misma razón
+ * TRScope define un método td por la misma razón
  *
  * El parámetro init de las funciones table, tr y td
  * es un tipo función de extensión, cada una determina el tipo de receptor
