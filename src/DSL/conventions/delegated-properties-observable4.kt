@@ -51,7 +51,7 @@ class Person(val name: String, age: Int, salary: Int) : Observable() {
 
     /**
      * Para salary podemos usar como segundo argumento de llamada a observable
-     * una lambda (como es ultimo argumento fuera de los paréntesis)
+     * una lambda (como es último argumento fuera de los paréntesis)
      */
     var salary by Delegates.observable(salary) { property: KProperty<*>, oldValue: Any?, newValue: Any? ->
         notifyObservers(property.name, oldValue, newValue)
