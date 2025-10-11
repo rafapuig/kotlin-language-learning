@@ -60,8 +60,8 @@ abstract class Condiment(private val beverage: Beverage) : Beverage {
 }
 
 class Whip(private val beverage: Beverage) : Condiment(beverage) {
-    override val name: String = "Whip"
-    override val cost: Double get() =  beverage.cost + 1.5
+    override val name: String = "nata"
+    override val cost: Double get() = beverage.cost + 1.5
 }
 
 
@@ -69,6 +69,28 @@ fun Beverage.printInfo() {
     println("Un $description cuesta $cost")
 }
 
+fun Beverage.milked(): Beverage = Milk(this)
+fun Beverage.whipped(): Beverage = Whip(this)
+fun Beverage.chocolated(): Beverage = Chocolate(this)
+
+object LongCoffee : Beverage {
+    override val description: String get() = "Café largo"
+    override val cost: Double get() = 3.5
+
+}
+
+fun testExtensionFunctions() {
+    val milkedExpresso = Expresso().milked()
+    val chocoMilkDecaf = Decaf().milked().chocolated()
+    val dobleWhipDecaf = Decaf().whipped().whipped()
+
+    val whippedChocoLong = LongCoffee.whipped().milked()
+
+    milkedExpresso.printInfo()
+    chocoMilkDecaf.printInfo()
+    dobleWhipDecaf.printInfo()
+    whippedChocoLong.printInfo()
+}
 
 fun main() {
     val milkedExpresso = Milk(Expresso())
@@ -79,4 +101,6 @@ fun main() {
 
     val whippedMilkedDecaf = Whip(Milk(Decaf()))
     whippedMilkedDecaf.printInfo()
+
+    testExtensionFunctions()
 }
