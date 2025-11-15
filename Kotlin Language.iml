@@ -14,5 +14,6 @@
     <orderEntry type="library" name="jetbrains.kotlinx.html.jvm" level="project" />
     <orderEntry type="library" scope="TEST" name="junit.jupiter.engine" level="project" />
     <orderEntry type="library" name="junit.jupiter.api" level="project" />
+    <orderEntry type="library" name="jetbrains.kotlinx.coroutines.core" level="project" />
   </component>
 </module>

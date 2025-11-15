@@ -76,7 +76,6 @@ fun Beverage.chocolated(): Beverage = Chocolate(this)
 object LongCoffee : Beverage {
     override val description: String get() = "Café largo"
     override val cost: Double get() = 3.5
-
 }
 
 fun testExtensionFunctions() {
