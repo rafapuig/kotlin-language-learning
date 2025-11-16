@@ -11,8 +11,13 @@ import kotlin.time.Duration.Companion.milliseconds
  */
 
 /**
- * A las funciones suspendidas (que permiten ser suspendidas)
+ * Suspending functions
+ *
+ * A las funciones suspendidas
+ * (que permiten ser suspendidas, que permiten suspender su ejecución)
  * solamente se las puede llamar desde una corrutina
+ *
+ * Llevan delante la palabra clave del lenguaje suspend
  */
 suspend fun doSomethingSlowly() {
     println("Haciendo una tarea que cuesta 2 segundos...")
