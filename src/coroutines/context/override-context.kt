@@ -6,7 +6,7 @@ import kotlinx.coroutines.runBlocking
 
 /**
  * Cuando pasamos un elemento de contexto
- * como argumento para el parámetro context en un coroutine builder ( launch, async, etc)
+ * como argumento para el parámetro context en un coroutine builder (launch, async, etc)
  * o a la función withContext
  * estamos reemplazando este elemento para el contexto de la corrutina hija
  * Para reemplazar más de un elemento del contexto a la vez usamos el operador +

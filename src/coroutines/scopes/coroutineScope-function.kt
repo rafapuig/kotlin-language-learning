@@ -23,12 +23,15 @@ import kotlin.time.Duration.Companion.milliseconds
  * y espera a que terminen todas las corrutinas hijas de ese scope para dar por terminada
  * la ejecución de la función.
  *
+ * Hereda el contexto del scope donde es llamada, crea un nuevo Job que tendrá
+ * como padre el Job del contexto donde fue llamada
+ *
  * El caso típico de uso es la descomposición de trabajo
  */
 
 suspend fun generateValue(): Int {
     log("Generando un valor aleatorio...")
-    delay(500.milliseconds) // Supendemos la función durante 500 milisegundos
+    delay(500.milliseconds) // Suspendemos la función durante 500 milisegundos
     return (0..10).random()
 }
 

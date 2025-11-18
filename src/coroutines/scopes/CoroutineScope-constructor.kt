@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
 
 /**
- * Funcion constructora CoroutineScope
+ * Función constructora CoroutineScope
  *
  * Crea un nuevo coroutineScope que podemos usar para crear nuevas corrutinas
  *
@@ -33,7 +33,7 @@ class ComponentWithScope(
      * Creamos un scope especificando los elementos del contexto dispatcher y job
      * Como Job usamos un objeto de tipo SupervisorJob (un supervisor)
      */
-    private val scope =
+    val scope =
         CoroutineScope(dispatcher + SupervisorJob())
 
     fun start() {
@@ -75,6 +75,12 @@ class ComponentWithScope(
 
 fun main() {
     val component = ComponentWithScope()
+    component.scope.launch {
+        while (true) {
+            log("Aqui con dos pares de...")
+            delay(700.milliseconds)
+        }
+    }
     component.start()
     Thread.sleep(2000)
     component.stop()
