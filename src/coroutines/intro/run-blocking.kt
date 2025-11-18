@@ -2,7 +2,7 @@ package coroutines.intro
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * Para hacer uso de la corrutinas es necesaria
@@ -24,7 +24,7 @@ suspend fun doSomethingSlowly() {
     /**
      * delay es una función suspendida
      */
-    delay(2000.milliseconds)
+    delay(2.seconds)
     println("Terminé")
 }
 

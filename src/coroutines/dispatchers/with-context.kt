@@ -16,7 +16,7 @@ import kotlin.time.Duration.Companion.milliseconds
  */
 
 /**
- * La función switchContext
+ * La función withContext
  * Permite cambiar el dispatcher dentro de una corrutina
  */
 
@@ -43,7 +43,7 @@ fun main() {
             /**
              * El dispatcher Main es proporcionado por la dependencia
              * kotlinx-coroutines-android u otras
-             * No esta implementada en kotlinx-coroutines-core
+             * No está implementada en kotlinx-coroutines-core
              */
             withContext(Dispatchers.Main) {
                 updateUI(result)

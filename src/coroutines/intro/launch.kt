@@ -50,5 +50,5 @@ fun main() {
         }
         log("La primera corrutina ha lanzado dos corrutinas mas.")
     }
-    //log("Vuelta al mundo de la ejecución secuencial :(")
+    log("Vuelta al mundo de la ejecución secuencial :(")
 }

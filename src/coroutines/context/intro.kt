@@ -1,8 +1,8 @@
 package coroutines.context
 
 import coroutines.log
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.runBlocking
-import kotlin.coroutines.coroutineContext
 
 /**
  * Cada corrutina lleva consigo información adicional que sirve de contexto
@@ -15,8 +15,8 @@ import kotlin.coroutines.coroutineContext
  * - CoroutineName
  * - CoroutineExceptionHandler
  *
- * Para acceder al contexto usamos la propiedad coroutineContext dentro
- * de cualquier función suspendida
+ * Para acceder al contexto usamos la propiedad coroutineContext
+ * y dentro de cualquier función suspendida su equivalente currentCoroutineContext()
  */
 
 /**
@@ -24,7 +24,7 @@ import kotlin.coroutines.coroutineContext
  */
 
 suspend fun introspect() {
-    log(coroutineContext)
+    log(currentCoroutineContext())
 }
 
 fun main() {
