@@ -6,6 +6,23 @@ import kotlinx.coroutines.runBlocking
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
+/**
+ * Una corrutina cancela todas sus corrutinas hijas cuando una de sus hijas falla
+ * (de manera predeterminada a no ser que use un Job de tipo Supervisor)
+ */
+/**
+ * Cuando se produce una excepción no controlada por una corrutina hija
+ * se propaga a la corrutina padre
+ * El padre hace lo siguiente:
+ * - cancela todos sus corrutinas hijas (para evitar trabajo innecesario)
+ * - completa su propia ejecución con la misma excepción
+ * - la propaga hacia arriba en la jerarquía
+ *
+ * Comportamiento util para corrutinas agrupadas en el mismo scope
+ * Cuando una falla se evita trabajo innecesario cancelando el resto de corrutinas
+ * en el mismo scope
+ */
+
 fun main(): Unit = runBlocking {
     launch {
         try {

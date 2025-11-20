@@ -11,6 +11,10 @@ import kotlin.time.Duration.Companion.milliseconds
  * La cancelación el Kotlin es cooperativa
  * las funciones suspendibles tienen que proporcionar la lógica que las
  * hace cancelables a sí mismas (tienen que cooperar)
+ *
+ * Cuando el código de una función hace una llamada a una función suspendible
+ * automáticamente introduce en el lugar de esa llamada un punto de suspensión
+ * y, por tanto, de cancelación
  */
 
 /**

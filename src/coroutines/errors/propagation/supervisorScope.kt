@@ -7,11 +7,19 @@ import kotlinx.coroutines.supervisorScope
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
+/**
+ * Los supervisores previenen que el padre y las hermanas sean canceladas
+ *
+ * Los supervisores sobreviven al fallo de alguno de sus hijos
+ * - no cancelan a sus otras corrutinas hijas
+ * - y no propagan la excepción más hacia arriba en la jerarquía de concurrencia estructurada
+ */
+
 fun main(): Unit = runBlocking {
     /**
      * El supervisor previene que el hijo cancele la corrutina padre
      */
-    supervisorScope {
+    supervisorScope {//#1
         launch {
             try {
                 while(true) {
@@ -23,8 +31,11 @@ fun main(): Unit = runBlocking {
                 throw e
             }
         }
-        launch {
+        launch {//#2
             delay(1.seconds)
+            /**
+             * Lanzamos una excepción no controlada en la corrutina hija 2
+             */
             throw UnsupportedOperationException("Oh!")
         }
     }

@@ -6,7 +6,20 @@ import kotlinx.coroutines.runBlocking
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
+/**
+ * La concurrencia estructurada solo afecta a excepciones lanzadas a traves de
+ * las fronteras de las corrutinas *
+ */
+
+/**
+ * La forma más fácil de evitar esto es no permitir que la excepción salga
+ * de los límites de la corrutina mediante un try-catch confinado a
+ * la corrutina hija (dentro del cuerpo de una función suspendida)
+ */
+
+
 fun main(): Unit = runBlocking {
+
     launch {
         try {
             while (true) {
@@ -19,7 +32,7 @@ fun main(): Unit = runBlocking {
         }
     }
     /**
-     * Esta corrutina termina con una excepción no controlada
+     * Esta corrutina hermana controla ella misma la excepción
      */
     launch {
         try {
