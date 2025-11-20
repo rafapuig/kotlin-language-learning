@@ -37,7 +37,7 @@ fun main() {
          * Lanzamos la corrutina #2 que será hija de la creada al llamar al builder runBlocking #1
          * (Se crea inmediatamente al iniciar la corrutina padre creada por runBlocking)
          */
-        launch {//#2
+        this.launch {//#2
             log("Iniciando currutina hija 1 ...")
             delay(1.seconds)
             /**
