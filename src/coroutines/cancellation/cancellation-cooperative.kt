@@ -4,6 +4,7 @@ import coroutines.log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.yield
 import kotlin.time.Duration.Companion.milliseconds
 
 /**
@@ -38,6 +39,7 @@ private suspend fun doCpuHeavyWork(): Int {
          * Existen otras formas de introducir puntos de suspensión (cancelación)
          * las funciones ensureActive y yield, asi como la propiedad isActive
          */
+        yield()
     }
     return counter
 }
@@ -52,7 +54,7 @@ fun main() {
         /**
          * Al esperar 600 milisegundos antes de intentar cancelar la corrutina
          * podríamos pensar que veremos solamente 2 veces "Estoy trabajando"
-         * una a los 0 segundos (nada mas iniciar)
+         * una a los 0 segundos (nada más iniciar)
          * y otra a los 500 ms (segunda llamada tras terminar la primera a doHeavyWork)
          * y ya no una tercera porque sería a los 500 + 500 = 1000 ms
          * y supuestamente cancelamos a los 600 ms

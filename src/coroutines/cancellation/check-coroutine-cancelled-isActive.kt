@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * Para determinar si una corrutina ha sido cancelada
@@ -61,5 +62,9 @@ fun main() {
                 ensureActive()
             }
         }
+
+        delay(2.seconds)
+        job1.cancel()
+        job2.cancel()
     }
 }

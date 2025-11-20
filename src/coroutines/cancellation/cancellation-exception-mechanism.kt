@@ -60,7 +60,7 @@ fun main() = runBlocking<Unit> {
              * Podemos arreglarlo de varias maneras:
              * 1) relanzando la excepción
              * 2) no capturando la excepción
-             * (cuidado con usar Exception, IllegalStateException, RuntimeException, Exception o Throwable)
+             * (cuidado con usar IllegalStateException, RuntimeException, Exception o Throwable)
              */
             // Arreglo 2, cambia Exception por UnsupportedOperationException
             catch (e: Exception) {// Se traga todo tipo de excepción (incluso la de cancelación)
