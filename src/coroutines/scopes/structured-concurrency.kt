@@ -1,7 +1,7 @@
 package coroutines.scopes
 
 /**
- * CONCURRECIA ESTRUCTURADA
+ * CONCURRENCIA ESTRUCTURADA
  *
  * Es la habilidad para gestionar y seguir la pista de la jerarquía de corrutinas
  * y su tiempo de vida dentro de una aplicación
@@ -18,5 +18,5 @@ package coroutines.scopes
  * En realidad cada corrutina tiene asociado un objeto Job
  *
  * Un objeto Job guarda una referencia a un Job padre
- * y una lista de Jobs (sus Job hijas)
+ * y una lista de Jobs (a sus Jobs hijas)
  */

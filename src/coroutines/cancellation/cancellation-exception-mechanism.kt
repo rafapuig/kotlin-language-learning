@@ -12,7 +12,7 @@ import kotlin.time.Duration.Companion.seconds
 
 /**
  * El mecanismo general para cancelar corrutinas funciona
- * mediante el lanzamiento de un un tipo de exception especial: CancellationException
+ * mediante el lanzamiento de un tipo de exception especial: CancellationException
  * en lugares especiales. Estos lugares son principalmente los puntos de suspensión
  *
  * Una corrutina cancelada lanza una CancellationException en un punto donde se suspenda

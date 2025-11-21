@@ -3,12 +3,18 @@ package coroutines.scopes
 import coroutines.log
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.yield
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * Función constructora CoroutineScope
@@ -26,7 +32,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * entonces nos crea un objeto Job nuevo para el contexto
  */
 
-class ComponentWithScope(
+class ComponentWithScope constructor(
     dispatcher: CoroutineDispatcher = Dispatchers.Default
 ) {
     /**
@@ -73,17 +79,28 @@ class ComponentWithScope(
 
 }
 
+@OptIn(DelicateCoroutinesApi::class, ExperimentalCoroutinesApi::class)
 fun main() {
-    val component = ComponentWithScope()
-    component.scope.launch {
-        while (true) {
-            log("Aqui con dos pares de...")
-            delay(700.milliseconds)
+
+    val dispatcher = newSingleThreadContext("Main")
+
+    runBlocking(dispatcher) {
+        val component = ComponentWithScope(dispatcher)
+        component.scope.launch {
+            while (true) {
+                log("Aqui con dos pares de...")
+                delay(700.milliseconds)
+            }
         }
+        component.start()
+        val startTime = System.currentTimeMillis()
+        while (System.currentTimeMillis() - startTime < 2000) {
+            yield()
+        }
+        //Thread.sleep(2000)
+        //delay(2.seconds)
+        component.stop()
     }
-    component.start()
-    Thread.sleep(2000)
-    component.stop()
 }
 
 /**

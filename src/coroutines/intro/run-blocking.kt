@@ -13,7 +13,7 @@ import kotlin.time.Duration.Companion.seconds
 /**
  * Suspending functions
  *
- * A las funciones suspendidas
+ * A las funciones suspendidas (suspendibles)
  * (que permiten ser suspendidas, que permiten suspender su ejecución)
  * solamente se las puede llamar desde una corrutina
  *

@@ -48,7 +48,6 @@ fun main() {
              * (Esta llamada se producirá cuando la corrutina hija 1 (#2) se retome un segundo
              * después de haber sido suspendida)
              */
-
             this.launch {//#4
                 log("Iniciando currutina nieta ...")
                 delay(250.milliseconds)
@@ -61,10 +60,17 @@ fun main() {
          * Por eso será hija (segunda hija) de la creada por runBlocking
          * (Se crea inmediatamente a continuación de haber creado la hija 1)
          */
-        this.launch {//#3
+        launch {//#3
             log("Iniciando currutina hija 2 ...")
             delay(500.milliseconds)
             log("Corrutina hija 2 terminada")
+
+            this.launch {
+                this@runBlocking.launch {  }
+                //this@launch.launch {  }
+            }
+            // Es hermana no hija
+            this@runBlocking.launch {  }
         }
         /**
          * Tras lanzar las 2 corrutinas hijas (#2 y #3) la corrutina padre #1 termina

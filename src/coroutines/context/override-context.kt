@@ -27,11 +27,11 @@ import kotlinx.coroutines.runBlocking
 
 /**
  * El dispatcher BlockingEventLoop se reemplaza por el Dispatcher.IO
- * El nombre coroutine se reemplaza por el de Coolrutine
+ * El nombre coroutine se reemplaza por el de Coolroutine
  * El Job se mantiene en BlockingCoroutine
  */
 fun main() {
-    runBlocking(Dispatchers.IO + CoroutineName("Coolrutine")) {
+    runBlocking(Dispatchers.IO + CoroutineName("Coolroutine")) {
         introspect()
     }
 }

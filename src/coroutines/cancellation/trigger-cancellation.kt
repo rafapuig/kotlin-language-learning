@@ -22,6 +22,8 @@ fun main() = runBlocking {
         log("Corrutina que se autoterminará")
         delay(100.milliseconds)
         coroutineContext.job.cancel() // Pedimos que se cancele
+        //this.cancel()
+        //cancel()
         // La suspendemos para que tenga la oportunidad de cancelarse
         yield() // Si comentamos esta línea la siguiente instrucción se ejecutará
         log("Corrutina completada!")

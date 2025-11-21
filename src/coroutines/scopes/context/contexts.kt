@@ -12,7 +12,7 @@ import kotlinx.coroutines.runBlocking
  * 1) la corrutina hija hereda el contexto de la corruina padre
  * 2) la nueva corrutina (hija) crea un nuevo objeto Job resposanble de establecer la
  *    relación padre-hija
- * 3) se aplican los elementos porporcionados para el contexto como argumento en el builder
+ * 3) se aplican los elementos proporcionados para el contexto como argumento en el builder
  *    que podrían reemplazar los heredados
  */
 
@@ -24,7 +24,7 @@ fun main() {
     runBlocking(Dispatchers.Default) {
         log(coroutineContext)
         /**
-         * Al no especificar ningun elemento
+         * Al no especificar ningún elemento
          * usa como contexto el mismo dispatcher que la corrutina padre (Dispatchers.Default)
          * y el mismo nombre "coroutine"
          * Crea un nuevo Job de tipo Standalone y establece la relación padre-hija

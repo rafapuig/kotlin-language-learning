@@ -15,7 +15,7 @@ import kotlinx.coroutines.runBlocking
  * o un pool de hilos
  *
  * Las corrutinas no están vinculadas a un hilo particular
- * se puede supender su ejecución en un hilo y retomarla
+ * se puede suspender su ejecución en un hilo y retomarla
  * en otro hilo distinto
  *
  * De esto se encarga el dispatcher
