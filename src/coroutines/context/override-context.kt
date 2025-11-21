@@ -11,6 +11,12 @@ import kotlinx.coroutines.runBlocking
  * estamos reemplazando este elemento para el contexto de la corrutina hija
  * Para reemplazar más de un elemento del contexto a la vez usamos el operador +
  * el cual está sobrecargado para su uso con los objetos CoroutineContext
+ *
+ * Cada uno de los elementos del contexto se considera a su vez un contexto especializado
+ * De modo que un dispatcher es un subtipo de contexto
+ * En general un elemento de contexto es un CoroutineContext
+ * que se puede combinar con otros Elementos (CoroutineContext) mediante el operador +
+ * que cuando se aplica genera un CoroutineContext resultado de la combinación
  */
 
 /**

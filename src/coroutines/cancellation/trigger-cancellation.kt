@@ -9,7 +9,7 @@ fun main() = runBlocking {
     val launchedJob = launch {
         log("Job lanzado!")
         delay(500.milliseconds)
-        log("Job completado!") // No se ejecuta
+        log("Job completado!") // No se llega a ejecutar
     }
 
     val asyncDeferred = async {

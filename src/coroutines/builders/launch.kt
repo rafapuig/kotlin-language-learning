@@ -1,4 +1,4 @@
-package coroutines.intro
+package coroutines.builders
 
 import coroutines.log
 import kotlinx.coroutines.delay

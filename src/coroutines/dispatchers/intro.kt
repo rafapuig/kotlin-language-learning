@@ -9,10 +9,12 @@ import kotlinx.coroutines.runBlocking
  * Dispatchers
  *
  * Decidir en que hilo debe correr el código de una corrutina
+ * Un dispatcher es el responsable de asignar una corrutina al hilo apropiado
+ * y suspender y retomar la corrutina durante su cilo de vida.
  *
  * Al elegir un dispatcher
- * se puede confinar la ejecución de una corrutina a un hilo especifico
- * o un pool de hilos
+ * se puede confinar la ejecución de una corrutina a un hilo específico
+ * o a un pool de hilos
  *
  * Las corrutinas no están vinculadas a un hilo particular
  * se puede suspender su ejecución en un hilo y retomarla

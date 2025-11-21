@@ -10,6 +10,9 @@ import kotlin.time.Duration.Companion.seconds
 /**
  * Cada corrutina pertenece a un ámbito de corrutina (coroutine scope)
  *
+ * Toda corrutina debe ejecutarse dentro de un ámbito, permitiendo que puedan
+ * ser agrupadas (para poder cancelarlas por grupo, por ejemplo)
+ *
  * Los scopes ayudan a establecer relaciones padre-hijo entre corrutinas
  *
  * Las funciones builder launch y async son en realidad funciones de extensión

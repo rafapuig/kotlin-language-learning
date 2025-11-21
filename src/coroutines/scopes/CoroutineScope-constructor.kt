@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
+import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
@@ -79,6 +80,10 @@ class ComponentWithScope constructor(
 
 }
 
+/**
+ * Usar la opción de -Dkotlinx.coroutines.debug en la JVM
+ */
+
 @OptIn(DelicateCoroutinesApi::class, ExperimentalCoroutinesApi::class)
 fun main() {
 
@@ -86,20 +91,50 @@ fun main() {
 
     runBlocking(dispatcher) {
         val component = ComponentWithScope(dispatcher)
+
+        /**
+         * Podemos crear un corrutina mediante el scope del componente
+         * que tendrá una duración controlada por el ciclo de vida del componente
+         */
         component.scope.launch {
             while (true) {
                 log("Aqui con dos pares de...")
-                delay(700.milliseconds)
+                /**
+                 * Podemos usar una implementación particular que
+                 * tiene el mismo comportamiento que la función delay de la biblioteca estándar
+                 */
+                myDelay(700.milliseconds)
             }
         }
+
+        /**
+         * Iniciamos el componente (y se lanzan las corrutinas)
+         */
         component.start()
-        val startTime = System.currentTimeMillis()
-        while (System.currentTimeMillis() - startTime < 2000) {
-            yield()
-        }
+        /**
+         * Si llamamos a sleep dormimos el hilo (no hacer nada durante n milisegundos)
+         * Si las corrutinas creadas son despachadas en también en el hilo main
+         * nunca tendrán oportunidad de ejecutarse porque a este hilo con sleep
+         * lo que estamos haciendo es dormirlo (no cederlo / entregarlo)
+         */
         //Thread.sleep(2000)
+        /**
+         * Pero si hacemos un delay, lo que hacemos es suspender la corrutina y dejar el
+         * hilo libre para que otra corrutina ejecute su código
+         */
         //delay(2.seconds)
+        myDelay(2.seconds)
+        /**
+         * Paramos el componente
+         */
         component.stop()
+    }
+}
+
+suspend fun myDelay(duration: Duration) {
+    val startTime = System.currentTimeMillis()
+    while (System.currentTimeMillis() - startTime < duration.inWholeMilliseconds) {
+        yield()
     }
 }
 
