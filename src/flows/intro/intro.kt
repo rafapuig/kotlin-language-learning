@@ -6,7 +6,7 @@ package flows
  * que permite trabajar con multiples valores secuenciales generados a lo largo del tiempo
  * aprovechando la maquinaria de concurrencia de Kotlin
  *
- * Un flow modela un flujo secuencial de valores
+ * Un flow modela un flujo secuencial de valores asíncrono
  *
  * Hay diferentes tipos de flows
  * Las operaciones con flows consisten en crear, transformar y consumir

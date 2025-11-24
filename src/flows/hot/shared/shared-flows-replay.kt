@@ -33,7 +33,7 @@ class Publisher {
      * Como las emisiones suceden independientemente de que haya subscriptores
      * tenemos que iniciar la corrutina que realiza las emisiones
      */
-    fun CoroutineScope.beginBroadcasting() = launch {
+    fun beginBroadcasting(scope: CoroutineScope) = scope.launch {
         while (isActive) {
             broadcastRandomNumber()
         }
@@ -41,26 +41,25 @@ class Publisher {
 
 }
 
+
 fun main() = runBlocking<Unit> {
 
-    with(Publisher()) {
+    val broadcaster = Publisher()
 
-        /** Iniciamos la difusión */
-        //this@runBlocking.beginBroadcasting()
-        beginBroadcasting()
+    /** Iniciamos la difusión */
+    //this@runBlocking.beginBroadcasting()
+    broadcaster.beginBroadcasting(this)
 
-        /** Esperamos 3 segundos */
-        delay(3.seconds)
+    /** Esperamos 3 segundos */
+    delay(3.seconds)
 
-        /** Nos ponemos a escuchar pasados los 3 segundos  */
-        /**
-         * Podremos recuperar hasta los últimos 5 valores emitidos antes de
-         * iniciar la escucha
-         */
-        messageFlow.collect {
-            log("A: Recolectado $it")
-        }
-
+    /** Nos ponemos a escuchar pasados los 3 segundos  */
+    /**
+     * Podremos recuperar hasta los últimos 5 valores emitidos antes de
+     * iniciar la escucha
+     */
+    broadcaster.messageFlow.collect {
+        log("A: Recolectado $it")
     }
 
 }

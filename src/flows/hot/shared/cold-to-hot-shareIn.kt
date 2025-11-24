@@ -1,18 +1,18 @@
 package flows.hot
 
 import coroutines.log
-import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.shareIn
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
-
+/**
+ * Usar la opción de -Dkotlinx.coroutines.debug en la JVM
+ */
 fun main() {
     val temperatures = getTemperatures()
 
@@ -34,5 +34,8 @@ fun main() {
                 log("$it celsius - ${fahrenheit.temperature} fahrenheit")
             }
         }
+
+        delay(5.seconds)
+        coroutineContext.cancelChildren()
     }
 }

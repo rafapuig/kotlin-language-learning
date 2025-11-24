@@ -1,6 +1,7 @@
 package flows.hot
 
 import coroutines.log
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.FlowCollector
@@ -9,6 +10,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 fun querySensor() = (-10..30).random()
 
@@ -20,6 +22,7 @@ suspend fun FlowCollector<Int>.emitTemperature() {
 fun getTemperatures() = flow {
     while (currentCoroutineContext().isActive) {
         //emitTemperature()
+        log("Emitiendo temperatura...")
         emit(querySensor())
         delay(500.milliseconds)
     }
@@ -35,6 +38,9 @@ value class Celsius(val temperature: Double) {
 @JvmInline
 value class Fahrenheit(val temperature: Double)
 
+/**
+ * Usar la opción de -Dkotlinx.coroutines.debug en la JVM
+ */
 fun main() {
     val temperatures = getTemperatures()
 
@@ -52,5 +58,8 @@ fun main() {
                 log("$it celsius - ${fahrenheit.temperature} fahrenheit")
             }
         }
+
+        delay(4.seconds)
+        coroutineContext.cancelChildren()
     }
 }

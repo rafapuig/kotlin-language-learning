@@ -42,7 +42,7 @@ fun main() {
 
 /**
  * Dado que llamar al builder flow no inicia ninguna actividad
- * podemos contruir un flow en codigo regular (no suspendible)
+ * podemos construir un flow en código regular (no suspendible)
  * Las funciones suspendibles se llaman dentro del bloque (argumento de la función flow)
  */
 
