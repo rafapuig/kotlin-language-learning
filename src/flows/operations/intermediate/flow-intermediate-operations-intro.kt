@@ -76,3 +76,4 @@ package flows.operations.intermediate
  *
  * cancellable() → permite que la recolección sea cancelable.
  */
+
