@@ -3,6 +3,7 @@ package coroutines.cancellation
 import coroutines.log
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.yield
 
 /**
  * La función yield es una función suspendible
@@ -19,7 +20,7 @@ private suspend fun doCpuHeavyWork(): Int {
     val startTime = System.currentTimeMillis()
     while (System.currentTimeMillis() < startTime + 500) {
         counter++
-        //yield()
+        yield()
     }
     return counter
 }
