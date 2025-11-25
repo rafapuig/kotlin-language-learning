@@ -1,12 +1,12 @@
 package flows.operations.terminal
 
 import coroutines.log
+import flows.operations.intermediate.custom.latency
 import flows.operations.intermediate.getTemperatures
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.runBlocking
 import kotlin.time.Duration.Companion.milliseconds
@@ -36,14 +36,6 @@ import kotlin.time.Duration.Companion.milliseconds
  * - collectLatest cancela el procesamiento anterior si llega un nuevo valor antes de que termine.
  */
 
-fun <T> Flow<T>.latency(time: () -> Long) = flow {
-    collect { value ->
-        val latency = time()
-        //log("Esperando para emitir: $latency")
-        delay(latency)
-        emit(value)
-    }
-}
 
 fun main() = runBlocking {
     getTemperatures()
