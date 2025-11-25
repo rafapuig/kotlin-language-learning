@@ -10,7 +10,7 @@ fun main() = runBlocking<Unit> {
         try {
             throw UnsupportedOperationException("Ups!")
         } catch (e: UnsupportedOperationException) {
-            log("Controlada $e") // No se captura, no se maneja
+            log("Controlada $e") // Si se captura, se maneja
         }
     }
 }

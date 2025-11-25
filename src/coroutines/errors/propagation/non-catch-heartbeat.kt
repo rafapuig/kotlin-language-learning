@@ -1,5 +1,6 @@
 package coroutines.errors.propagation
 
+import coroutines.log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -31,7 +32,7 @@ fun main(): Unit = runBlocking {
                 delay(500.milliseconds)
             }
         } catch (e: Exception) {
-            println("Latidos terminados: $e")
+            log("Latidos terminados: $e")
             throw e
         }
     }
