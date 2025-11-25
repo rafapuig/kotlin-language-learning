@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="JetRunConfigurationType">
+    <module name="Kotlin Language" />
+    <shortenClasspath name="NONE" />
+    <option name="VM_PARAMETERS" value="-Dkotlinx.coroutines.debug" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
