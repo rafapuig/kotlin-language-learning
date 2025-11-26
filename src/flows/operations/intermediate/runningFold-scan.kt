@@ -5,11 +5,10 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.runningFold
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.runBlocking
-import kotlinx.html.Entities
 
 fun main() {
     /**
-     * El valor será la media entre el valor emitido y el anterior
+     * El valor será la media entre el valor emitido y el anterior emitido
      */
     val alpha = 0.5f
     val temperatures = getTemperatures()
