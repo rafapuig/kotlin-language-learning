@@ -3,7 +3,8 @@ package imperative
 import imperative.Month.*
 
 /**
- * Para crear un tipo enumerado se usa la palabra enum seguida de class y el nombre del nuevo tipo enumerado
+ * Para crear un tipo enumerado se usa la palabra enum seguida de class
+ * y el nombre del nuevo tipo enumerado
  */
 
 enum class Palo {
@@ -40,9 +41,6 @@ fun testSuits() {
 }
 
 
-
-
-
 enum class Month(val days: Int) {
     JANUARY(31),
     FEBRUARY(28),
@@ -63,7 +61,10 @@ enum class Month(val days: Int) {
     fun getDaysIfLeapYear(): Int =
         days + if (this === FEBRUARY) 1 else 0
 
-    // Mas eficiente, el valor no se calcula en cada llamada, se cachea al inicio
+    /**
+     * Más eficiente, el valor no se calcula en cada llamada, se cachea al inicio
+     * mediante una propiedad de solo lectura (inmutable)
+     */
     val numDaysIfLeapYear = days + if (this.ordinal == 1) 1 else 0
 }
 

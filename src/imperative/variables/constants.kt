@@ -1,19 +1,20 @@
-package imperative// palabra clave const
+package imperative.variables
+
+// palabra clave const
 
 const val PI = 3.14159265359 // Por convención identificador todas en mayúsculas
 
-/* Para valores conocidos en tiempo de compilación */
+/** Para valores conocidos en tiempo de compilación */
 
 // Tiempo de compilación
-/* Momento en que se compila (crea el programa) */
+/* Momento en que se compila (crea la versión ejecutable programa) mediante el compilador */
 
 // Tiempo de ejecución
-/* Momento en que se ejecuta el programa (compilado con éxito) */
+/* Momento en que se ejecuta el programa (ya compilado con éxito) */
 
 /*
-Para el programador, que algo tenga que ser conocido
-en tiempo de compilación significa que el valor se conoce
-y se escribe en el código fuente
+Para el programador, que algo sea conocido en tiempo de compilación
+significa que el valor se conoce y, por tanto, se escribe en el código fuente
  */
 
 /*

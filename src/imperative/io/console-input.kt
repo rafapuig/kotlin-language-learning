@@ -1,13 +1,67 @@
 package imperative.io
 
+fun readName1(): String {
+    val input = readln()
 
-fun readName() {
+    var result: String
+
+    if (input.isEmpty())
+        result = input
+    else
+        result = "Anonimo" // Equivale a operador ternario
+
+    return result
+}
+
+fun readName2(): String {
+    val input = readln()
+    val result = if (input.isEmpty()) input else "Anonimo" // Equivale a operador ternario
+    return result
+}
+
+fun readName3(): String {
+    val input = readln()
+    return if (input.isEmpty()) input else "Anonimo" // Equivale a operador ternario
+}
+
+/**
+ * Version usando la scope function run
+ * para poder hacer uso de funciones con expresión como cuerpo (cuerpo expresión)
+ */
+fun readName4() = run {
+    val input = readln()
+    if (input.isNotBlank()) input else "Anonimo" // Equivale a operador ternario
+}
+
+/**
+ * Version usando la scope function let *
+ */
+fun readName5(): String {
+    return readln().let {
+        if (it.isNotBlank()) it else "Anonimo"
+    }
+}
+
+/**
+ * Version usando la scope function let *
+ * y aplicando cuerpo de expresión en la función
+ */
+fun readName6() =
+    readln().let {
+        if (it.isNotBlank()) it else "Anonimo"
+    }
+
+
+/**
+ * Version usando la scope function with
+ */
+fun readName(): String {
     return with(readln()) {
         if (isNotBlank()) this else "Anonimo"
     }
 }
 
-fun readSurname() = readln().ifBlank { "Nothing" }
+fun readLastname() = readln().ifBlank { "Nothing" }
 
 
 /**

@@ -1,3 +1,5 @@
+package imperative.io
+
 fun main() {
     val input = readln()
     val name = if (input.isBlank()) "Kotlin" else input

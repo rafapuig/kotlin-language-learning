@@ -1,5 +1,8 @@
 package imperative.types
-// Un valor pertenece a un tipo de dato
+
+/**
+ * Todo valor pertenece o se asocia con un tipo de dato
+ */
 
 // Varios tipos de información almacenable por una variable
 /*
@@ -13,7 +16,7 @@ package imperative.types
 // Solamente puede almacenar valores de ese tipo (o convertidos)
 // No puede almacenar valores de otro tipo distinto al establecido
 
-// Tipos comunes en Kotlin
+/** Tipos comunes en Kotlin */
 
 /*
 Numérico:
@@ -27,14 +30,14 @@ Texto:
 
 // Caracterización de un tipo
 /*
-Un tipo de dato se caracteriza según 3 ...
-- Conjunto de valores
-- Operaciones (que se pueden realizar con valores del conjunto)
-- Representación interna en memoria
+Un tipo de dato se caracteriza según 3 características:
+- Conjunto de valores posibles
+- Operaciones (que se pueden realizar con los valores del conjunto)
+- Representación interna en memoria de los valores
  */
 
 /*
-Los tipos de datos abstractos
+Los tipos de datos abstractos ADT
 permiten su uso sin necesidad de conocer su representación interna
 Incluso esta puede cambiar sin afectar al código programa
  */
@@ -44,12 +47,13 @@ Incluso esta puede cambiar sin afectar al código programa
 
 var initial : Char = 'R' // Valores literales Char entre ''
 var name : String = "Rafa" // Valores literales String entre ""
-var age : Int = 48
-var radius : Float = 2.48f // Sufijo f para valores de tipo Float
-var distance : Double = 103.59
-var isAlive : Boolean = true
+var age : Int = 48 // Valor literal entero 48 en base decimal
+var radius : Float = 2.48f // Sufijo f para valores literales de tipo Float
+var distance : Double = 103.59 // El punto indica valores con decimales Double
+var isAlive : Boolean = true // true es valor literal de tipo Boolean que indica Verdadero
+var isDead : Boolean = false // false es valor literal de tipo Boolean que indica Falso
 var aLong : Long = 1_000_000_000_000_000_000L // Sufijo L para valores Long
-var aByte: Byte = 127 // (-128, 127)
+var aByte: Byte = 127 // Rango entre [-128, 127]
 
 
 

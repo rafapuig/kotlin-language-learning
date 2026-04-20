@@ -23,10 +23,10 @@ Mediante funciones toXXX() donde XXX es el nombre del tipo al cual convertir el 
 
 var doubleNumber : Double = 33.toDouble()
 var explicitLongNumber : Long = 45.toLong()
-var convertedToLongExplicit : Long = intNumber.toLong()
+var convertedToLongExplicit : Long = intNumber.toLong() // Así si es posible
 
 /*
-No todas las conversiones van a poder realizarse correctamente
+No todas las conversiones van a poder realizarse correctamente en tiempo de ejecución
  */
 var message : String = "Hola Kotlin!"
 val intValue : Int = message.toInt() // Lanzará una excepción NumberFormatException

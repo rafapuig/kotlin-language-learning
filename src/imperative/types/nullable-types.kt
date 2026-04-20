@@ -1,4 +1,6 @@
-package imperative
+package imperative.types
+
+import imperative.greet
 
 /**
  * Una clase, interface, etc define dos tipos de datos

@@ -1,7 +1,10 @@
+package imperative.begin
+
 /*
 Para suprimir los warnings de JDK 24
 he habilitado --enable-native-access=ALL-UNNAMED
 en la template de running configurations de Kotlin
+(no en Java 26)
  */
 
 /**

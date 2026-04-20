@@ -15,7 +15,7 @@ fun testReadln() {
  * Los datos de entrada leídos por consola siempre se devuelven como un String
  * Para convertir a otro tipo se realiza un casting (asumiendo que sea compatible)
  * Si la conversion falla lanzará una excepción
- * Es conveniente
+ * Es conveniente:
  * - Informar al usuario mediante el PROMPT adecuado del dato que le estamos solicitando
  * - VALIDAR la entrada del usuario *
  */

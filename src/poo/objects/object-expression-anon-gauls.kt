@@ -25,7 +25,7 @@ fun main() {
             throw UnsupportedOperationException("$name no puede beber de la poción mágica");
         }
 
-        override var power: Int
+        override var power: Int = MAX_POWER
             get() = MAX_POWER
     }
 
