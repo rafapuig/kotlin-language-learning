@@ -1,7 +1,7 @@
 package imperative.controlflow
 
 /**
- * función para obtener un número aleatorio entre 1 y 10
+ * Función para obtener un número aleatorio entre 1 y 10
  */
 fun getRandomNumber(): Int = (1..10).random()
 
@@ -51,7 +51,7 @@ fun testIfExpr2() {
 /**
  * Aquí vemos el equivalente, pero usando la instrucción when (también es una expresión)
  */
-fun testWhenWithoutArguements() {
+fun testWhenWithoutArguments() {
     val number = getRandomNumber()
 
     val typeInt = when {
@@ -67,5 +67,5 @@ fun main() {
     testIf()
     testIfExpr()
     testIfExpr2()
-    testWhenWithoutArguements()
+    testWhenWithoutArguments()
 }

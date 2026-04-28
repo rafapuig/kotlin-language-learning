@@ -8,7 +8,7 @@ fun getRandomNumber(from: Int = -1, to: Int = 1): Int = Random.nextInt(from, to 
  * La expresión when sin un argumento
  * Cada rama es una expresión de tipo Boolean
  */
-fun testWhenExpression() {
+fun testWhenExpressionAsStatement() {
     val number = getRandomNumber()
     println("El numero es $number")
 
@@ -24,7 +24,7 @@ fun testWhenExpression() {
  * La expresión when con argumento
  * Se compara con posibles valores que pueda tener el argumento
  */
-fun testWhenExpression2() {
+fun testWhenExpressionAsStatementWithArguments() {
     val number = getRandomNumber()
     println("El numero es $number")
 
@@ -64,8 +64,8 @@ fun testWhenExpression4() {
 
 
 fun main() {
-    testWhenExpression()
-    testWhenExpression2()
+    testWhenExpressionAsStatement()
+    testWhenExpressionAsStatementWithArguments()
     testWhenExpression3()
     testWhenExpression4()
 }
