@@ -16,5 +16,5 @@ fun main() {
     printPersonInfo(lastName = "Puig", firstName = "Rafa") // Podemos especificar los argumentos en el orden que queramos
 
     // Si mezclamos argumentos posicionales y nombrados
-    // Los posicionados deber ir primero
+    // Los posicionados deben ir primero
 }

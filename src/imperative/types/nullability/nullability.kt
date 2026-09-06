@@ -9,8 +9,8 @@ package imperative.types.nullability
  * para que puedan ser detectados por el compilador
  *
  * Si una variable (o propiedad) puede contener el valor null
- * no es seguro llamar a un miembro de instancia usando como receiver la variable o propiedad
- * ya que si en lugar de almacenar una referencia a un objeto contiene un null
+ * no es seguro llamar a un miembro de instancia usando como receiver la variable o propiedad,
+ * ya que si en lugar de almacenar una referencia a un objeto contiene el valor null
  * entonces se producirá la excepción NullPointerException al ejecutar la llamada
  *
  * Ejemplo en Java
@@ -75,7 +75,7 @@ fun passingNullableArgumentToNonNullableFunctionParameter() {
  *
  * El if comprueba si el valor de la expresión s es nula o no
  * Si se cumple la condición entonces dentro de la rama principal del if se puede considerar
- * que la expresión no es nula y tratarla como si fuera String de tipo no anulable
+ * que la expresión no es nula y tratarla como si fuera String (tipo no anulable)
  */
 fun strlenNullSafe(s: String?): Int =
     if (s != null) // el valor de s para la comprobación de si es nulo o no
@@ -119,12 +119,12 @@ fun testPrintAllCaps() {
  * Proporcionar un valor por defecto en el caso de que una expresión sea null
  */
 fun greetVerbose(name: String?) {
-    val recipient = if (name != null) name else "anonimo"
+    val recipient = if (name != null) name else "anónimo"
     println("Hello $recipient!")
 }
 
 fun greet(name: String?) {
-    val recipient = name ?: "anonimo"
+    val recipient = name ?: "anónimo"
     println("Hello $recipient!")
 }
 

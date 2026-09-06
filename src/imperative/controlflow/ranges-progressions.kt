@@ -1,13 +1,24 @@
 package intro.loops
 
-fun main() {
-    testRange()
-    //testIntRangeInclusive()
-    //testRangeExclusive()
-    //testIntProgression()
-    //testIntProgressionExclusive()
-    testIn()
-}
+/**
+ * Rangos
+ *
+ * Un rango es esencialmente un intervalo entre dos valores (normalmente números)
+ * - inicial
+ * - final
+ *
+ * La operación más común que se puede aplicar a un rango es comprobar si un valor
+ * cae dentro del intervalo de valores, mediante el operador in (contains)
+ *
+ *
+ * Progresiones
+ * - Si es posible iterar todos los valores de un rango entonces el rango se denomina progresión.
+ *
+ *
+ * Para crear un rango inclusivo se utiliza el operador .. con sus dos operandos valor inicial y final
+ *
+ * Podemos crear un rango exclusivo que no incluya el valor indicado como segundo operando si utilizamos el operador ..<
+ */
 
 fun testRange() {
     val oneToTen = 1..10
@@ -65,8 +76,17 @@ fun testIn() {
 }
 
 fun parseChar(c: Char) = when (c) {
-    in 'a'..'z' -> "minuscula"
-    in 'A'..'Z' -> "Mayuscula"
+    in 'a'..'z' -> "minúscula"
+    in 'A'..'Z' -> "Mayúscula"
     in '0'..'9' -> "digito"
     else -> "desconocido"
+}
+
+fun main() {
+    testRange()
+    //testIntRangeInclusive()
+    //testRangeExclusive()
+    //testIntProgression()
+    //testIntProgressionExclusive()
+    testIn()
 }

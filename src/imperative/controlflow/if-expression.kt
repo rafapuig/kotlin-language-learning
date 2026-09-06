@@ -33,7 +33,7 @@ fun testIfExpr() {
 }
 
 /**
- * Se puede usar la combinación tipica if .. else if .. else
+ * Se puede usar la combinación típica if .. else if .. else
  * Pero en Kotlin es mejor usar para estos casos el when sin argumento
  */
 fun testIfExpr2() {

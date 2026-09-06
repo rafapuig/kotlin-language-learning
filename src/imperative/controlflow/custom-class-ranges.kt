@@ -1,5 +1,9 @@
 package intro.loops
 
+/**
+ * Todo lo que hace falta para que objetos de una clase puedan definir un rango
+ * es que la clase implemente la comparación
+ */
 class Rectangle(val width: Int, val height: Int) : Comparable<Rectangle> {
     val area: Int = width * height
 

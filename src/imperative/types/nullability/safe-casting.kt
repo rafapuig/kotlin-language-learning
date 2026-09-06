@@ -1,7 +1,5 @@
 package imperative.types.nullability.safe.casting
 
-import java.util.Objects
-
 class Person(val name: String, val age: Int) {
 
     override fun equals(other: Any?): Boolean {
@@ -10,7 +8,7 @@ class Person(val name: String, val age: Int) {
         /**
          * Como no hemos salido con el return del if predecesor
          * es debido a que other !is Person es falso, luego other is Person es true
-         * A partir de aqui el compilador infiere que other es de tipo Person
+         * A partir de aquí el compilador infiere que other es de tipo Person
          * Y, por tanto, se puede usar la referencia other para acceder a los miembros
          * declarados en la clase Person
          */

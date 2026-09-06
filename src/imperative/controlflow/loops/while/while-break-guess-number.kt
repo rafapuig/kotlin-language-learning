@@ -1,3 +1,5 @@
+package imperative.controlflow.loops.`while`
+
 fun main() {
     val secret = 7
     var guess: Int

@@ -1,3 +1,5 @@
+package imperative.controlflow.loops.`while`
+
 fun main() {
     val totalRounds = 3
     val totalPlayers = 4

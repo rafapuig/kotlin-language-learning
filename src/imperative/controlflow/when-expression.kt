@@ -15,7 +15,7 @@ fun testWhenExpressionAsStatement() {
     when {
         number > 0 -> println("el numero es positivo")
         number == 0 -> println("el numero es cero")
-        number < 0 -> println("el numero es negativo") // Si llega hasta aqui es porque no es > ni = entonces es <
+        number < 0 -> println("el numero es negativo") // Si llega hasta aquí es porque no es > ni = entonces es <
         else -> println("error")
     }
 }
@@ -56,7 +56,7 @@ fun testWhenExpression4() {
     val hour = getRandomNumber(0, 23)
     println("Son las $hour horas")
     when (hour) {
-        in 0..11 -> println("Buenos dias")
+        in 0..11 -> println("Buenos días")
         in 12..20 -> println("Buenas tardes")
         in 21..23 -> println("Buenas noches")
     }

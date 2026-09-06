@@ -11,7 +11,7 @@ fun main() {
         println("Indice: ${indexedValue.index} = ${indexedValue.value}")
     }
 
-    // Desestructurar
+    // Desestructurar el IndexedValue en index y number
     for ((index, number) in numbers.withIndex()) {
         println("Indice: $index = $number")
     }

@@ -1,8 +1,10 @@
+package imperative.controlflow.loops
+
 data class DominoTile(val left: Int, val right: Int) {
 
-    fun matches(value: Int): Boolean = left == value || right == value
+    fun matches(value: Int) = left == value || right == value
 
-    fun flipped(): DominoTile = DominoTile(right, left)
+    fun flipped() = DominoTile(right, left)
 
     override fun toString() = "[$left|$right]"
 }
@@ -14,14 +16,14 @@ class DominoTable {
     val rightEnd get() = table.firstOrNull()?.right
 
     fun add(tile: DominoTile) {
-        val leftEnd = leftEnd!!
-        val rightEnd = rightEnd!!
-
 
         with(tile) {
             if (table.isEmpty()) {
                 table.add(this)
             } else {
+                val leftEnd = leftEnd!!
+                val rightEnd = rightEnd!!
+
                 if (matches(leftEnd)) {
                     val tileToPlace = if (right == leftEnd) this else flipped()
                     table.add(0, tileToPlace)

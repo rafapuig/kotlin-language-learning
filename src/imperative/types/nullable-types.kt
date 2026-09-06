@@ -12,7 +12,7 @@ import imperative.greet
 
 /**
  * ?. Safe call operator operador de llamada seguro
- * Combina la comprobación de valor nulo y la llamada a un metodo
+ * Combina la comprobación de valor nulo y la llamada a un método
  *
  * ?: Elvis operator
  * Proporciona un valor por defecto cuando un valor es nulo

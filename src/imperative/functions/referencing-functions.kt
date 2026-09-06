@@ -4,10 +4,20 @@ package imperative.functions
  * Para hacer referencia a una función por su nombre se usa el operador ::
  */
 
-fun add(a: Int, b: Int): Int = a + b
-fun subtract(a: Int, b: Int): Int = a - b
-fun multiply(a: Int, b: Int): Int = a * b
-fun divide(a: Int, b: Int): Int = a / b
+fun add(a: Int, b: Int) = a + b
+fun subtract(a: Int, b: Int)= a - b
+fun multiply(a: Int, b: Int) = a * b
+fun divide(a: Int, b: Int) = a / b
+
+
+fun applyAllOperations(x: Int, y: Int) {
+    val operations = listOf(::add, ::subtract, ::multiply, ::divide)
+
+    for (operation in operations) {
+        val result = operation(x,y)
+        println("Resultado: $result")
+    }
+}
 
 fun main() {
     var selectedOperation = ::add

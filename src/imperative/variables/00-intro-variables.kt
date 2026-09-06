@@ -1,3 +1,5 @@
+package imperative.variables
+
 fun localVariables() {
     val a = '3'
     print(a)
@@ -7,7 +9,7 @@ fun main() {
     val language: String = "Kotlin"
     val number: Int = 48
 
-    // Inferencia del tipo de dato mediante la expresion de inicialización
+    // Inferencia del tipo de dato mediante la expresión de inicialización
     val name = "Rafa"
     val age = 23
 
@@ -27,7 +29,7 @@ fun main() {
      */
 
     val result = if (age > 30) "Senior" else "Junior"
-    //val result = "Otro" // Error de compilacion
+    //val result = "Otro" // Error de compilación
 
     var count = 0
     count = 10

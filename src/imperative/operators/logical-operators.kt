@@ -61,7 +61,7 @@ fun shortCircuitOr() {
 }
 
 /**
- * La función evaluate imprime por consola el valor booleano que se esta avaluando por el operador lógico
+ * La función evaluate imprime por consola el valor booleano que se está avaluando por el operador lógico
  * y lo devuelve sin más
  */
 fun evaluate(expr : Boolean) : Boolean  {

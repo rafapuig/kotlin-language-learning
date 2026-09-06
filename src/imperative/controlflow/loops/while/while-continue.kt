@@ -1,3 +1,5 @@
+package imperative.controlflow.loops.`while`
+
 fun main() {
     var number = 0
 

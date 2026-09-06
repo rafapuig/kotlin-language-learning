@@ -1,10 +1,11 @@
 package func.omit.returned.type
 
 /**
- * Para funciones con expression body solamente
- * El compilador analiza el tipo de datos de la expresión
+ * Omisión del tipo de retorno de una función
+ *
+ * Solamente para funciones con expression body
+ * El compilador analiza el tipo de datos de la expresión (INFERENCIA DE TIPOS)
  * y usa ese tipo como el tipo de retorno de la función
- * INFERENCIA DE TIPOS
  */
 
 fun max(a: Int, b: Int) = if (a > b) a else b

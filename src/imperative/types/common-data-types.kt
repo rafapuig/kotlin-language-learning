@@ -4,7 +4,7 @@ package imperative.types
  * Todo valor pertenece o se asocia con un tipo de dato
  */
 
-// Varios tipos de información almacenable por una variable
+// Varios tipos de información que puede ser almacenada por una variable
 /*
 - Número
 - Texto
@@ -58,7 +58,7 @@ var aByte: Byte = 127 // Rango entre [-128, 127]
 
 
 // INFERENCIA DE TIPO
-// Al declarar una variable NO es obligatorio especificar el tipo
+// Al declarar una variable NO es obligatorio especificar el tipo (si el compilador lo puede inferir)
 
 var aFloat = 3.1415F // Si no ponemos el sufijo F se infiere tipo Double
 var anInt = 18

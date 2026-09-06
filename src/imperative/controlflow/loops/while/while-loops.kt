@@ -16,7 +16,7 @@ fun testWhile2() {
     var counter = 0
     while (counter < 10) {
         counter++
-        println("Iteracion numero $counter")
+        println("Iteración número $counter")
     }
 }
 
@@ -25,7 +25,7 @@ fun testWhile3() {
     while (counter < 10) {
         counter++
         if(counter == 4) break
-        println("Iteración numero $counter")
+        println("Iteración número $counter")
     }
 }
 

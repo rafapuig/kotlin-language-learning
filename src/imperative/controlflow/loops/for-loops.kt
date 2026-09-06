@@ -67,7 +67,7 @@ fun testFor2() {
 }
 
 /**
- * la función infija until crea un rango exclusivo
+ * La función infija until crea un rango exclusivo
  */
 fun testFor21() {
     // Rango de 0 a 9 (no incluye el ultimo valor)
