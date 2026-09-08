@@ -17,8 +17,8 @@ fun main() {
     /**
      * Dos objetos iguales deben generar el mismo código hash
      *
-     * (recordar que al reves no tiene porqué ser cierto, dos objetos con mismo hash
-     * no tienen porqué ser iguales)
+     * (recordar que al revés no tiene por qué ser cierto, dos objetos con mismo hash
+     * no tienen por qué ser iguales)
      * Conclusión:
      * - Si el hash es diferente entonces no son iguales
      * (Lo que nos evita comparar propiedad por propiedad para saber si no son iguales)

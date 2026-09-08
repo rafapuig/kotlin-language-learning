@@ -9,9 +9,9 @@ class Person {
         this._age = age
     }
 
-    constructor(name: String): this(name, null)
+    constructor(name: String) : this(name, null)
 
-    constructor(): this(null, null)
+    constructor() //: this(null, null)
 
     val name: String get() = this._name
     val age: Int? get() = _age

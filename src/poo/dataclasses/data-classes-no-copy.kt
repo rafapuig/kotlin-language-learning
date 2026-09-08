@@ -35,7 +35,7 @@ fun main() {
 
     println(r1)
 
-    //val r2 = r1.copy(height = 7)
+    //val r2 = r1.copy(height = 7) // ERROR, el metodo copy no se puede utilizar, es privado
     //println(r2)
 
     val r3 = r1.clone(width = 8)

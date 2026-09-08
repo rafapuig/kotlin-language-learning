@@ -1,6 +1,11 @@
 package poo.person8
 
-class Person(val name: String = "Anonimo", val age: Int? = null) {
+/**
+ * Si no los declaramos como privados
+ * y como val
+ * entonces también son innecesarias las propiedades de solo lectura
+ */
+class Person(val name: String = "Anónimo", val age: Int? = null) {
 
    // constructor(name: String) : this(name, null)
 

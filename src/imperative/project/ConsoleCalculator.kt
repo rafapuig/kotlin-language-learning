@@ -7,7 +7,7 @@ fun main() {
 
     // paso 1: obtención de datos de entrada
     println()
-    println("Introduce dos numeros:")
+    println("Introduce dos números:")
 
     val number1 = readDoubleInput("Numero 1: ")
     val number2 = readDoubleInput("Numero 2: ")
@@ -41,11 +41,11 @@ fun performCalculation(number1: Double, number2: Double, operation: String): Dou
 }
 
 fun getArithmeticOperation(): String {
-    print("Introduce una operacion aritmetica (+.-,*,/): ")
+    print("Introduce una operación aritmetica (+.-,*,/): ")
     val operation = readln()
 
     if (!"+-*/".contains(operation, true)) {
-        println("Operacion no valida. Saliendo...")
+        println("Operación no valida. Saliendo...")
         exitProcess(2)
     }
     return operation

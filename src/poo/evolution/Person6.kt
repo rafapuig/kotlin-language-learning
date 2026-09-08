@@ -1,16 +1,22 @@
 package poo.person6
 
+/**
+ * Se puede hacer que los parámetros del constructor primario, además de parámetros, sean considerados como propiedades
+ * de la clase, lo que permite usarlos en otros miembros y no solo en el bloque init
+ */
 class Person (private var _name: String?, private var _age: Int?) {
 
-    private var __name: String = _name ?: "Anonimo"
-    private var __age: Int? = _age
+    init {
+        this._name = _name ?: "Anónimo"
+        this._age = _age ?: 0
+    }
 
     constructor(name: String): this(name, null)
 
     constructor(): this(null, null)
 
-    val name: String get() = this.__name
-    val age: Int? get() = __age
+    val name: String get() = this._name!! // podemos usar aquí _name porque es una propiedad
+    val age: Int? get() = _age
 }
 
 fun main() {

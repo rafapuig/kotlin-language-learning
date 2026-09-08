@@ -2,7 +2,7 @@ package poo.intro;
 
 public class TestClasses {
 
-    public static void main(String[] args) {
+    public static void main() {
         testPerson();
         testPerson1();
     }

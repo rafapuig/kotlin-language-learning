@@ -1,6 +1,14 @@
 package poo.person7
 
-class Person(var _name: String = "Anonimo", var _age: Int? = null) {
+/**
+ * Si hacemos uso de los valores por defecto de los parámetros de una función
+ * y además estos parámetros al añadir val o var en su declaración obtienen la consideración de propiedades
+ * de la clase
+ * entonces en innecesario el uso de los constructores secundarios
+ */
+class Person(
+    private var _name: String = "Anónimo",
+    private var _age: Int? = null) {
 
    // constructor(name: String) : this(name, null)
 

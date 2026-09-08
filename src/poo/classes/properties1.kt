@@ -1,7 +1,7 @@
 package poo.classes.properties1
 
 class Person {
-    var name : String = "Anonimo"
+    var name : String = "Anónimo"
     var age : Int = 0
 }
 

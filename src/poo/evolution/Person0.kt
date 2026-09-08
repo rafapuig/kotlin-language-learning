@@ -1,24 +1,19 @@
-package poo.person1
+package poo.person0
 
 class Person {
 
-    /**
-     * Si inicializamos las propiedades,
-     * ya no es obligatorio que todos los constructores garanticen que se proporciona un valor para construir la instancia
-     */
-    private var _name: String = "Anónimo"
-    private var _age: Int? = null
+    // Propiedades sin inicializar, solo posible por los constructores declarados
+    private var _name: String
+    private var _age: Int?
 
     constructor(name: String?, age: Int?) {
-        this._name = name ?: this._name
+        this._name = name ?: "Anónimo"
         this._age = age
     }
 
     constructor(name: String) : this(name, null)
 
-
-    constructor() // : this(null, null)
-
+    constructor() : this(null, null)
 
     val name: String
         get() {
@@ -33,8 +28,9 @@ class Person {
 }
 
 fun main() {
+
     val person: Person
-    person = Person()
+    person = Person() // Crear una persona mediante en constructor por defecto, nombre y edad por defecto
 
     val armando = Person("Armando")
     val belen = Person("Belen", 57)

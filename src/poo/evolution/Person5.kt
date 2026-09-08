@@ -1,5 +1,8 @@
 package poo.person5
 
+/**
+ * La palabra constructor se puede omitir en el caso de constructor primario si no tiene anotaciones
+ */
 class Person (name: String?, age: Int?) {
 
     private var _name: String = name ?: "Anonimo"

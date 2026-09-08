@@ -1,7 +1,14 @@
 package poo.person4
 
+
 class Person constructor(name: String?, age: Int?) {
 
+    /**
+     * También se pueden usar los parámetros del constructor primario
+     * en la expresión de inicialización de las propiedades
+     *
+     * Lo que hace innecesario en este caso el uso del bloque init
+     */
     private var _name: String = name ?: "Anonimo"
     private var _age: Int? = age
 

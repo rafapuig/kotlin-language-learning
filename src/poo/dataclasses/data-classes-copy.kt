@@ -32,4 +32,7 @@ fun main() {
     val r3 = r1.copy(width = 8)
     println(r3)
 
+    val r4 = r1.copy(height = 5, width = 3)
+    println(r4)
+
 }

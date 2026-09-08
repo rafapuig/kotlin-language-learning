@@ -7,11 +7,11 @@ data class Rectangle(
     val area = width * height
 
     /**
-     * Podemos definir un metodo de reemplazo toString
-     * en este caso el compilador no genera uno automático
+     * Podemos definir explícitamente un metodo de reemplazo toString
+     * en este caso el compilador no generará ninguno automático
      */
     override fun toString(): String =
-        "Rectangle(width=$width height=$height, area=$area)"
+        "Rectangle(width=$width, height=$height, area=$area)"
 
 }
 
