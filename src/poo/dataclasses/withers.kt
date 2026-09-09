@@ -11,7 +11,7 @@ package poo.dataclasses.withers
 data class Point(val x: Float = 0f, val y: Float = 0f) {
 
     /**
-     * Clonar sería el equivalente al metodo copy
+     * Clonar sería el equivalente al método copy
      */
     fun clonar(x: Float = this.x, y: Float = this.y) = Point(x, y)
 
