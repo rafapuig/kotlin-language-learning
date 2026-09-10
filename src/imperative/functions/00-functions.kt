@@ -2,19 +2,18 @@ package imperative.functions
 
 /**
  * Sintaxis
-
-fun nombreFuncion(nombre_parámetro1: Tipo, nombre_parámetro2: Tipo, ...) : TipoRetorno {
-// cuerpo de la función (function body)
-}
-
+ *
+ * `fun nombreFuncion(nombre_parámetro1: Tipo, nombre_parámetro2: Tipo, ...) : TipoRetorno {
+ *    // cuerpo de la función (function body)
+ * }`
  */
 
 /**
- * Empieza por la keyword fun
+ * Empieza por la keyword `fun`
  * seguida del nombre de la función y unos paréntesis
  * dentro de los paréntesis se declara la lista de parámetros, separados por `,`
  *
- * Un parámetro se declara mediante nombre : tipo
+ * Un parámetro se declara mediante `nombre : tipo`
  *
  * Los parámetros son inmutables (RO) --> (equivalente a poner `final` delante del parámetro si fuera Java)
  *
@@ -41,15 +40,24 @@ fun calc(a: Int, b: Int): Int {
  */
 fun calc2(a: Int, b: Int) = a * b
 
-fun max(a: Int, b: Int) : Int {
+
+fun max(a: Int, b: Int): Int {
     /**
-     * En Kotlin if es una expresión (que devuelve un resultado) lo que equivale al operador ternario de Java
+     * En Kotlin if es una expresión (que devuelve un resultado)
+     * lo que equivale al operador ternario de Java
      */
     return if (a > b) a else b // Return (a > b) ? a : b en Java
 }
 
+/**
+ * Version con expresión body
+ */
+fun max2(a: Int, b: Int) = if (a > b) a else b
+
+
 
 fun main() {
     // Llamada a la función mediante el nombre y proporcionado los argumentos entre paréntesis
-    println(max(3, 2))
+    println(max(3, 2)) // usando argumentos posicionales
+    println(calc(b = 3, a = 2)) // usando argumentos con nombre
 }

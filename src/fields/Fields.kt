@@ -5,6 +5,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
 class Demo {
+    /**
+     * Novedad en Kotlin, fields
+     * no definimos una property accesible desde fuera de clase
+     * sino un campo de respaldo
+     */
     val elems: List<String>
         field = mutableListOf<String>("HOla")
 

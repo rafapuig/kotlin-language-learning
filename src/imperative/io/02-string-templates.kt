@@ -14,6 +14,6 @@ fun main() {
     // Para expresiones se ponen dentro de {} después del $
     println("Tu nombre tiene ${name.length} letras")
 
-    // Dentro de la string template se puede usar una expresion que haga uso de las comillas "
+    // Dentro de la string template se puede usar una expresión que haga uso de las comillas "
     println("Hola, ${if(name.isBlank()) "Kotlin" else name}")
 }

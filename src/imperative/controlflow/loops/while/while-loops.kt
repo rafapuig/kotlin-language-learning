@@ -1,8 +1,5 @@
-package intro.loops
+package imperative.controlflow.loops.`while`
 
-fun main() {
-
-}
 
 fun testWhile() {
     val condition: Boolean = true

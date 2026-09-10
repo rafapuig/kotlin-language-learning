@@ -26,7 +26,7 @@ fun readInt(prompt: String = "Introduce un numero entero: "): Int {
         val userInput = readln()
 
         try {
-            val number = userInput.toInt()
+            val number = userInput.toInt() // Casting a tipo Int
             return number
         } catch (nfe: NumberFormatException) {
             println("Numero introducido no valido")

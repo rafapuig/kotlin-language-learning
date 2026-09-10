@@ -1,4 +1,4 @@
-package imperative.controlflow
+package imperative.controlflow.coditional
 
 /**
  * Función para obtener un número aleatorio entre 1 y 10

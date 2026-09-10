@@ -4,7 +4,7 @@
  * tanto para leer su valor (getter) como para mutarlo (setter)
  */
 
-import poo.intro.properties.Person;
+import poo.intro.members.Person;
 
 void main() {
 

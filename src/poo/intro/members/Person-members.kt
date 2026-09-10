@@ -1,4 +1,4 @@
-package poo.intro.properties
+package poo.intro.members
 
 // Las clases tienen visibilidad pública por defecto (por eso se indica public en gris)
 public class Person {
