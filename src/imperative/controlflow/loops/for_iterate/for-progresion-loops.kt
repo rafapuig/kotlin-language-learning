@@ -70,7 +70,7 @@ fun testFor2() {
  * La función infija until crea un rango exclusivo
  */
 fun testFor21() {
-    // Rango de 0 a 9 (no incluye el ultimo valor)
+    // Rango de 0 a 9 (no incluye el último valor)
     val range = 0 until 10
     for (i in 0 until 10) {
         println(i)
