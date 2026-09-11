@@ -1,13 +1,16 @@
 package poo.construction.primary.simplified.property
 
 /**
- * El constructor primario se define
- * después del nombre de la clase
+ * El constructor primario
+ * se define después del nombre de la clase
  *
  * El constructor primario de la clase Circle
  * declara una PROPIEDAD radius de tipo Double
- * En este caso el constructor cuenta con un parámetro radius
+ *
+ * En este caso el constructor cuenta al mismo tiempo con un parámetro radius
  * que inicializa la propiedad radius declarada en el constructor
+ *
+ * Simplemente por el hecho de añadir var delante del parámetro se convierte en una propiedad
  */
 class Circle constructor(var radius: Double) {
 

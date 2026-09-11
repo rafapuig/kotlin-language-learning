@@ -1,7 +1,5 @@
 package poo.intro.properties2
 
-import poo.intro.Person1
-
 /**
  * En Kotlin una propiedad es la combinación de lo que equivaldría en Java a:
  * - un campo de respaldo (backing field)

@@ -6,7 +6,7 @@ a partir de su valor anterior
 y se quiere guardar el resultado en la variable
  */
 
-fun assigmentOperators() {
+fun assignmentOperators() {
     var x = 5
     x += 5 // equivalente a x = x + 5 ( x pasa a valer 10)
     println(x)
@@ -22,5 +22,5 @@ fun assigmentOperators() {
 }
 
 fun main() {
-    assigmentOperators()
+    assignmentOperators()
 }

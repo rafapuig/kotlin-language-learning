@@ -1,11 +1,11 @@
 package poo.construction.primary.simplified
 
 /**
- * El constructor primario se define
- * después del nombre de la clase
+ * El constructor primario
+ * se define después del nombre de la clase
  *
  * El constructor primario de la clase Circle
- * declara un parámetro radius de tipo Double
+ * declara un parámetro de nombre radius de tipo Double
  */
 class Circle constructor(radius: Double) {
 

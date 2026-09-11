@@ -50,6 +50,7 @@ fun main() {
 fun testFor1() {
     // Rango de 1 a 10 inclusive
     val oneToTen = 1..10
+
     for (i in 1..10) {
         println("Valor de i: $i")
     }
@@ -61,6 +62,7 @@ fun testFor1() {
 fun testFor2() {
     // Rango de 0 a 9 (no incluye el ultimo valor)
     val range = 0..<10
+
     for (i in 0..<10) {
         println(i)
     }
@@ -72,6 +74,7 @@ fun testFor2() {
 fun testFor21() {
     // Rango de 0 a 9 (no incluye el último valor)
     val range = 0 until 10
+
     for (i in 0 until 10) {
         println(i)
     }
@@ -82,6 +85,7 @@ fun testFor21() {
 
 fun testFor3() {
     val progression = 0..10 step 2
+
     for (i in 0..100 step 2) {
         println(i)
     }
@@ -89,6 +93,7 @@ fun testFor3() {
 
 fun testFor4() {
     val progression = 10 downTo 1
+
     for (i in 10 downTo 1) {
         println(i)
     }
@@ -96,6 +101,7 @@ fun testFor4() {
 
 fun testFor5() {
     val progression = 20 downTo 1 step 2
+
     for (i in 20 downTo 1 step 2) {
         println(i)
     }
@@ -103,6 +109,7 @@ fun testFor5() {
 
 fun testFor6() {
     val intIterable: Iterable<Int> = 0..30 step 3
+
     for (i in intIterable) {
         println(i)
     }
@@ -117,12 +124,14 @@ fun testCharRangesAndProgressions() {
     val evenDigits = '0'..'8' step 2
 }
 
+
 fun testLetters() {
     val letters = 'a'..'f'
     for (letter in letters) {
         println(letter)
     }
 }
+
 
 fun testLettersWithIndex() {
     val letters = 'a'..'f'
@@ -144,7 +153,6 @@ fun testEvenDigitsWithIndex1() {
 
     for (digit in evenDigits.withIndex()) {
         println(digit)
-
     }
 }
 

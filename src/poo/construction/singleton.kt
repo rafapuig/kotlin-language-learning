@@ -6,8 +6,9 @@ Los motivos pueden ser diversos.
 - Uno de ellos podría ser, que la creación de la instancia es muy costosa en recursos (CPU, IO, etc)
 - Otro sería, centralizar toda la responsabilidad de control sobre un objeto dado que representa una entidad única
 Para ello, contamos con el patrón de diseño SINGLETON
-El singleton se refiere a la ánica instancia existente del objeto
+El singleton se refiere a la única instancia existente del objeto
  */
+
 /**
 En Kotlin el patron singleton está integrado en el propio lenguaje de programación
 Solamente tenemos que utilizar la palabra clave object en lugar de class

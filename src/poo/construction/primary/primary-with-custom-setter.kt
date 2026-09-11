@@ -1,8 +1,8 @@
 package poo.construction.constructor.primary.setter
 
 /**
- * El constructor primario se define
- * después del nombre de la clase
+ * El constructor primario
+ * se define después del nombre de la clase
  *
  * El constructor primario de la clase Circle
  * declara un parámetro radius de tipo Double
@@ -34,6 +34,7 @@ class Circle constructor(radius: Double) {
          * como hemos definido un setter personalizado para la propiedad
          * se produce una llamada al setter, no la inicialización del campo de respaldo
          */
+        println("Bloque init...")
         this.radius = radius
     }
 
