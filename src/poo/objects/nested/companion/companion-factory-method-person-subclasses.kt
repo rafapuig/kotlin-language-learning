@@ -1,4 +1,7 @@
-package poo.objects.companion.factory
+package poo.objects.nested.companion.factory
+
+
+enum class Gender { MALE, FEMALE }
 
 /**
  * La clase persona es extensible (puede ser usada como superclase)
@@ -11,12 +14,10 @@ package poo.objects.companion.factory
  */
 open class Person private constructor(val name: String, val gender: Gender) {
 
-    enum class Gender { MALE, FEMALE }
-
     /**
      * Los métodos factoría permiten abstraer la lógica
      * para decidir que subclase se instancia
-     * en función de los parámetros de entrada del método factoría
+     * en función de los parámetros de entrada del metodo factoría
      */
     companion object Factory {
         fun create(name: String, gender: Gender): Person =
@@ -59,10 +60,11 @@ open class Person private constructor(val name: String, val gender: Gender) {
 
 }
 
+
 fun main() {
 
-    val adan = Person.create("Adan", Person.Gender.MALE)
-    val eva = Person.create("Eva", Person.Gender.FEMALE)
+    val adan = Person.create("Adan", Gender.MALE)
+    val eva = Person.create("Eva", Gender.FEMALE)
 
     adan.describe()
     eva.describe()

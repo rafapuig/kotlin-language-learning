@@ -1,4 +1,4 @@
-package poo.objects.companion.factory.sealed
+package poo.objects.nested.companion.factory.sealed
 
 
 

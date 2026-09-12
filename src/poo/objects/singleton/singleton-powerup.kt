@@ -1,6 +1,7 @@
-package poo.objects
+package poo.objects.singleton
 
 object PowerUpDispenser {
+
     private val powerUps = listOf(
         "Super velocidad",
         "Invisibilidad",
@@ -13,15 +14,15 @@ object PowerUpDispenser {
 
     private var usesLeft = 3
 
-    fun dispensePowerUp(): String {
-        return if (usesLeft > 0) {
+    fun dispensePowerUp(): String =
+        if (usesLeft > 0) {
             usesLeft--
             val power = powerUps.random()
             "Has recibido: $power. Usos restantes: $usesLeft"
         } else {
             "La máquina está vacía. Espera a que se recargue."
         }
-    }
+
 
     fun recharge() {
         usesLeft = 3

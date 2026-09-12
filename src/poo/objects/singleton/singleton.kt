@@ -1,4 +1,4 @@
-package poo.objects
+package poo.objects.singleton
 
 /**
  * Los objetos singleton pueden contener declaraciones de propiedades, métodos, bloques de inicialización,etc

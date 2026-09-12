@@ -1,4 +1,4 @@
-package poo.objects.companion
+package poo.objects.nested.companion
 
 /**
  * Para escribir una función a la que se pueda llamar sin tener una instancia,

@@ -1,4 +1,4 @@
-package poo.objects
+package poo.objects.expression
 
 open class Gaul(val name : String) {
 

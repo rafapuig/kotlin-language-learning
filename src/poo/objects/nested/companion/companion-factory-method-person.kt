@@ -1,4 +1,4 @@
-package poo.objects.companion.factory.method
+package poo.objects.nested.companion.factory.method
 
 class Person private constructor(val name: String) {
 
@@ -28,7 +28,7 @@ class Person private constructor(val name: String) {
          */
         fun create(name: String): Person =
             Person(name).also {
-                println("Creando a $name")
+                println("Creando a $name...")
                 population++
             }
 
@@ -36,6 +36,10 @@ class Person private constructor(val name: String) {
 }
 
 
+/**
+ * Para crear un metodo de extensión para el object Factory de la clase Person
+ * la sintaxis es Person.Factory.<nombre_metodo_extension>
+ */
 fun Person.Factory.printPopulation() {
     println("Poblacion actual: $population")
 }
@@ -45,12 +49,12 @@ fun main() {
 
     Person.printPopulation()
 
-    /** Llamada al método factoría para que nos fabrique a Adan */
+    /** Llamada al metodo factoría para que nos fabrique a Adan */
     val adan = Person.create("Adan")
 
     Person.printPopulation()
 
-    /** Llamada alternativa al método factoría indicando el nombre del objeto companion */
+    /** Llamada alternativa al metodo factoría indicando el nombre del objeto companion */
     val eva = Person.Factory.create("Eva")
 
     Person.printPopulation()

@@ -1,11 +1,20 @@
-package poo.objects.companion.explicit.name
+package poo.objects.nested.companion.members
 
 class Person(val name: String) {
 
+    /**
+     * bloque de inicialización de los objetos Person
+     * Tiene acceso directo a los miembros declarados en el companion object
+     */
     init {
         population++
     }
 
+    /**
+     * Propiedad cónyuge
+     * Se puede acceder desde fuera de la clase Person (visibilidad public)
+     * Peros solamente se puede mutar desde la clase (setter con visibilidad private)
+     */
     var conyuge: Person? = null
         private set
 
@@ -13,18 +22,33 @@ class Person(val name: String) {
         return name
     }
 
+
     /**
      * El companion object
      *
-     * Se le puede asignar un nombre explícitamente
-     * Si no se le asigna un nombre el compilador le asigna el nombre por defecto Companion
+     * Se puede considerar un equivalente a los miembros estáticos de una clase Java
+     * El objeto companion pertenece directamente a la clase
+     * solo se instancía uno por clase
+     * Se accede a sus miembros calificándolos con el nombre de la clase contenedora
+     * lo que daría una sintaxis equivalente a Java
+     * (En este caso Person)
      *
      */
-    companion object Manager {
+    companion object {
 
+        /**
+         * La propiedad population pertenece al objeto companion
+         * Desde fuera de la clase se accede mediante Person.population
+         * Pero solamente para lectura (el setter es privado)
+         */
         var population = 0
             private set
 
+        /**
+         * El método casar necesita acceder al setter de la clase Person
+         * que es privado
+         * Por eso, lo definimos dentro de el objeto companion
+         */
         fun casar(person1: Person, person2: Person) {
             person1.conyuge = person2 // accedemos al setter de conyuge
             person2.conyuge = person1
@@ -34,19 +58,17 @@ class Person(val name: String) {
 
 fun printNumPeople() {
     println("Número de personas: ${Person.population}")
-    // Equivalente a
-    //println("Número de personas: ${Person.Manager.population}")
 }
 
 fun Person.printConyugeInfo() {
-    println("El conyuge de $this es ${this.conyuge}")
+    println("El cónyuge de $this es ${this.conyuge}")
 }
 
 /**
  * Método de extension de un companion object
  * La sintaxis es fun <nombre-clase-contenedora>.<nombre-objeto-companion>.<nombre-metodo>
  */
-fun Person.Manager.printPopulation() {
+fun Person.Companion.printPopulation() {
     /** En un método de extension la referencia this
      * hace referencia al objeto companion
      * y puede acceder a los miembros de este
@@ -76,7 +98,7 @@ fun main() {
      * El tipo del objeto companion es Person.Companion
      */
     // Obtener una referencia al objeto companion
-    val companionRefence = Person.Manager
+    val companionRefence = Person.Companion
     println(companionRefence.population)
 
     /**
@@ -87,18 +109,11 @@ fun main() {
 
     /**
      * Casamos a adan con eva
-     * Para llamar al método casar se usa como receiver la clase Person por
-     * ser Person.Manager el objeto companion
+     * Para llamar al método casar se usa como receiver la clase Person
      */
     Person.casar(adan, eva)
-    println("El conyuge de $adan es ${adan.conyuge}")
-    println("El conyuge de $eva es ${eva.conyuge}")
-
-    /**
-     * También se puede utilizar con el nombre del objeto
-     * (como cualquier objeto interno de una clase)
-     */
-    Person.Manager.casar(adan, eva)
+    println("El cónyuge de $adan es ${adan.conyuge}")
+    println("El cónyuge de $eva es ${eva.conyuge}")
 
     adan.printConyugeInfo()
     eva.printConyugeInfo()

@@ -1,6 +1,7 @@
 package poo.objects.singleton.fortune
 
 object FortuneCookieMachine {
+
     private val messages = listOf(
         "Vas a ganar... pero no hoy.",
         "Un bug inesperado será tu mayor maestro.",
@@ -14,10 +15,9 @@ object FortuneCookieMachine {
         "Tu teclado tiene más poder del que crees."
     )
 
-    fun crack(): String {
-        return messages.random()
-    }
+    fun crack(): String = messages.random()
 }
+
 
 fun main() {
     println("Abriendo una galleta de la fortuna...")
