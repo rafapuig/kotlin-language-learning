@@ -11,7 +11,7 @@ class Person(val name: String) {
     }
 
     /**
-     * Propiedad conyuge
+     * Propiedad cónyuge
      * Se puede acceder desde fuera de la clase Person (visibilidad public)
      * Peros solamente se puede mutar desde la clase (setter con visibilidad private)
      */
@@ -30,6 +30,8 @@ class Person(val name: String) {
      * El objeto companion pertenece directamente a la clase
      * solo se instancía uno por clase
      * Se accede a sus miembros calificándolos con el nombre de la clase contenedora
+     * lo que daría una sintaxis equivalente a Java
+     * (En este caso Person)
      *
      */
     companion object {
@@ -59,7 +61,7 @@ fun printNumPeople() {
 }
 
 fun Person.printConyugeInfo() {
-    println("El conyuge de $this es ${this.conyuge}")
+    println("El cónyuge de $this es ${this.conyuge}")
 }
 
 /**
@@ -110,13 +112,10 @@ fun main() {
      * Para llamar al método casar se usa como receiver la clase Person
      */
     Person.casar(adan, eva)
-    println("El conyuge de $adan es ${adan.conyuge}")
-    println("El conyuge de $eva es ${eva.conyuge}")
+    println("El cónyuge de $adan es ${adan.conyuge}")
+    println("El cónyuge de $eva es ${eva.conyuge}")
 
     adan.printConyugeInfo()
     eva.printConyugeInfo()
-
-
-
 }
 

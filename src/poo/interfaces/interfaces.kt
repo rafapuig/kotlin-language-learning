@@ -4,9 +4,14 @@ package poo.interfaces
  * Los interfaces en Kotlin pueden contener
  * - definiciones (declaraciones) de métodos abstractos
  * - implementaciones de métodos no abstractos
+ * - NO pueden contener ESTADO
  */
 interface Clickable {
 
+    /**
+     * Propiedad numClicks
+     * Es una propiedad de solo lectura abstracta, un getter sin implementación
+     */
     val numClicks: Int
 
     /**
@@ -38,6 +43,10 @@ interface Clickable {
  */
 class HyperLink : Clickable {
 
+    /**
+     * Es obligatorio proporcionar una implementación para la propiedad numClicks
+     * en este caso un getter
+     */
     override val numClicks: Int
         get() = TODO("Not yet implemented")
 

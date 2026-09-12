@@ -1,7 +1,7 @@
 package poo.construction.builder
 
 data class Person(
-    val name: String = "Anonimo",
+    val name: String = "Anónimo",
     val age: Int = 18,
     val married: Boolean = false
 )

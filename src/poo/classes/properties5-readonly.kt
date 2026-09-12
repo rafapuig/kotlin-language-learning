@@ -36,7 +36,7 @@ fun printCircleInfo(circle: Circle) {
     println("""
         == Circulo ==
         radio = ${circle.radius}
-        circumferencia = ${circle.circumference}
+        circunferencia = ${circle.circumference}
         area = ${circle.area}
         """.trimIndent())
 }

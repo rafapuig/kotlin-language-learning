@@ -31,13 +31,13 @@ abstract class Driver {
 
 class CombustionEngine : Engine() {
     override fun move() {
-        println("Moviendose mediante un motor de Combustion")
+        println("Moviéndose mediante un motor de Combustion")
     }
 }
 
 class ElectricEngine : Engine() {
     override fun move() {
-        println("Moviendose mediante un motor Electrico")
+        println("Moviéndose mediante un motor Eléctrico")
     }
 }
 

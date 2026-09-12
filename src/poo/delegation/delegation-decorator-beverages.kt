@@ -17,17 +17,17 @@ interface Beverage {
  * La clase Decaf (cafe descafeinado)
  * Es una concreción de bebida (implemente la interface Beverage)
  */
-class Decaf() : Beverage {
+class Decaf : Beverage {
     override val description: String = "Café descafeinado"
     override val cost: Double = 2.0
 }
 
 /**
- * La clase Expresso
+ * La clase Espresso
  * Es otra concreción de bebida
  */
 
-class Expresso() : Beverage {
+class Espresso : Beverage {
     override val description: String = "Café Expreso"
     override val cost: Double = 3.0
 }
@@ -79,7 +79,7 @@ object LongCoffee : Beverage {
 }
 
 fun testExtensionFunctions() {
-    val milkedExpresso = Expresso().milked()
+    val milkedExpresso = Espresso().milked()
     val chocoMilkDecaf = Decaf().milked().chocolated()
     val dobleWhipDecaf = Decaf().whipped().whipped()
 
@@ -92,7 +92,7 @@ fun testExtensionFunctions() {
 }
 
 fun main() {
-    val milkedExpresso = Milk(Expresso())
+    val milkedExpresso = Milk(Espresso())
     val chocoMilkDecaf = Chocolate(Milk(Decaf()))
 
     milkedExpresso.printInfo()

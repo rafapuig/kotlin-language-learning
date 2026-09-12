@@ -8,14 +8,14 @@ class Person {
      * Crea un campo
      */
     @JvmField
-    var _name: String = "Anonimo"
+    var _name: String = "Anónimo"
 
     /**
      * Una propiedad que no hace uso de field
      * El compilador no genera el campo de respaldo
-     * No podemos inicilazarla porque no hay campo de respaldo
+     * No podemos inicializarla porque no hay campo de respaldo
      */
-    var name: String //_name
+    var name: String // = "Desconocido"
         get() = _name
         set(value) {
             _name = value

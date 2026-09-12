@@ -1,8 +1,13 @@
 package poo.classes.properties2v
 
+/**
+ * Un caso para el que resulta provecho definir explícitamente el setter de una propiedad
+ * podría ser para la validación del valor a asignar al campo de respaldo (y, por lo tanto, a la propiedad)
+ */
+
 class Person {
 
-    var name: String = "Anonimo"
+    var name: String = "Anónimo"
         get() {
             return field
         }
@@ -14,6 +19,10 @@ class Person {
         get() {
             return field
         }
+        /**
+         * Este setter no es trivial, comprueba si el valor es válido
+         * en este caso requerimos que la edad sea positiva
+         */
         set(value) {
             if(value < 0)
                 throw IllegalArgumentException("La edad no puede ser negativa")

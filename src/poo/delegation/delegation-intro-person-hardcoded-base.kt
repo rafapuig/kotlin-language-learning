@@ -11,8 +11,12 @@ interface Person {
  * Clase implementadora de la interface
  * Aportará la implementación, el comportamiento concreto
  */
-class PersonImpl(override var name: String, override var age: Int) : Person {
-    override fun greet() = println("Hola me llamo $name y tengo $age años")
+class PersonImpl(
+    override var name: String,
+    override var age: Int
+) : Person {
+    override fun greet() =
+        println("Hola me llamo $name y tengo $age años")
 }
 
 

@@ -9,7 +9,7 @@ data class Person private constructor(
 ) {
 
     companion object {
-        const val DEFAULT_NAME = "Anonimo"
+        const val DEFAULT_NAME = "Anónimo"
         const val DEFAULT_AGE = 18
         const val DEFAULT_MARRIED = false
     }

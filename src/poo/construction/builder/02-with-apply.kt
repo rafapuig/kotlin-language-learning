@@ -1,7 +1,7 @@
 package poo.construction.builder2
 
 data class Person(
-    var name: String = "Anonimo",
+    var name: String = "Anónimo",
     var age: Int = 18,
     var married: Boolean = false
 )

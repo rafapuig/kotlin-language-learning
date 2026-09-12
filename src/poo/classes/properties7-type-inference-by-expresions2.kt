@@ -12,7 +12,7 @@ class Rectangle {
     var height = 0.0
 
     /**
-     * Se inifiere el tipo de las propiedades de solo lectura
+     * Se infiere el tipo de las propiedades de solo lectura
      */
     val perimeter get() = (width + height) * 2
     val area get() = width * height

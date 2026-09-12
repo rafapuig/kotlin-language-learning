@@ -7,13 +7,13 @@ class Person {
      * El compilador no genera getters y setters
      * Crea un campo
      */
-    @JvmField var _name :String = "Anonimo"
+    @JvmField var _name :String = "Anónimo"
 
     /**
      * Una propiedad que no hace uso de field
      * El compilador no genera el campo de respaldo
      */
-    var name: String //_name
+    var name: String
         get() {
             return _name
         }
