@@ -1,5 +1,3 @@
-import imperative.types.name
-
 /**
  * data class DTO (POJO)
  * Redefine los métodos equals, hashCode y toString
