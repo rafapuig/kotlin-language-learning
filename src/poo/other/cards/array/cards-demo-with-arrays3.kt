@@ -1,6 +1,5 @@
 package poo.cards.arrays3
 
-import poo.cards.arrays2.get
 import poo.cards.arrays3.Card.Rank
 import poo.cards.arrays3.Card.Suit
 
