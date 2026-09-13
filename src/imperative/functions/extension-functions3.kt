@@ -12,4 +12,6 @@ fun main() {
 
     println("Nacimiento: $birthDate")
     println("Edad: $age")
+
+    println(birthDate.isLeapYear)
 }

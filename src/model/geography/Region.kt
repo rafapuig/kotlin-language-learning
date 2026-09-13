@@ -3,9 +3,9 @@ package model.geography
 import model.geography.Continent.*
 
 enum class Region(val continent: Continent, val displayName: String) {
-    NORTH_AMERICA(AMERICAS, "Norteámerica"),
-    SOUTH_AMERICA(AMERICAS, "Sudámerica"),
-    CENTRAL_AMERICA(AMERICAS, "America Central"),
+    NORTH_AMERICA(AMERICAS, "Norteamérica"),
+    SOUTH_AMERICA(AMERICAS, "Sudamérica"),
+    CENTRAL_AMERICA(AMERICAS, "América Central"),
     CARIBBEAN(AMERICAS, "El Caribe"),
     WESTERN_EUROPE(EUROPE, "Europa Occidental"),
     EASTER_EUROPE(EUROPE, "Europa del Este"),

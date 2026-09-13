@@ -31,19 +31,6 @@ data class Person private constructor(
 
 
 fun main() {
-    //val person = Person(name = "Rafa Puig", age = 48)
-
-    /*val perico = Person(
-        name = "Perico Palotes",
-        age = 35,
-        married = true
-    )*/
-
-    /*val armando = Person().apply {
-        name = "Armando"
-        age = 45
-        married = true
-    }*/
 
     val belen = Person.Builder()
         .name("Belen Tilla")
@@ -53,4 +40,6 @@ fun main() {
 
     val anonimoAged60 = Person.Builder().age(60).build()
 
+    println(belen)
+    println(anonimoAged60)
 }

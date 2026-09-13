@@ -8,9 +8,9 @@ package poo.delegation.decorator.beverages
 /**
  * Bebida abstracta
  */
-interface Beverage {
-    val description: String
+sealed interface Beverage {
     val cost: Double
+    val description: String
 }
 
 /**
@@ -18,32 +18,52 @@ interface Beverage {
  * Es una concreción de bebida (implemente la interface Beverage)
  */
 class Decaf : Beverage {
-    override val description: String = "Café descafeinado"
-    override val cost: Double = 2.0
+    override val description = "Café Descafeinado"
+    override val cost = 2.0
 }
 
 /**
- * La clase Espresso
+ * El objeto Espresso (mejor un singleton para las bebidas base porque no hace falta crear multiples)
  * Es otra concreción de bebida
  */
 
-class Espresso : Beverage {
-    override val description: String = "Café Expreso"
-    override val cost: Double = 3.0
+object Espresso : Beverage {
+    override val description = "Café Expreso"
+    override val cost = 3.0
+}
+
+object LongCoffee : Beverage {
+    override val description = "Café largo"
+    override val cost = 3.5
 }
 
 /**
  * La clase Milk es un decorador
  */
 class Milk(private val beverage: Beverage) : Beverage by beverage {
-    override val cost: Double get() = beverage.cost + 1.0
-    override val description: String = "${beverage.description} con leche"
+    override val cost = beverage.cost + 1.0
+    override val description = "${beverage.description} con leche"
 }
 
 class Chocolate(private val beverage: Beverage) : Beverage by beverage {
-    override val cost: Double get() = beverage.cost + 0.5
+    override val cost = beverage.cost + 0.5
     override val description: String get() = "${beverage.description} con chocolate"
 }
+
+class Sugar(private val beverage: Beverage) : Beverage by beverage {
+    // El azúcar es gratis (no modifica el coste)
+    //override val cost: Double get() = beverage.cost + 0.0
+    override val description = "${beverage.description} con azúcar"
+}
+
+/**
+ * Decorador Propina (Tip)
+ */
+class Tip(amount: Double, private val beverage: Beverage) : Beverage by beverage {
+    override val cost = beverage.cost + amount
+    // No se modifica la descripción
+}
+
 
 /**
  * Condiment es un decorador de bebidas abstracto
@@ -54,52 +74,70 @@ class Chocolate(private val beverage: Beverage) : Beverage by beverage {
  * En este caso reemplazamos la propiedad description
  * Pero no reemplazamos la propiedad cost (el compilador nos la genera automáticamente)
  */
-abstract class Condiment(private val beverage: Beverage) : Beverage {
+abstract class Condiment(private val beverage: Beverage) : Beverage by beverage {
     abstract val name: String
-    override val description: String get() = "${beverage.description} con $name"
+    override val description = "${beverage.description} con $name"
 }
 
 class Whip(private val beverage: Beverage) : Condiment(beverage) {
-    override val name: String = "nata"
-    override val cost: Double get() = beverage.cost + 1.5
+    override val name get() = "nata"
+    override val cost = beverage.cost + 1.5
 }
+
+class Ginger(private val beverage: Beverage) : Condiment(beverage) {
+    override val name get() = "jengibre"
+    override val cost = beverage.cost + 0.25
+}
+
+
+fun Beverage.milked(): Beverage = Milk(this)
+fun Beverage.whipped(): Beverage = Whip(this)
+fun Beverage.chocolated(): Beverage = Chocolate(this)
+fun Beverage.sugar(): Sugar = Sugar(this)
+fun Beverage.ginger(): Beverage = Ginger(this)
+fun Beverage.tip(amount: Double): Beverage = Tip(amount, this)
 
 
 fun Beverage.printInfo() {
     println("Un $description cuesta $cost")
 }
 
-fun Beverage.milked(): Beverage = Milk(this)
-fun Beverage.whipped(): Beverage = Whip(this)
-fun Beverage.chocolated(): Beverage = Chocolate(this)
-
-object LongCoffee : Beverage {
-    override val description: String get() = "Café largo"
-    override val cost: Double get() = 3.5
-}
-
 fun testExtensionFunctions() {
-    val milkedExpresso = Espresso().milked()
+
     val chocoMilkDecaf = Decaf().milked().chocolated()
     val dobleWhipDecaf = Decaf().whipped().whipped()
 
-    val whippedChocoLong = LongCoffee.whipped().milked()
+    val milkedEspresso = Espresso.milked()
+    val whippedChocoLong = LongCoffee.whipped().chocolated()
+    val doubleWhippedMilkedLongCoffee = LongCoffee.whipped().whipped().milked()
 
-    milkedExpresso.printInfo()
+    val longCoffeeWithSugar = LongCoffee.sugar()
+    val milkedLongCoffeeWithSugar = LongCoffee.milked().sugar()
+    val espressoWithGinger = Espresso.ginger()
+
+    val espressoWithSugarWithTip = Espresso.tip(0.6).sugar().milked()
+
+    milkedEspresso.printInfo()
     chocoMilkDecaf.printInfo()
     dobleWhipDecaf.printInfo()
     whippedChocoLong.printInfo()
+    longCoffeeWithSugar.printInfo()
+    milkedLongCoffeeWithSugar.printInfo()
+    espressoWithGinger.printInfo()
+    espressoWithSugarWithTip.printInfo()
 }
 
 fun main() {
-    val milkedExpresso = Milk(Espresso())
     val chocoMilkDecaf = Chocolate(Milk(Decaf()))
+    val milkedExpresso = Milk(Espresso)
 
     milkedExpresso.printInfo()
     chocoMilkDecaf.printInfo()
 
     val whippedMilkedDecaf = Whip(Milk(Decaf()))
     whippedMilkedDecaf.printInfo()
+
+    val doubleWhippedMilkedLongCoffee = Whip(Whip(Milk(LongCoffee)))
 
     testExtensionFunctions()
 }

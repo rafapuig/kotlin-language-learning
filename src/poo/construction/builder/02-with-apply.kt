@@ -14,10 +14,12 @@ fun main() {
         age = 35,
         married = true
     )
+    println(person)
 
     val armando = Person().apply {
         name = "Armando"
         age = 45
         married = true
     }
+    println(armando)
 }

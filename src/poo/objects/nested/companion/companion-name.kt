@@ -32,14 +32,14 @@ class Person(val name: String) {
     }
 }
 
-fun printNumPeople() {
+fun printPeoplePopulation() {
     println("Número de personas: ${Person.population}")
     // Equivalente a
     //println("Número de personas: ${Person.Manager.population}")
 }
 
 fun Person.printConyugeInfo() {
-    println("El conyuge de $this es ${this.conyuge}")
+    println("El cónyuge de $this es ${this.conyuge}")
 }
 
 /**
@@ -60,13 +60,13 @@ fun Person.Manager.printPopulation() {
 
 fun main() {
 
-    printNumPeople()
+    printPeoplePopulation()
 
     val adan = Person("Adan")
-    printNumPeople()
+    printPeoplePopulation()
 
     val eva = Person("Eva")
-    printNumPeople()
+    printPeoplePopulation()
 
     /** Llamada al método de extensión del objeto companion de Person */
     Person.printPopulation()
@@ -91,8 +91,8 @@ fun main() {
      * ser Person.Manager el objeto companion
      */
     Person.casar(adan, eva)
-    println("El conyuge de $adan es ${adan.conyuge}")
-    println("El conyuge de $eva es ${eva.conyuge}")
+    println("El cónyuge de $adan es ${adan.conyuge}")
+    println("El cónyuge de $eva es ${eva.conyuge}")
 
     /**
      * También se puede utilizar con el nombre del objeto

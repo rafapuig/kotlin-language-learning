@@ -14,28 +14,24 @@ data class Country(
 
     val continent: Continent? = region?.continent
 
-    val populationDensity
-        get() = run {
-            if (population == null) return@run null
-            if (area == null) return@run null
-            population / (area.to(SIUnit.KILO))
-        }
+    val populationDensity = run {
+        if (population == null) return@run null
+        if (area == null) return@run null
+        population / (area.to(ISUnit.KILO).value.toFloat())
+    }
 
 
     override fun hashCode() = iso3.hashCode()
 
-    override fun equals(other: Any?): Boolean {
-        return (other as? Country)?.let { iso3 == it.iso3 } ?: false
-        /*if (this === other) return true
-        if (other !is Country) return false
-        return iso3 == other.iso3*/
-    }
+    override fun equals(other: Any?)=
+         (other as? Country)?.let { iso3 == it.iso3 } ?: false
+
 
     override fun compareTo(other: Country) =
         compareValuesBy(this, other) { it.name }
 
-    override fun toString(): String {
-        return "Country(" +
+    override fun toString() =
+        "Country(" +
                 "$iso3, " +
                 "$name, " +
                 "$continent, " +
@@ -45,7 +41,6 @@ data class Country(
                 "population=${NumberFormat.getNumberInstance().format(population)}, " +
                 "density=${"%.2f".format(populationDensity)} habs/Km²" +
                 ")"
-    }
 
 
     class CapitalBuilder {
@@ -53,18 +48,18 @@ data class Country(
         var population: Int? = null
 
         fun build() = run {
-            require(!name.isNullOrBlank()) { "El nombre de la ciudad po puede ser nulo o vacio" }
+            require(!name.isNullOrBlank()) { "El nombre de la ciudad po puede ser nulo o vacío" }
             City(name!!, population)
         }
     }
 
     class AreaBuilder {
         var value: Long? = null
-        var units: SIUnit = SIUnit.KILO
+        var units: ISUnit = ISUnit.KILO
 
         fun build() = run {
             require(value != null) { "El valor del area no puede ser nulo" }
-            Area(value!!, units)
+            Area(value?.toFloat() ?: 0f, units)
         }
     }
 
@@ -92,11 +87,10 @@ data class Country(
         //    apply { this.population = population }
 
 
-        fun build(): Country =
-            Country(iso3, name, region, capital, area, surface, population)
+        fun build() = Country(iso3, name, region, capital, area, surface, population)
     }
-
 }
+
 
 fun buildCountry(iso3: String, name: String, block: Country.Builder.() -> Unit) =
     Country.Builder(iso3, name).apply(block).build()

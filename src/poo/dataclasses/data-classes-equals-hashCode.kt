@@ -1,5 +1,9 @@
 package poo.dataclasses.equals
 
+/**
+ * En una data class se reemplazan los metodos equals y hashCode
+ * para corresponder con la igualdad estructural, equivalencia
+ */
 data class Rectangle(
     val width: Int = 0,
     val height: Int = 0

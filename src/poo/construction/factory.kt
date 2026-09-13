@@ -27,7 +27,7 @@ fun main() {
     val factory = Person.Factory
     val otherPerson = factory.create("Armando Bronca", 56)
 
-    val another = Person.create("Esther Malgin", 26)
+    val another = Person.create("Esther Malgín", 26)
 
     val other = person("Rafa Puig", 48)
 
