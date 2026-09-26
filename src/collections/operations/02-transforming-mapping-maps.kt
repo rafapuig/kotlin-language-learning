@@ -1,7 +1,5 @@
 package collections.operations.transforming.mapping.maps
 
-import collections.operations.transforming.mapping.collections.testMap
-
 /**
  * Cuando transformamos mapas tenemos 2 opciones
  *

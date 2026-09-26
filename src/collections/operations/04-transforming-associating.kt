@@ -1,7 +1,7 @@
 package collections.operations.associating
 
 /**
- * Si queremos crear un mapa a partir de los elementos de una colección
+ * Sí queremos crear un mapa a partir de los elementos de una colección
  * SIN agrupar los elementos
  */
 
@@ -18,7 +18,8 @@ data class Person(val name: String, val age: Int)
 val people = listOf(
     Person("Jose", 29),
     Person("Maria", 18),
-    Person("Juan", 29),)
+    Person("Juan", 29),
+)
 
 
 fun testAssociate() {
@@ -65,13 +66,13 @@ fun testAssociateBy() {
  */
 
 fun exampleAssociate() {
-    data class FullName (val firstName: String, val lastName: String)
+    data class FullName(val firstName: String, val lastName: String)
 
     fun parseFullName(fullName: String): FullName {
         val nameParts = fullName.split(" ")
-        if (nameParts.size == 2) {
-            return FullName(nameParts[0], nameParts[1])
-        } else throw Exception("Wrong name format")
+        return if (nameParts.size == 2)
+            FullName(nameParts[0], nameParts[1])
+        else throw Exception("Wrong name format")
     }
 
     val names = listOf("Belen Tilla", "Victor Nado", "Pedro Gado")

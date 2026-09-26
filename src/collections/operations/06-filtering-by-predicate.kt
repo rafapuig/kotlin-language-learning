@@ -43,7 +43,7 @@ fun testFilterIsInstance() {
     println(chars)
 
     // Otra forma, pero no es la recomendada
-    // Mejor usar la version que usa un argumento de tipo revivido
+    // Mejor usar la version que usa un argumento de tipo revivido (reified)
     val numbers = list.filterIsInstance(Number::class.java)
     println(numbers)
 }

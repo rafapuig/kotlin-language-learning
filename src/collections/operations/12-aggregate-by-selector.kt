@@ -8,7 +8,7 @@ import collections.model.people
  * basado en el contenido de la colección
  *
  * Tenemos: *
- * - minOrNull y maxOrNull que devuelven el mínimo y maximo, null si vacía
+ * - minOrNull y maxOrNull que devuelven el mínimo y máximo, null si vacía
  * - average devuelve la media de una colección de Number
  * - sum devuelve la suma de los elementos de una colección de Number
  * - count devuelve el número de elementos
@@ -36,7 +36,7 @@ fun testAverage() {
 
 /**
  * Otro grupo de operadores de agregado devuelven
- * el maximo o mínimo a partir de una función de selección
+ * el máximo o mínimo a partir de una función de selección
  * o de un comparador
  *
  * Devuelven el elemento:

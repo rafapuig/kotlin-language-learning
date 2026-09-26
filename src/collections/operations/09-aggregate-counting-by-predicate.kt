@@ -21,7 +21,7 @@ fun testCount() {
     val numAdults2 = people.count { isAdult(it) } // otra forma de llamar a count pero pasando una lambda
     println("Numero de personas adultas: $numAdults")
 
-    // Contar cuantas personas de la colecciñon tiene 65 o más años
+    // Contar cuantas personas de la colección tiene 65 o más años
     val numSeniors = people.count { it.age >= 65 }
     println("Numero de personas seniors: $numSeniors")
 

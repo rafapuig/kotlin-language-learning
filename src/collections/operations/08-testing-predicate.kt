@@ -19,15 +19,16 @@ fun testAllPeopleAreAdult() {
 }
 
 fun testAnyPersonIsAdult() {
-    val anyPerson = people.any(isAdult)
-    println(anyPerson)
+    val anyAdult = people.any(isAdult)
+    println(anyAdult)
 
     /**
      * Que exista algún elemento que cumple la condición
-     * es lo mismo que no la cumpla ninguno (que todos no la cumplan)
+     * es lo mismo que no cumpla ninguno la contraria
+     * Que sea falso que todas las personas no son adultas es porque al menos una lo es
      */
-    val notAll = !people.all { !isAdult(it) }
-    println(notAll)
+    val notAllAreNotAdults = !people.all { !isAdult(it) }
+    println(notAllAreNotAdults)
 }
 
 fun testNone() {
@@ -48,7 +49,7 @@ fun testNone() {
 fun testOnEmptyCollections() {
     println(emptyList<Int>().any { it == 0 }) // false
     println(emptyList<Int>().none { it == 0 }) // true, lo contrario que any
-    println(listOf(0, 1).all { it == 0 }) // true, si esta vacía "todos" cumplen
+    println(listOf(0, 1).all { it == 0 }) // true, si está vacía "todos" cumplen
 }
 
 fun main() {

@@ -5,7 +5,7 @@ import java.util.Locale.getDefault
 
 /**
  * Las operaciones de mapeo consisten en aplicar una función de transformación
- * a cade elemento de una colección y añadir el resultado de la transformación (elemento transformado)
+ * a cada elemento de una colección y añadir el resultado de la transformación (elemento transformado)
  * en una nueva colección que será el resultado de la operación de mapeo
  *
  * - map
@@ -15,8 +15,10 @@ import java.util.Locale.getDefault
 
 fun testMap() {
     val fruits = listOf("banana", "avocado", "apple", "kiwi")
-    val capitalizedFruits = fruits.map {
-        it.replaceFirstChar { if (it.isLowerCase()) it.titlecase(getDefault()) else it.toString() }
+    val capitalizedFruits = fruits.map {fruit ->
+        fruit.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(getDefault()) else it.toString()
+        }
     }
     println(capitalizedFruits)
 }
@@ -50,7 +52,7 @@ fun testMapIndexedNotNull() {
 
 /**
  * Podemos decidir la colección donde queremos que se almacenen los resultados
- * Los nombres de estas operaciones son los mismos pero con el sufijo To
+ * Los nombres de estas operaciones son los mismos, pero con el sufijo To
  * Estas versiones declaran un parámetro adicional paras proporcionar la referencia al objeto colección destino
  */
 

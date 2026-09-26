@@ -16,7 +16,7 @@ import collections.model.people
 /**
  * reduce
  *
- * Empieza con el primer valor en el acumulador
+ * Empieza con el primer valor de la colección en el acumulador
  * La lambda empieza invocándose para el segundo elemento
  *
  * Tenemos varias versiones:

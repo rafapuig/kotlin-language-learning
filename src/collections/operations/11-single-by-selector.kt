@@ -29,7 +29,7 @@ fun testFirstNotNullOfOrNull() {
     val firstSeniorAge = people.firstNotNullOfOrNull { person ->
         person.age.takeIf { age ->
             age >= 65
-        } // Mapea a la edad si >=18 si no mapea a valor null
+        } // Mapea a la edad si >=65 si no mapea a valor null
     }
     println(firstSeniorAge ?: "No hay edades de senior")
 }

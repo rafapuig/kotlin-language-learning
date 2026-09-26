@@ -27,7 +27,7 @@ fun main() {
         .toList()
     println(ancestors)
 
-    // El ancestro mas inmediato de Pablo que se llame Pedro
+    // El ancestro más inmediato de Pablo que se llame Pedro
     val pedro = generateSequence (pablo) {it.parent}
         .find { it.name == "Pedro" }
     println(pedro)

@@ -19,7 +19,7 @@ val greetings = buildSet {
 val fruits = buildList {
     add("manzana")
     add("pera")
-    addAll(listOf("naranja", "limon"))
+    addAll(listOf("naranja", "limón"))
     addAll(arrayOf("manzana", "kiwi"))
     this += "melón"
     this -= "manzana"

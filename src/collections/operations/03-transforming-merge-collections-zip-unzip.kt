@@ -6,7 +6,7 @@ fun testZip() {
     val firstNames = listOf("Sandra", "Consuelo", "Victor")
     val lastNames = listOf("Mática", "Teria", "Nado")
 
-    val result = firstNames.zip(lastNames)
+    val result = firstNames zip lastNames
     println(result)
 }
 
@@ -37,7 +37,7 @@ fun testZipPersons() {
 fun testZipPeople() {
     val firstNames = listOf("Sandra", "Consuelo", "Victor")
     val lastNames = listOf("Mática", "Teria", "Nado")
-    val ages = listOf(56, 78, 23, 50) // Una edad de mas, no se utilizará
+    val ages = listOf(56, 78, 23, 50) // Una edad de más, no se utilizará
 
     val fullNames =
         firstNames.zip(lastNames) { firstName, lastName ->
@@ -68,7 +68,7 @@ fun testUnzip() {
     val lastNames = listOf("Mática", "Teria", "Nado")
 
     // Creamos una lista de pares
-    val zipped = firstNames.zip(lastNames)
+    val zipped = firstNames zip lastNames
 
     val unzipped = zipped.unzip()
     println(unzipped)

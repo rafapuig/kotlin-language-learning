@@ -1,8 +1,5 @@
 package collections.operations.transforming.flatten
 
-
-
-
 /**
  * Cuando trabajamos con colecciones de colecciones
  * también llamadas colecciones anidadas
@@ -58,7 +55,9 @@ fun testFlatMap() {
         }
     println(listOfListOfCountriesStartingWithC) // Lista de listas de nombres que empiezan por C
 
-    println(listOfListOfCountriesStartingWithC.flatten()) // Lista nombres que empiezan por C
+    // Lista nombres que empiezan por C
+    val listOfCountriesStartingWithC = listOfListOfCountriesStartingWithC.flatten()
+    println(listOfCountriesStartingWithC)
 
     // Obtener una lista de países que empiezan por C
     val countriesStartingWithC =
