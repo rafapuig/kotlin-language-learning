@@ -27,7 +27,9 @@ fun testForEachFunction() {
     }
 }
 
+
 fun testForEachFunctionWithConsumerInterface() {
+
     val action: Consumer<String> = object : Consumer<String> {
         override fun accept(t: String) {
             println(t)
@@ -37,10 +39,15 @@ fun testForEachFunctionWithConsumerInterface() {
     // Este foreach no es un metodo de extensión (pertenece a la interfaz original de Java)
     NAMES.forEach(action)
 
-    // Otra forma, si el interface no fuera funcional (habría que especificar el metodo)
+    // Otra forma, si el interface no fuera funcional
+    // (habría que especificar el metodo, mediante una referencia a metodo)
     NAMES.forEach(action::accept)
 
+    // La referencia a metodo evita especificar una lambda que simplemente delega en el metodo
     NAMES.forEach { name -> action.accept(name) }
+
+    // Cuando la expresión lambda unicamente consta de un parámetro si no especificamos un nombre
+    // explícitamente se usa como nombre del parámetro it
     NAMES.forEach { action.accept(it) }
 
 }
