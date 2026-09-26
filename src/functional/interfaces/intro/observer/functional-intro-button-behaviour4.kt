@@ -35,6 +35,7 @@ fun demo1() {
 
 fun demo2() {
     val button = Button()
+    // Se simplifica si la lambda solamente tiene un parámetro (it)
     button.setOnClickListener { println("He sido pulsado") }
     button.onClick()
 }

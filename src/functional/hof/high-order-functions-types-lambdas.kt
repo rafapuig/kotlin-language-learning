@@ -1,4 +1,4 @@
-package functional.functiontypes
+package functional.hof
 
 val f: (Int) -> Boolean = { it > 2 }
 val g: (String) -> Int = { it.length }

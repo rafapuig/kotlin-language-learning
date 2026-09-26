@@ -5,7 +5,7 @@ data class Person(val name: String, val age: Int)
 val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
 
 /**
- * función findMax
+ * Función findMax
  * Recibe un comparador de personas y lo utiliza como estrategia para compararlas
  */
 fun Array<Person>.findMax(comparator: Comparator<Person>): Person? {

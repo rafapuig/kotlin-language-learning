@@ -1,4 +1,4 @@
-package functional.lambdas.intro
+package functional.hof
 
 import kotlin.math.max
 

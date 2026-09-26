@@ -15,7 +15,7 @@ fun interface KeyExtractor<T, K : Comparable<K>> {
 
 fun <T ,K: Comparable<K>> Array<T>.findMaxBy(extractor: KeyExtractor<T,K>): T? {
     if (isEmpty()) return null
-    var maxElement: T = this[0] // Aqui this se refiere al objeto receiver, el array
+    var maxElement: T = this[0] // Aquí this se refiere al objeto receiver, el array
     /**
      * Dentro del bloque lambda de la scope function with
      * this se refiere al primer argumento de la llamada a with, en este caso extractor
@@ -49,10 +49,13 @@ fun findMaxPersonByAge() {
 
 fun findMaxPersonByName() {
 
+    /**
+     * Utilizando un SAM Constructor
+     */
     val nameExtractor = KeyExtractor<Person, String> { person -> person.name }
 
     val max = friends.findMaxBy(nameExtractor)
-    println("Último alfabeticamente = $max")
+    println("Último alfabéticamente = $max")
 }
 
 

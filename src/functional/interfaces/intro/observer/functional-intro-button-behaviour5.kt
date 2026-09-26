@@ -5,6 +5,10 @@ abstract class View
 
 class Button : View() {
 
+    /**
+     * Ahora en lugar de usar un interface funcional
+     * usamos directamente tipos función
+     */
     private var onClick: ((View) -> Unit)? = null
 
     fun setOnClickListener(listener: ((View) -> Unit)?) {

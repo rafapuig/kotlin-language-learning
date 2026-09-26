@@ -1,4 +1,4 @@
-package functional.lambdas.member.references
+package functional.functionvalues.member.references
 
 data class Person(val name: String, val age: Int) {
     fun greet() {

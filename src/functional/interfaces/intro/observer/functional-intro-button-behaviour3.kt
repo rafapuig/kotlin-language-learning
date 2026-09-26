@@ -35,6 +35,7 @@ fun demo1() {
 
 fun demo2() {
     val button = Button()
+    // Eliminamos los paréntesis de llamada a setOnClickListener porque quedan vacíos
     button.setOnClickListener { button: View -> println("He sido pulsado") }
     button.onClick()
 }

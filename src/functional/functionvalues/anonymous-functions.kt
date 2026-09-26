@@ -1,4 +1,4 @@
-package functional.lambdas.intro.anonymous
+package functional.functionvalues.anonymous.functions
 
 data class Person(val name: String, val age: Int) {
     fun greet() {

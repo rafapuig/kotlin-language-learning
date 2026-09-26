@@ -429,8 +429,8 @@ fun printThreeMostPopulatedCountriesSum() {
 
 
 fun main() {
-    /*printAllEuropeanCountries()
-    printAllEuropeanCountriesSorted()
+    printAllEuropeanCountries()
+    /*printAllEuropeanCountriesSorted()
     printAllAmericanCountriesSortedByName()
     printAllEuropeanCountriesSortedBySurfaceDescending()
     printAllCountriesNamesSorted()
@@ -447,11 +447,11 @@ fun main() {
     printWorldPopulation5()*/
     //printPopulationByContinent()
     //printPopulationPercentByContinent()
-    printPopulationPercentByContinentSortedByContinent()
-    printPopulationPercentByContinentSortedByContinent2()
-    printPopulationPercentByContinentSortedByPopulationDescending()
-    printFiveMostPopulatedCountries()
-    printThreeMostPopulatedCountriesSum()
+    //printPopulationPercentByContinentSortedByContinent()
+    //printPopulationPercentByContinentSortedByContinent2()
+    //printPopulationPercentByContinentSortedByPopulationDescending()
+    //printFiveMostPopulatedCountries()
+    //printThreeMostPopulatedCountriesSum()
 }
 
 

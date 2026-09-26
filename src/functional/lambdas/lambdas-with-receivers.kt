@@ -1,4 +1,4 @@
-package functional.lambdas.withreceivers
+package functional.lambdas
 
 /**
  * Permiten llamar a los métodos de un objeto

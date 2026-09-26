@@ -48,9 +48,9 @@ fun main() {
     fruits.add("pera")
     fruits.add("naranja")
     //fruits.add(3) // // Error, no podemos añadir elementos de otro tipo
-    fruits += "limon" // El operador plusAssign añade el elemento a la lista
+    fruits += "limón" // El operador plusAssign añade el elemento a la lista
 
     countryCapitalMap.put("Italia", "Roma")
     countryCapitalMap.set("Francia", "Paris") // función de extension operador set
-    countryCapitalMap["Portugal"] = "Lisboa" // Por convención set esquivale al operador de indexación en escritura
+    countryCapitalMap["Portugal"] = "Lisboa" // Por convención set equivale al operador de indexación en escritura
 }

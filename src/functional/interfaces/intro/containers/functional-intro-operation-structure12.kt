@@ -52,7 +52,7 @@ fun findMaxPersonByAge() {
 
 fun findMaxPersonByName() {
     val maxPerson = friends.findMaxBy(Person::name)
-    println("Último alfabeticamente = $maxPerson")
+    println("Último alfabéticamente = $maxPerson")
 }
 
 

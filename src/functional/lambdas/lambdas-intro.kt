@@ -1,6 +1,7 @@
-package functional.lambdas.intro
+package functional.lambdas
 
-import imperative.functions.power
+import kotlin.math.pow
+
 
 /**
  * Una expresión lambda es un literal de función
@@ -29,7 +30,7 @@ import imperative.functions.power
 val printText = { text: String -> println(text) }
 val len = { text: String -> text.length }
 val double = { x: Int -> x * 2 }
-val power = { x: Double, n: Int -> x.power(n) }
+val power = { x: Double, n: Int -> x.pow(n) }
 
 
 

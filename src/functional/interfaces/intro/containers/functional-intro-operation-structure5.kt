@@ -37,7 +37,7 @@ fun findMaxByName() {
     val max = friends.findMax { p1, p2 ->
         compareValues(p1.name, p2.name)
     }
-    println("Último alfabeticamente = $max")
+    println("Último alfabéticamente = $max")
 }
 
 

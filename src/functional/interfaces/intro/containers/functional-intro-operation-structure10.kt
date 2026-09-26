@@ -28,12 +28,18 @@ val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
 
 
 fun findMaxPersonByAge() {
+    /**
+     * Una trailing lambda la podemos sacar fuera de los paréntesis de llamada a la función findMaxBy
+     */
     val oldest = friends.findMaxBy { person -> person.age }
     println("Más Viejo = $oldest")
 }
 
 
 fun findMaxPersonByName() {
+    /**
+     * Una trailing lambda la podemos sacar fuera de los paréntesis de llamada a la función findMaxBy
+     */
     val maxPerson = friends.findMaxBy { person -> person.name }
     println("Máximo = $maxPerson")
 }

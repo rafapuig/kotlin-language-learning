@@ -1,4 +1,4 @@
-package functional.lambdas.intro.lambdas
+package functional.functionvalues.lambdas
 
 data class Person(val name: String, val age: Int) {
     fun greet() {

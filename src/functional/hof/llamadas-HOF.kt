@@ -1,4 +1,4 @@
-package functional.lambdas.intro
+package functional.hof
 
 /**
  * Vamos a ver como llamar a una función de orden superior

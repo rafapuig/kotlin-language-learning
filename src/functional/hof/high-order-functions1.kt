@@ -1,4 +1,4 @@
-package functional.functiontypes
+package functional.hof
 
 /**
  * Una función de orden superior es una función que

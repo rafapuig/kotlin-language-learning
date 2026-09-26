@@ -18,7 +18,7 @@ object ByAgeComparator : Comparator<Person> {
 /**
  * Creamos otro Singleton
  * que implementa la interface Comparator<Person>
- * La función compare realiza la comparación a partir de la edad de las personas
+ * La función compare realiza la comparación a partir del nombre de las personas
  */
 
 object ByNameComparator : Comparator<Person> {
@@ -37,9 +37,9 @@ object ByNameComparator : Comparator<Person> {
  * La función de extensión findMax
  * Codifica el algoritmo para seleccionar el primer elemento del contenedor (el array)
  * y realizar el bucle para ir pasando por el resto de elementos
- * para comparar cada elemento con el maximo entre los ya recorridos
+ * para comparar cada elemento con el máximo entre los ya recorridos
  *
- * No obstante, la comparación la delega en un objeto que implemente Comparator<Person>
+ * La comparación la delega en un objeto que implemente Comparator<Person>
  * De este objeto lo único que debe conocer es su interface para poder interactuar con él,
  * pero no el tipo de objeto concreto que es
  *
@@ -66,7 +66,7 @@ fun findMaxByAge() {
      * una referencia a un objeto que implemente Comparador<Person>
      * Si pasamos el singleton ByAgeComparator
      * Se compararán las personas de array por edad
-     * y el maximo será el de mayor edad
+     * y el máximo será el de mayor edad
      */
     val oldest = friends.findMax(ByAgeComparator)
     println("Más Viejo = $oldest")
@@ -78,10 +78,10 @@ fun findMaxByName() {
      * una referencia a un objeto que implemente Comparador<Person>
      * Si pasamos el singleton ByNameComparator
      * Se compararán las personas de array por nombre
-     * y el maximo será aquel cuyo nombre va en ultimo lugar en orden alfabético
+     * y el máximo será aquel cuyo nombre va en último lugar en orden alfabético
      */
     val max = friends.findMax(ByNameComparator)
-    println("Último alfabeticamente = $max")
+    println("Último alfabéticamente = $max")
 }
 
 

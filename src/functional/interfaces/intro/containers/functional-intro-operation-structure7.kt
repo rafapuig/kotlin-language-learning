@@ -14,7 +14,7 @@ val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
  */
 interface KeyExtractor<in T, K : Comparable<K>> {
     /**
-     * El metodo extracto obtiene el valor de un atributo del objeto de tipo T
+     * El metodo extractor obtiene el valor de un atributo del objeto de tipo T
      * proporcionado por el parámetro element
      * el valor del atributo es de tipo K y es el valor retornado
      */
@@ -59,7 +59,7 @@ fun findMaxPersonByAge() {
 
 fun findMaxPersonByName() {
     val max = friends.findMaxBy(nameExtractor)
-    println("Último alfabeticamente = $max")
+    println("Último alfabéticamente = $max")
 }
 
 

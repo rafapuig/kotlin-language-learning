@@ -23,7 +23,7 @@ fun <T> Array<T>.findMax(comparator: Comparator<T>): T? {
 
 fun findMaxByAge() {
     /**
-     * Como se trata de una función generica debemos proporcionar
+     * Como se trata de una función genérica debemos proporcionar
      * además de los argumentos de llamada de la lista de parámetros de entrada
      * el argumento del parámetro de tipo T
      */
@@ -40,7 +40,7 @@ fun findMaxByName() {
     val max = friends.findMax { p1, p2 ->
         compareValues(p1.name, p2.name)
     }
-    println("Último alfabeticamente = $max")
+    println("Último alfabéticamente = $max")
 }
 
 

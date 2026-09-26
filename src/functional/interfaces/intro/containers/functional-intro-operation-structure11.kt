@@ -27,6 +27,9 @@ val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
 
 
 fun findMaxPersonByAge() {
+    /**
+     * Podemos usar el parámetro implícito de nombre it, ya que la lambda solo tiene un parámetro
+     */
     val oldest = friends.findMaxBy { it.age }
     println("Más Viejo = $oldest")
 }

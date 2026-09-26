@@ -35,6 +35,7 @@ fun demo1() {
 
 fun demo2() {
     val button = Button()
+    // Se mueve la trailing lambda fuera de los paréntesis
     button.setOnClickListener (){ button: View -> println("He sido pulsado") }
     button.onClick()
 }
