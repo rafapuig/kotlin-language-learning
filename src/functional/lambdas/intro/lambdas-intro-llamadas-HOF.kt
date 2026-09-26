@@ -1,7 +1,5 @@
 package functional.lambdas.intro
 
-import kotlin.random.Random
-
 /**
  * Vamos a ver como llamar a una función de orden superior
  * pasando una lambda como argumento de llamada

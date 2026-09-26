@@ -1,7 +1,22 @@
 package functional.intro5
 
+/**
+ * La interface funcional puede declarar como método SAM
+ * la sobrecarga del operador de invocación de funciones
+ *
+ * En este caso, con simplemente indicar la referencia al objeto seguida de los paréntesis
+ * de invocación, se llamará al metodo invoke de la interface
+ */
 fun interface IntToInt {
     operator fun invoke(number: Int): Int
+}
+
+fun applyIntToIntOperationToNumber(number: Int, operation: IntToInt): Int {
+    return operation(number)
+}
+
+fun Int.applyIntToIntOperation(operation: IntToInt): Int {
+    return operation(this)
 }
 
 
@@ -9,12 +24,19 @@ fun testInToIntInterfaceWithLambda() {
 
     val triple: IntToInt = IntToInt { number -> number * 3 }
 
-    val square: IntToInt = IntToInt { number -> number * number }
-
+    // Llamada al metodo invoke usando la sintaxis de operador de llamada ()
     val result1 = triple(5)
-    val result2 = square(5)
+
+    // Llamada explicita al metodo invoke mediante la sintaxis receptor.metodo()
+    val result11 = triple.invoke(5)
 
     println("result1 = $result1")
+    println("result11 = $result11")
+
+
+    val square: IntToInt = IntToInt { number -> number * number }
+    val result2 = square(5)
+
     println("result2 = $result2")
 
     var operation: IntToInt

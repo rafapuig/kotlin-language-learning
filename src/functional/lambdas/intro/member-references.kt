@@ -1,18 +1,20 @@
-package functional.lambdas.memeber.references
+package functional.lambdas.member.references
 
-data class Person(val name: String, val age: Int)
+data class Person(val name: String, val age: Int) {
+    fun greet() {
+        println("Hola, me llamo $name y tengo $age años")
+    }
+}
 
-// Expresión lambda
-val getAge = { p: Person -> p.age }
+/**
+ * Referencias a miembro
+ */
 
-// Función anónima con block-body
-val getAgeFunBB = fun(p: Person): Int { return p.age }
-
-// Función anónima con expression-body
-val getAgeFunEB = fun(p: Person) = p.age
-
-// Referencia a miembro
 val getAgeMR = Person::age
+
+val personGreet = Person::greet
+
+
 
 fun greet() {
     print("Hola!")
@@ -21,8 +23,8 @@ fun greet() {
 fun sendMail(person: Person, message: String) {}
 
 /**
- * Si una lambda lo único que hace es delegar en función que recibe como argumentos
- * los parámetros declarados en la lambda
+ * Si una lambda lo único que hace es delegar en una función
+ * que recibe como argumentos los parámetros declarados en la lambda
  */
 val action = { person: Person, message: String ->
     sendMail(person, message)
@@ -47,11 +49,10 @@ fun Person.isAdult() = age >= 18
 
 val isPersonAdult = Person::isAdult
 
+
+
 fun main() {
     val person = Person("Raul", 29)
-    println(getAge(person))
-    println(getAgeFunBB(person))
-    println(getAgeFunEB(person))
     println(getAgeMR(person))
 
     /**
@@ -66,4 +67,5 @@ fun main() {
     println(p)
 
     println(isPersonAdult(p))
+    println(p.isPersonAdult())
 }

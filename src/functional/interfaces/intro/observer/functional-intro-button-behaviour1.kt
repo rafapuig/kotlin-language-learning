@@ -3,7 +3,7 @@ package functional.intro.buttons1
 abstract class View
 
 /**
- * Añadimos fun para convertirlo en un interface funcional
+ * Añadimos fun para convertirlo en un interface funcional de Kotlin
  */
 fun interface OnClickListener {
     fun onClick(button: View)

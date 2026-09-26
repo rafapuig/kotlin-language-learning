@@ -24,7 +24,7 @@ fun findOldest(people: Array<Person>): Person? {
 
 /**
  * Otra implementación
- * Asumimos que si el array no esta vacío
+ * Asumimos que si el array no está vacío
  * La persona de mayor edad es la primera del array
  * Y comparamos su edad con las del resto
  */

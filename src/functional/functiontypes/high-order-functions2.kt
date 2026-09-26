@@ -15,11 +15,13 @@ fun IntArray.filterBy(predicate: (Int) -> Boolean): IntArray {
     return result.toIntArray()
 }
 
-private fun testFilterEvenNumbers() {
+
+fun testFilterEvenNumbers() {
     val numbers: IntArray = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     val evenNumbers = numbers.filterBy({ it % 2 == 0 })
     println(evenNumbers.joinToString())
 }
+
 
 fun testFilterOperation(operation: (IntArray) -> IntArray) {
     val numbers: IntArray = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)

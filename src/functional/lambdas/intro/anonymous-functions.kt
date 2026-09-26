@@ -6,15 +6,6 @@ data class Person(val name: String, val age: Int) {
     }
 }
 
-// Expresión lambda
-val getAge = { person: Person -> person.age }
-
-// Expresión lambda con tipo del parámetro implícito
-val getAgeLIP : (Person)-> Int = { person -> person.age }
-
-// Expresión lambda con parámetro implícito it
-val getAgeLIT : (Person)-> Int = { it.age }
-
 /**
  * Funciones anónimas
  */
@@ -24,12 +15,21 @@ val getAgeFunBB = fun(p: Person): Int { return p.age }
 // Función anónima con expression-body
 val getAgeFunEB = fun(p: Person) = p.age
 
+val greetToConsole = fun(p: Person) = p.greet()
 
-/**
- * Referencia a miembro
- */
+// Función anónima de extensión (con receptor)
+val greetToConsoleEx = fun Person.() = this.greet()
 
-// Referencia a miembro
-val getAgeMR = Person::age
 
-val personGreet = Person::greet
+fun main() {
+    val person = Person("Perico", 23)
+    println(getAgeFunBB(person))
+    println(getAgeFunEB(person))
+    greetToConsole(person)
+
+    // Llamada a la función de extensión pasando el receptor como primer argumento
+    greetToConsoleEx(person)
+
+    // Llamada a la función de extension mediante la sintaxis de receptor.metodo
+    person.greetToConsoleEx()
+}

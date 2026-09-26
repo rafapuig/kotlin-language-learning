@@ -4,12 +4,16 @@ interface IntToInt {
     fun apply(number: Int) : Int
 }
 
-
+/**
+ * Supongamos que queremos aplicar una operación que se proporcionará como valor argumento
+ * sobre un dato del que disponemos y que le proporcionaremos a la operación
+ */
 fun applyIntToIntOperationToFive(operation: IntToInt) : Int {
     val number = 5
     val result = operation.apply(number)
     return result
 }
+
 
 fun testInToIntInterfaceWithObjectExpression() {
 
@@ -25,6 +29,9 @@ fun testInToIntInterfaceWithObjectExpression() {
         }
     }
 
+    // Al llamar a la funcíon applyIntToIntOperationToFive
+    // le estamos proporcionando el comportamiento como argumento (lo que tiene que hacer)
+    // no los datos con los que tiene que operar
     val result1 = applyIntToIntOperationToFive(square)
     val result2 = applyIntToIntOperationToFive(triple)
 
