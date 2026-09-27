@@ -3,12 +3,12 @@ package generics.variance.generics
 /**
  * La covarianza preserva la relación de subtipos
  *
- * Ejemplo, si Producer<T> es covariante
+ * Ejemplo, si el tipo genérico Producer<T> es covariante
  * Producer<A> es un subtipo de Producer<B> si A es subtipo de B
  *
  * Producer<Cat> es subtipo de Producer<Animal> pq Cat es subtipo de Animal
  *
- * Para hacer una clase covariante en un parámetro de tipo
+ * Para hacer una clase genérica covariante en un parámetro de tipo
  * se usa out antes del nombre del parámetro de tipo
  */
 interface Producer<out T> {
@@ -31,35 +31,40 @@ open class Animal {
  * (no se puede llamar después de la creación de la instancia)
  */
 class Herd<out T : Animal>(
-    private var leader: T, //
+    private var leader: T, // Si no usamos private no se podría marcar T como out, porque habría un setter
     vararg animals: T
 ) {
-    val size: Int get() = TODO()
+    private val list = buildList {
+        add(leader)
+        animals.forEach { animal -> add(animal) }
+    }
+
+    val size: Int get() = list.size
+
+    /** Se usa el parámetro T en posición de salida */
+    operator fun get(i: Int): T = list[i]
+
 
     val first: T get() = leader // El getter es una posición de salida
 
-    /*var random: T = leader // Si es var entonces el setter
+
+    var random: @UnsafeVariance T = leader // Si es var entonces el setter
         get() = field
         set(value) { // El setter usar T en posición de entrada
             field = value
-        }*/
-
-
-    /** se usa el parámetro T en posición de salida */
-    operator fun get(i: Int): T = TODO()
-
-
+        }
 }
 
+
 fun feedAll(animals: Herd<Animal>) {
-    for (i in 0 until animals.size) {
+    for (i in 0..<animals.size) {
         /**
          * Todo código que usa get en un Herd<Animal>
          * no tiene problema en que se le devuelva un Cat
          * ya que donde se espera un Animal también
          * se puede proporcionar un Cat sin problemas
          */
-        animals.get(i).feed()
+        animals[i].feed()
     }
 }
 
@@ -73,7 +78,7 @@ class Cat : Animal() {
 }
 
 fun takeCareOfCats(cats: Herd<Cat>) {
-    for (i in 0 until cats.size) {
+    for (i in 0..<cats.size) {
         cats[i].clearLitter()
     }
     /**

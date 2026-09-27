@@ -13,7 +13,7 @@ package generics.variance.contravariance
  * a la relación de subtipos entre esos tipos
  *
  * Para definir una clase como contravariante para un parámetro de tipo
- * se usa la palabra in delante del nombre del parámetro
+ * se usa la palabra `in` delante del nombre del parámetro
  */
 interface Consumer<in T> {
     fun consume(t: T)
@@ -81,7 +81,7 @@ fun main() {
      * se puede proporcionar un valor de un subtipo
      *
      * Esto quiere decir que Comparator<Fruit> es un subtipo de Comparator<Apple>
-     * y lo es porque Fruit es un SUPERTIPO de Apple
+     * y lo es porque Fruit es un SUPERTIPO de Apple y Comparator es contravariante
      */
     println(apples.sortedWith(weightComparator))
 }

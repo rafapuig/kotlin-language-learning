@@ -2,7 +2,7 @@ package generics.variance
 
 /**
  * VARIANZA
- * Describe como se relacionan tipos
+ * Describe como se relacionan tipos genéricos
  * con el mismo tipo base
  * y diferentes argumentos de tipo
  *
@@ -39,7 +39,7 @@ private fun testPrintContent() {
     val friends = listOf("Rafael", "Raul", "Ramon")
     printContent(friends)
 
-    val languages = mutableListOf("Java", "Javax", "Python")
+    val languages = mutableListOf("Java", "C++", "Python", "Kotlin")
     //printContentMutable(languages) // ERROR
 }
 
@@ -57,10 +57,11 @@ fun testAddLanguage() {
         mutableListOf("Java", "Kotlin")
     // Si esto compilara añadiríamos un integer a una lista de strings
     //addLanguage(languages) // ERROR
-    println(languages.maxBy { it.length }) // Esto daria excepción
+    println(languages.maxBy { it.length }) // Esto provocaría excepción ClassCastException
 }
 
 
 fun main() {
     testPrintContent()
+    testAddLanguage()
 }

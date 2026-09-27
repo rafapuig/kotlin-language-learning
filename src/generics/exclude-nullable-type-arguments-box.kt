@@ -8,7 +8,7 @@ class Box<T : Any>(private val value: T) {
 class NullableBox<T : Any?>(private val value: T) {
     fun get(): T = value
     fun isNull() = value == null
-    fun describe(): String = if (value == null) "La caja contiene: $value" else "Esta vacia"
+    fun describe(): String = if (value == null) "La caja contiene: $value" else "Esta vacía"
 }
 
 fun main() {
@@ -20,6 +20,7 @@ fun main() {
 
     val nullableStringNullableBox = NullableBox<String?>("Java")
     println(nullableStringNullableBox.get()?.uppercase())
+
     val nullStringNullableBox = NullableBox<String?>(null)
     println(nullStringNullableBox.get()?.uppercase())
 }

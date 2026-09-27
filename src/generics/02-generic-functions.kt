@@ -7,10 +7,10 @@ package generics.functions
  * también podemos declarar funciones genéricas
  *
  * Las funciones genéricas declaran parámetros de tipo
- * Cuando se llama a una función genérica
- * además de proporcionar los argumentos de los parámetros de entrada
+ * Cuando se llama a una función genérica,
+ * además de proporcionar los argumentos de los parámetros de entrada,
  * debemos proporcionar los argumentos de tipo para especificar los
- * valores de los parámetros de tipo de la función
+ * valores de los parámetros de tipo de la función genérica
  */
 
 /**
@@ -30,7 +30,7 @@ fun <T> process(elems: List<T>): List<T> = elems.reversed()
  * FUNCIONES DE EXTENSION GENÉRICAS
  *
  * Una función de extensión
- * también puede ser generica
+ * también puede ser genérica
  * El parámetro de tipo se puede usar para el tipo del receiver
  */
 
@@ -59,6 +59,7 @@ fun testInferredArgumentTypeCall() {
     val middle = fruits.middle
 }
 
+
 fun testExplicitArgumentTypeCall() {
     val n = printAndReturn<Int>(45)
     n.display<Int>()
@@ -69,8 +70,11 @@ fun testExplicitArgumentTypeCall() {
     val middle = fruits.middle
 }
 
+
 fun testStandardLibraryFunctions() {
+
     val letters = ('a'..'z').toList()
+
     println(letters.slice<Char>(0..2)) // a,b,c
 
     println(letters.slice(10..13)) // k,l,m,n
@@ -80,6 +84,7 @@ fun testStandardLibraryFunctions() {
     }
     println(friendsStartingWithR)
 }
+
 
 fun main() {
     testInferredArgumentTypeCall()

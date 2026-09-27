@@ -4,7 +4,7 @@ inline fun <reified T : Any> createInstance(): T {
     return T::class.java.getDeclaredConstructor().newInstance()
 }
 
-class Person(val name: String = "Anonimo")
+class Person(val name: String = "Anónimo")
 
 fun main() {
     val person = createInstance<Person>()

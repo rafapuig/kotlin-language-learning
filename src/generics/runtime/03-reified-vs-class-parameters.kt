@@ -27,6 +27,11 @@ fun main() {
     val number2: Int? = findFirstReified(objects)
     val text2: String? = findFirstReified(objects)
 
+    // Si no indicamos el tipo de la variable será necesario proporcionar explícitamente
+    // el argumento de tipo en la llamada a la función
+    val number3 = findFirstReified<Int?>(objects)
+    val text3: String? = findFirstReified<String>(objects)
+
     println("With Class<T>: number=$number1, text=$text1")
     println("With reified:  number=$number2, text=$text2")
 }

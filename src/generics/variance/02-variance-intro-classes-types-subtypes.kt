@@ -21,7 +21,7 @@ var nullableText: String? = null
 /**
  * Clases genéricas
  * Para tener un tipo válido hay que especificar un valor al parámetro de tipo
- * Cada clase generica puede producir potencialmente un número infinito de tipos
+ * Cada clase genérica puede producir potencialmente un número infinito de tipos
  */
 
 val l1: List<Int> = listOf(1, 2, 3)
@@ -35,7 +35,7 @@ val l3: List<List<String>> = listOf(listOf("Java", "Kotlin"), listOf("C", "C++")
  * en cualquier lugar donde se requiera uno de tipo A
  *
  * Por ejemplo, Int es un subtipo de Number pero no de String
- * Corolario: Un tipo es considerado un subtipo de si mismo
+ * Corolario: Un tipo es considerado un subtipo de sí mismo
  *
  * ✅ B --> A
  * ✅ Int --> Number
@@ -46,7 +46,7 @@ val l3: List<List<String>> = listOf(listOf("Java", "Kotlin"), listOf("C", "C++")
 /**
  * SUPERTIPO
  * Es lo opuesto a subtipo
- * Si A es un subtipo de B -> B es un supertipo de A
+ * Si B es un subtipo de A -> A es un supertipo de B
  */
 
 /**
@@ -59,14 +59,14 @@ val l3: List<List<String>> = listOf(listOf("Java", "Kotlin"), listOf("C", "C++")
  * En los casos sencillos subtipo es sinónimo de subclase
  * Int es un subtipo de Number
  *
- * Si una clase implementa una interface
- * su tipo es un subtipo del tipo de la interface
+ * Si una clase C implementa una interface I
+ * su tipo C es un subtipo del tipo de la interface I
  * String es un subtipo de CharSequence
  *
  * Los tipos anulables son ejemplo de cuando un subtipo
  * no es lo mismo que una subclase
- * El tipo no anulable es u subtipo de la version anulable,
- * pero ambos son de la misma clase
+ * El tipo no anulable es un subtipo de la version anulable,
+ * pero ambos (anulable y no anulable) son de la misma clase
  *
  * ✅ A --> A?
  * ✅ Int --> Int?
@@ -76,18 +76,19 @@ val l3: List<List<String>> = listOf(listOf("Java", "Kotlin"), listOf("C", "C++")
 var name: String = "Kotlin"
 var nullableName: String? = name // válido porque String? es subtipo de String
 
+
 /**
  * INVARIANTE (sobre un parámetro de tipo)
- * Una clase generica GenericClass es invariante sobre el parámetro de tipo
+ * Una clase genérica GenericClass es invariante sobre el parámetro de tipo
  * si para dos tipos diferentes cualesquiera A y B
  * GenericClass<A> no es ni subtipo ni supertipo de GenericClass<B>
  *
  * COVARIANTE (sobre un parámetro de tipo)
- * Una clase generica Producer<T> es covariante sobre el parámetro de tipo T
+ * Una clase genérica Producer<T> es covariante sobre el parámetro de tipo T
  * si A es un subtipo de B -> Producer<A> es un subtipo de Producer<B>
  *
  * CONTRAVARIANTE (sobre un parámetro de tipo)
- * Una clase generica Consumer<T> es contravariante sobre el parámetro de tipo T
+ * Una clase genérica Consumer<T> es contravariante sobre el parámetro de tipo T
  * si A es un supertipo de B -> Consumer<A> es un subtipo de Consumer<B>
  */
 
@@ -100,13 +101,17 @@ var nullableName: String? = name // válido porque String? es subtipo de String
  * Producer<Cat> es subtipo de Producer<Animal> pq Cat es subtipo de Animal
  *
  * Para hacer una clase covariante en un parámetro de tipo
- * se usa out antes del nombre del parámetro de tipo
+ * se usa `out` antes del nombre del parámetro de tipo
  */
 interface Producer<out T> {
     fun produce(): T
 }
 
 
+/**
+ * Para hacer una clase contravariante respecto un parámetro de tipo
+ * se usa `in` antes del nombre del parámetro de tipo
+ */
 interface Consumer<in T> {
     fun consume(t: T)
 }

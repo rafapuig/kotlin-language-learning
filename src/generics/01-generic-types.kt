@@ -1,7 +1,5 @@
 package generics.types
 
-import java.util.function.IntFunction
-
 /**
  * TIPOS GENÉRICOS
  *
@@ -16,7 +14,7 @@ import java.util.function.IntFunction
  * Tipo genérico: La interface List<T>
  *     T es el parámetro de tipo
  * Cuando creamos una instancia (objeto) del tipo genérico
- * indicamos el valor de parámetro genérico especificando un tipo
+ * indicamos el valor del parámetro de tipo especificando un tipo concreto
  * el argumento de tipo
  * List<String> el argumento del parámetro de tipo es String
  */
@@ -32,11 +30,11 @@ val friends = listOf("Emilio", "Ramon", "Raul", "Rafa")
 val fruits: List<String> = listOf<String>("Manzana", "Banana", "Piña")
 
 /**
- * Si creamos una lista vacía el compilador no puede inferir el valor
- * del tipo del parámetro T de tipo del tipo genérico List<T>
+ * Si creamos una lista vacía el compilador no puede inferir el valor argumento
+ * del parámetro de tipo T del tipo genérico List<T>
  */
-val names: List<String> = mutableListOf() // Explicitamos el tipo de la variable
-val cities = mutableListOf<String>() // En la función genérica
+val names: List<String> = mutableListOf() // Explicitamos el tipo de la variable indicando el argumento de tipo
+val cities = mutableListOf<String>() // En la función genérica, explicitamos el argumento de tipo
 
 /**
  * CLASES E INTERFACES GENÉRICAS
@@ -78,8 +76,8 @@ class DoubleList() : List<Double> by ArrayList<Double>()
 
 /**
  * El argumento de tipo puede ser específico como en los ejemplos anteriores
- * o, si la subclase es genérica (entonces habremos declarado algún parámetro de tipo)
- * el parámetro de tipo declarado en la subclase
+ * o, si la subclase es genérica (habremos declarado algún parámetro de tipo)
+ * el parámetro de tipo declarado en la subclase se puede usar como argumento de tipo
  */
 
 class MyList<T> : ArrayList<T>()
