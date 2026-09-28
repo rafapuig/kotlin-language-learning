@@ -1,4 +1,4 @@
-package poo.dataclasses.deconstruction
+package poo.dataclasses.destructuring
 
 import java.time.LocalDate
 
