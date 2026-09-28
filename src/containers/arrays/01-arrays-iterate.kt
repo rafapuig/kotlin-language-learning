@@ -15,6 +15,19 @@ val stringArray = Array<String>(2) {""}
 fun main() {
     val names = arrayOf<String>("Rafael", "Pablo", "Emilio")
 
+
+
+    // ToString no imprime el contenido de un Array
+    println(names.toString())
+
+    // Para que se impriman los elementos de un array hay que convertir su contenido en un String
+    println(names.contentToString())
+
+
+    /**
+     * Iterar sobre los elementos de un array
+     */
+
     for (name in names)
         println(name)
 
