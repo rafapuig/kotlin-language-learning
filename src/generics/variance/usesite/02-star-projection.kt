@@ -5,7 +5,7 @@ import kotlin.random.Random
 /**
  * La sintaxis especial proyección estrella (star-projection) <*>
  *
- * Se usa para indicar que no tenemos information del argumento genérico
+ * Se usa para indicar que no tenemos information del argumento de tipo del objeto de tipo genérico
  *
  * Por ejemplo,
  * una lista de elementos de tipo desconocido
@@ -31,9 +31,8 @@ import kotlin.random.Random
  * Nota: si el parámetro es contravariante
  * Consumer<in T>
  * la proyección estrella equivale entonces a Consumer<in Nothing>
- *
-
  */
+
 
 fun main() {
     val list: MutableList<Any?> = mutableListOf('r', 10, "Kotlin")
@@ -62,7 +61,7 @@ fun main() {
 */
 
 /**
- * La función printFirst NO es una función generica
+ * La función printFirst NO es una función genérica
  * A printFirst se le puede pasar cualquier lista
  */
 fun printFirst(list: List<*>) {
@@ -75,7 +74,7 @@ fun printFirst(list: List<*>) {
 }
 
 /**
- * Tenemos la alternativa de crear una version generica de la función
+ * Tenemos la alternativa de crear una version genérica de la función
  */
 
 fun <T> printFirstGeneric(list: List<T>) {

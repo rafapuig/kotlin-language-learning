@@ -1,28 +1,14 @@
-package DSL.conventions.implementing.without.delegates3
-
-
-/**
- * El código de los setters de las propiedades que envían notificaciones de cambio
- * en un objeto observable es prácticamente idéntico (la lógica se repite) DRY (don't repeat yourself!!!)
- */
+package DSL.conventions.implementing.without.delegates
 
 /**
- * Vamos a extraer la lógica a una clase que almacene el valor de la propiedad
- * y lance la notificación
+ * Observable
+ *
+ * Para ver como se implementan las propiedades delegadas
+ * vamos a ver un ejemplo:
+ * La tarea de notificar a los listeners cuando una propiedad de un objeto cambia.
+ * (Esto es útil en muchos casos, como cuando presentamos un objeto en una UI
+ * y queremos que la UI se actualice automáticamente cuando la propiedad del objeto cambia)
  */
-
-class ObservableProperty(
-    val propertyName: String,
-    var propertyValue: Int,
-    val observable: Observable
-) {
-    fun getValue() = propertyValue
-    fun setValue(newValue: Int) {
-        val oldValue = propertyValue
-        propertyValue = newValue
-        observable.notifyObservers(propertyName, oldValue, newValue)
-    }
-}
 
 /**
  * Como la interface Observer
@@ -53,50 +39,44 @@ open class Observable {
 }
 
 /**
- * La clase persona
+ * La clase persona, es observable y
  * tiene dos propiedades age y salary
  * que cuando cambien notificarán su cambio
  * a los observadores
  */
 class Person(val name: String, age: Int, salary: Int) : Observable() {
 
-    /**
-     * Ahora creamos una propiedad _age que mantiene la referencia a
-     * una instancia ObservableProperty en la que delega la propiedad age
-     */
-    val _age = ObservableProperty("age", age, this)
+    var age = age
+    set(newValue) { // Setter personalizado para notificar a los observadores
+        val oldValue = field
+        field = newValue
+        notifyObservers("age", oldValue, newValue)
+    }
 
-    /**
-     * La propiedad age delega sus accesores en el delegado _age
-     * el getter delega mediante la llamada al metodo getValue del delegado
-     * el setter delega mediante la llamada al metodo setValue del delegado
-     */
-    var age: Int
-        get() = _age.getValue()
-        set(newValue) {
-            _age.setValue(newValue)
-        }
-
-    val _salary = ObservableProperty("salary", salary, this)
-    var salary: Int
-        get() = _salary.getValue()
-        set(newValue) {
-           _salary.setValue(newValue)
-        }
+    var salary = salary
+    set(newValue) {
+        val oldValue = field
+        field = newValue
+        notifyObservers("salary", oldValue, newValue)
+    }
 }
+
 
 fun main() {
     val person = Person("Perico Palotes", 30, 2000)
 
     // Creamos un observador
-    // implementando la interface funcional Observer
+    // implementando la interface funcional Observer, creando una instancia mediante el constructor SAM
     val observer = Observer { propertyName, oldValue, newValue ->
         println("Propiedad $propertyName ha cambiado de $oldValue a $newValue")
     }
+
     // Añadimos el observador a la lista de observadores del objeto Person
     person.observers += observer
+
     // Cambiamos la edad
     person.age = 18 // El observador recibe la notificación
+
     // Cambiamos el salario
     person.salary = 2100 // El observador recibe la notificación
 }

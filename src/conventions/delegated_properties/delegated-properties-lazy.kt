@@ -1,15 +1,14 @@
 package DSL.conventions.lazy
 
-import DSL.conventions.lazy.Email.loadEmails
 
+class Email
 
-object Email {
-    fun loadEmails(person: Person): List<Email> {
-        println("Cargando los emails de ${person.name}")
-        /* Aquí cargamos los emails desde la BBDDs */
-        return listOf() // Y la devolvemos como lista
-    }
+fun loadEmails(person: Person): List<Email> {
+    println("Cargando los emails de ${person.name}")
+    /* Aquí cargamos los emails desde la BBDDs */
+    return listOf() // Y la devolvemos como lista
 }
+
 
 class Person(val name: String) {
     /**
@@ -20,11 +19,11 @@ class Person(val name: String) {
      */
     val emails by lazy { loadEmails(this) }
     /**
-     * La funcion lazy
+     * La función lazy
      * devuelve un objeto Lazy<T>
      * que cuenta con un metodo getValue
      * El argumento de lazy es una lambda a la cual llama para inicializar
-     * el valor (los dotos)
+     * el valor (los datos)
      */
 
 }

@@ -11,7 +11,7 @@ import kotlin.reflect.KProperty
 /**
  * Para ello se necesita hacer cambios en la firma de los métodos de
  * la clase ObservableProperty
- * para que se correspondan con los que se require por convención de Kotlin
+ * para que se correspondan con los que se require por convención en Kotlin
  */
 
 class ObservableProperty(
@@ -22,14 +22,14 @@ class ObservableProperty(
     /**
      * getValue se convierte en un operator
      * añadimos 2 parámetros:
-     * - thisRef: para recibir como argumento la referencia la objeto cuya propiedad se obtiene (get)
+     * - thisRef: para recibir como argumento la referencia al objeto cuya propiedad se obtiene (get)
      * - property: para representar a la propiedad misma
      * La propiedad se representa mediante un objeto de tipo KProperty (reflexión)
      */
     operator fun getValue(thisRef: Any?, property: KProperty<*>) = propertyValue
 
     /**
-     * a setValue tambien se le convierte en operator y se le añaden los dos parámetros
+     * a setValue también se le convierte en operator y se le añaden los dos parámetros
      * en este caso para la propiedad que se accede para mutar (set)
      */
     operator fun setValue(thisRef: Any?, property: KProperty<*>, newValue: Int) {
@@ -77,6 +77,7 @@ open class Observable {
 class Person(val name: String, age: Int, salary: Int) : Observable() {
 
     // El objeto a la derecha de by se denomina delegado
+    // Se inicializa mediante el valor inicial de la propiedad y una referencia al objeto al que pertenece la propiedad
     var age by ObservableProperty(age, this)
     var salary by ObservableProperty(salary, this)
 
@@ -90,10 +91,13 @@ fun main() {
     val observer = Observer { propertyName, oldValue, newValue ->
         println("Propiedad $propertyName ha cambiado de $oldValue a $newValue")
     }
+
     // Añadimos el observador a la lista de observadores del objeto Person
     person.observers += observer
+
     // Cambiamos la edad
     person.age = 18 // El observador recibe la notificación
+
     // Cambiamos el salario
     person.salary = 2100 // El observador recibe la notificación
 }

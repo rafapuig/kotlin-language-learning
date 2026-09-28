@@ -1,14 +1,12 @@
 package DSL.conventions.lazy.intro
 
-import DSL.conventions.lazy.intro.Email.loadEmails
-
 /**
  * La inicialización perezosa es un patron común que
- * implica la creación de un objeto cuando se accede
- * por primera vez a uno de sus miembros
+ * implica la creación de partes de un objeto bajo demanda
+ * cuando se acceden por primera vez
  *
  * Es útil cuando el proceso de inicialización es costoso
- *
+ * y esos datos no siempre son requeridos cuando se usa un objeto de ese tipo.
  */
 
 /**
@@ -19,13 +17,14 @@ import DSL.conventions.lazy.intro.Email.loadEmails
  * a la propiedad (y solamente esa primera vez)
  */
 
-object Email {
-    fun loadEmails(person: Person): List<Email> {
-        println("Cargando los emails de ${person.name}")
-        /* Aquí cargamos los emails desde la BBDDs */
-        return listOf() // Y la devolvemos como lista
-    }
+class Email
+
+fun loadEmails(person: Person): List<Email> {
+    println("Cargando los emails de ${person.name}")
+    /* Aquí cargamos los emails desde la BBDDs */
+    return listOf(/*... */) // Y la devolvemos como lista
 }
+
 
 class Person(val name: String) {
     /**
@@ -45,18 +44,20 @@ class Person(val name: String) {
     // Propiedad delegada en _emails
     // Proporciona el acceso
     val emails: List<Email>
-        get() {
+        get() { // Accesor personalizado para leer el valor de la propiedad
             if (_emails == null) { // Solo la primera vez
                 _emails = loadEmails(this) // Carga los emails
             }
             return _emails!!
         }
-
-
 }
 
 fun main() {
-    val person = Person("Perico Palotes")
-    person.emails // Los emails son cargados por ser el primer acceso
-    person.emails // Ahora ya los recupera directamente
+    val person = Person("Perico Palotes") // Crea la persona, pero no carga los emails
+
+    // Los emails son cargados por ser el primer acceso
+    person.emails
+
+    // Ahora ya los recupera directamente, porque ya los tiene cargados
+    person.emails
 }

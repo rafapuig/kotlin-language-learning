@@ -1,17 +1,11 @@
-package imperative.types
+package imperative.types.primitive
 
 
 //CONVERSION DE TIPOS (CASTING)
 // Convertir un valor de un tipo en otro valor "equivalente" de otro tipo
 
-// Tipos de casting (conversión)
-/*
-- Implícito  --> solo permitido cuando no haya riesgo de perdida de información
-- Explícito
- */
 
-
-// Conversión implícita
+// Conversión implícita (inicialización mediante literales)
 var intNumber = 18
 var longNumber : Long = 45 // 45 es un valor Int convertido implícitamente a 45L Long
 //var convertedToLong : Long = intNumber // No es posible

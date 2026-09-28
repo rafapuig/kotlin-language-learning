@@ -67,10 +67,13 @@ fun main() {
     val observer = Observer { propertyName, oldValue, newValue ->
         println("Propiedad $propertyName ha cambiado de $oldValue a $newValue")
     }
+
     // Añadimos el observador a la lista de observadores del objeto Person
     person.observers += observer
+
     // Cambiamos la edad
     person.age = 18 // El observador recibe la notificación
+
     // Cambiamos el salario
     person.salary = 2100 // El observador recibe la notificación
 }

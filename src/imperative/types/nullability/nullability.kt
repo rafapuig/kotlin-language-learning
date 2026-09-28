@@ -15,26 +15,26 @@ package imperative.types.nullability
  *
  * Ejemplo en Java
  *
- * int strlen(String s) {
+ * `int strlen(String s) {
  *  return s.length();
- * }
+ * }`
  *
  * Si llamamos a esta función pasando null como argumento
- * strlen(null);
+ * `strlen(null);`
  *
- * o declaramos una variable String para guardar una referencia a un objeto String
+ * o declaramos una variable String para guardar una referencia a un objeto String,
  * pero le asignamos el valor null
- * String text = null;
- * strlen(text)
+ *`String text = null;
+ * strlen(text)`
  *
- * Lanzará la excepción NullPointerException al ejecutar la instrucción s.length();
+ * Lanzará la excepción `NullPointerException` al ejecutar la instrucción `s.length();`
  */
 
 /** En kotlin */
 /**
  * El parámetro s está declarado usando el tipo String
  * Esto quiere decir que se garantiza que
- * el parámetro siempre tendrá una referencia a un objeto String (nunca a null)
+ * el parámetro siempre tendrá una referencia a un objeto String (nunca al valor null)
  */
 fun strlen(s: String) = s.length
 
@@ -52,7 +52,7 @@ fun testCallStrlenWithNullArgument() {
  * Tipo? = Tipo + null
  */
 fun strlenUnsafe(s: String?) {
-    /** Pero entonces el compilador no nos deja usar simplemente la sintaxis receiver.miembro */
+    /** Pero entonces el compilador no nos deja usar simplemente la sintaxis receptor.miembro */
     // return s.length // ERROR de compilación
 }
 
@@ -79,7 +79,8 @@ fun passingNullableArgumentToNonNullableFunctionParameter() {
  */
 fun strlenNullSafe(s: String?): Int =
     if (s != null) // el valor de s para la comprobación de si es nulo o no
-        s.length // Rama principal del if, aquí se trata el valor de s como no anulable
+        // Rama principal del if, aquí el compilador trata el valor de s como no anulable
+        s.length
     else 0
 
 /**
@@ -92,7 +93,7 @@ fun strlenNullSafe(s: String?): Int =
  * mediante el operador de llamada seguro ?.
  *
  * Por ejemplo:
- * str?.uppercase() es equivalente a if(str != null) str.uppercase() else null
+ * `str?.uppercase()` es equivalente a `if(str != null) str.uppercase() else null`
  *
  * Es decir, solamente se invoca al miembro si la referencia no es null,
  * si no se evita la llamada
@@ -136,7 +137,7 @@ fun testGreet() {
 }
 
 /**
- * El operador Elvis se usa a menudo junto con el operador de llamadas seguras
+ * El operador Elvis ?: se usa a menudo junto con el operador de llamadas seguras ?.
  * para sustituir por otro valor el valor nulo devuelto por el operador de llamadas seguras
  * cuando la expresión hace referencia a null en lugar de referenciar un objeto
  */
