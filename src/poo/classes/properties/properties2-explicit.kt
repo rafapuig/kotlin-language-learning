@@ -1,14 +1,15 @@
-package poo.classes.properties2
+package poo.classes.properties.explicit
 
 class Person {
 
     /**
      * Toda propiedad mutable (var) define
-     * - un campo de respaldo donde almacena el valor de la propiedad
-     * al que se accede mediante la palabra identificador field
-     * - un getter trivial que devuelve el valor del campo de respaldo
-     * - un setter trivial que asigna el valor recibido como argumento al campo de respaldo
+     * - un campo de respaldo (backup field) donde almacena el valor de la propiedad
+     * al que se accede mediante la palabra identificador `field`
+     * - un getter trivial que devuelve el valor del campo de respaldo `field`
+     * - un setter trivial que asigna el valor recibido como argumento al campo de respaldo `field`
      */
+
     var name: String = "Anónimo" // Inicialización del campo de respaldo con el valor literal "Anónimo"
         get() {
             return field // Devuelve el valor del campo de respaldo de la propiedad

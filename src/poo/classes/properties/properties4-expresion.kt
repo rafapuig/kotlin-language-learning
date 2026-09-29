@@ -22,17 +22,23 @@ class Person {
         }
 
 
-    var age: Int = 0
-        get() = field
+    /**
+     * También se crea únicamente un campo si una propiedad la declaramos como privada
+     */
+    private var _age: Int = 0
+
+    var age: Int // = 0, ERROR, no usa el campo de respaldo automático field, por tanto, no se inicializa
+        get() = _age
         set(value) {
             if (value < 0)
                 throw IllegalArgumentException("La edad no puede ser negativa")
-            field = value
+            _age = value
         }
 }
 
 fun main() {
     val person = Person()
+
     println("${person.name} tiene ${person.age} años")
 
     person.name = "Perico Palotes"

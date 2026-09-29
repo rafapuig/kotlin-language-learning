@@ -1,15 +1,16 @@
-package poo.classes.properties
+package poo.classes.properties.readonly
 
 import kotlin.math.PI
 import kotlin.math.pow
 
 class Circle {
+
     var radius: Double = 0.0
 
     /**
      * Propiedad de sola lectura
      * El compilador solamente genera el getter
-     * El campo de respaldo se inicializa con el valor "Círculo"
+     * El campo de respaldo `field` de la propiedad generado por el compilador se inicializa con el valor "Círculo"
      */
     val name : String = "Círculo"
 

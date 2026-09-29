@@ -1,4 +1,4 @@
-package poo.classes.properties2v
+package poo.classes.properties.validation
 
 /**
  * Un caso para el que resulta provecho definir explícitamente el setter de una propiedad
@@ -32,6 +32,7 @@ class Person {
 
 fun main() {
     val person = Person()
+
     println("${person.name} tiene ${person.age} años")
 
     person.name = "Perico Palotes"

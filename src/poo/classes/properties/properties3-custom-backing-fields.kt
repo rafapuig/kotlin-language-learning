@@ -1,4 +1,4 @@
-package poo.classes.properties3
+package poo.classes.properties.fields
 
 class Person {
 
@@ -21,19 +21,26 @@ class Person {
             _name = value
         }
 
-    var age: Int = 0
+
+    /**
+     * También se crea únicamente un campo si una propiedad la declaramos como privada
+     */
+    private var _age: Int = 0
+
+    var age: Int
         get() {
-            return field
+            return _age
         }
         set(value) {
             if(value < 0)
                 throw IllegalArgumentException("La edad no puede ser negativa")
-            field = value
+            _age = value
         }
 }
 
 fun main() {
     val person = Person()
+
     println("${person.name} tiene ${person.age} años")
 
     person.name = "Perico Palotes"

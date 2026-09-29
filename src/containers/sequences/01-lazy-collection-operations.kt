@@ -1,4 +1,4 @@
-package containers.collections.sequences
+package containers.sequences
 
 import containers.collections.model.people
 import java.io.File

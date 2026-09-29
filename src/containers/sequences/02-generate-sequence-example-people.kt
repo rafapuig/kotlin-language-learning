@@ -1,4 +1,4 @@
-package containers.collections.sequences.example
+package containers.sequences.example
 
 data class Person(val name: String, val age: Int, val parent: Person? = null)
 

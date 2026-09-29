@@ -1,4 +1,4 @@
-package poo.classes.properties1
+package poo.classes.properties.init
 
 class Person {
     /**

@@ -1,6 +1,5 @@
 package conventions.ranges
 
-import poo.dataclasses.copy.nocopy.rectangle
 import java.time.LocalDate
 
 /**

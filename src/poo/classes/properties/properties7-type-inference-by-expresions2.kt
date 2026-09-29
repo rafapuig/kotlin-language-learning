@@ -1,4 +1,4 @@
-package poo.classes.properties7
+package poo.classes.properties.inference2
 
 
 class Rectangle {

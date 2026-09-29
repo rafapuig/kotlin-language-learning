@@ -11,14 +11,18 @@ class Circle {
     fun circumference(): Double = 2 * PI * radius
     fun area(): Double = PI * radius * radius
 
+    // Área cacheada
     private var _area  = area()
 
+    // Circunferencia cacheada
     private var _circumference: Double = circumference()
 
 
+    // Actualizar los valores cacheados de área y circunferencia
     private fun update() {
         println("Recalculando el area...")
         _area = area()
+
         println("Recalculando la circunferencia...")
         _circumference = circumference()
     }
@@ -27,12 +31,16 @@ class Circle {
     var radius: Double = 0.0
         set(value) {
             field = value
+            // Cuando mute el radio, quedan invalidadas el área y la circunferencia calculadas y cacheadas
+            // Actualizar los valores cacheados de área y circunferencia
             update()
         }
 
 
+    // Propiedad area de solo lectura, no recalcula el area en cada llamada, devuelve el valor cacheado
     val area get() = _area
 
+    // Propiedad circumference de solo lectura, no recalcula la circunferencia en cada llamada, devuelve el valor cacheado
     val circumference: Double get() = _circumference
 }
 

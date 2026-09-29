@@ -1,4 +1,4 @@
-package poo.classes.properties6
+package poo.classes.properties.inference
 
 import kotlin.math.PI
 import kotlin.math.pow

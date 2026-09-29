@@ -10,15 +10,19 @@ class Circle {
         this.radius = radius
     }
 
+    // Como la propiedad radius puede mutar, siempre que se pide la circumference hay que calcular
+    // con el valor actual de la propiedad radius
     fun circumference(): Double {
         return 2 * PI * radius
     }
 
-    // Es una inicialización de una propiedad (solo al crear el objeto)
-    // Como el valor del radio puede cambiar, es un error cachear el valor del área calculado con el valor inicial del radio
+    // Es una inicialización de una propiedad (solo se evalúa la expresión al crear el objeto)
+    // Como el valor del radio puede cambiar,
+    // es un error cachear el valor del área calculado con el valor inicial del radio
     val areaWrong: Double = PI * radius * radius
 
-    // Es un getter, se calcula cada vez que se accede a la propiedad para su lectura
+    // Es un getter, (propiedad calculada o derivada)
+    // se calcula cada vez que se accede a la propiedad area para su lectura
     val area: Double get() = PI * radius * radius
 
     val circumference: Double get() = 2 * PI * radius
@@ -30,6 +34,7 @@ class Circle {
 
 fun main() {
     val circle = Circle(10.0)
+
     println(circle.circumference())
     println(circle.circumference)
     println(circle.areaWrong)
