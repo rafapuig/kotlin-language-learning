@@ -47,7 +47,6 @@ fun createPerson(name: String, gender: Person.Gender) =
 
 fun main() {
 
-    //val person = Person("Rafa", Person.Gender.FEMALE)
     val p1 = Person.create("John", Person.Gender.MALE)
     val p2 = Person.create("Joan", Person.Gender.FEMALE)
 

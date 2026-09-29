@@ -1,4 +1,4 @@
-package poo.person12
+package poo.evolution.destructuring
 
 data class Person(
     val name: String = "Anónimo",

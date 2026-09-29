@@ -1,4 +1,4 @@
-package poo
+package poo.evolution.intro
 
 data class Person(val name: String, val age: Int) {
 

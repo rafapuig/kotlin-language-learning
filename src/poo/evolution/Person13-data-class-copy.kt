@@ -1,4 +1,4 @@
-package poo.person13
+package poo.evolution.copy
 
 /**
  * Uso del metodo copy de una data class
@@ -7,7 +7,7 @@ package poo.person13
  */
 
 data class Person(
-    val name: String = "Anonimo",
+    val name: String = "Anónimo",
     val age: Int? = null
 )
 

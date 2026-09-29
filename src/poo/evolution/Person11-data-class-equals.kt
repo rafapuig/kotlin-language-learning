@@ -1,4 +1,4 @@
-package poo.person11
+package poo.evolution.dataclass.equals
 
 /**
  * Si colocamos la palabra data delante de class
@@ -6,7 +6,7 @@ package poo.person11
  * Lo que hace que se redefina el metodo equals de la clase para tratar dos objetos como iguales
  * si tienen el mismo estado (mismo valor de todas sus propiedades): igualdad estructural
  */
-data class Person(val name: String = "Anonimo", val age: Int? = null)
+data class Person(val name: String = "Anónimo", val age: Int? = null)
 
 fun main() {
 

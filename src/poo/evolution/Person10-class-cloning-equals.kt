@@ -1,6 +1,6 @@
-package poo.person10
+package poo.evolution.cloning.equals
 
-class Person(val name: String = "Anonimo", val age: Int? = null)
+class Person(val name: String = "Anónimo", val age: Int? = null)
 
 fun main() {
     val belen = Person("Belen", 57)
@@ -11,7 +11,8 @@ fun main() {
     // la variable belen2 hará referencia a la misma persona a la que se hace referencia mediante la variable belen
     val belen2 = belen
 
-    // Comprobamos con el operador === si se refieren exactamente a la misma instancia / objeto (equivale a == de Java)
+    // Comprobamos con el operador === si se refieren exactamente a la misma instancia / objeto
+    // (equivale a == de Java)
     println(clon === belen) //false no son el mismo objeto
     println(belen2 === belen) // true, si son el mismo objeto
 

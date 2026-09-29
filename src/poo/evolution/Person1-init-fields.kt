@@ -1,22 +1,28 @@
-package poo.person1
+package poo.evolution.person.init.fields
 
 class Person {
 
     /**
      * Si inicializamos las propiedades,
-     * ya no es obligatorio que todos los constructores garanticen que se proporciona un valor para construir la instancia
+     * ya no es obligatorio que todos los constructores garanticen
+     * que se proporciona un valor para construir la instancia
      */
     private var _name: String = "Anónimo"
     private var _age: Int? = null
 
     constructor(name: String?, age: Int?) {
-        this._name = name ?: this._name
+        if (name != null) this._name = name // Smart cast de name desde String? a String
         this._age = age
     }
 
-    constructor(name: String) : this(name, null)
+    /**
+     * Ya no es obligatorio delegar en el constructor que inicializa todas las propiedades
+     */
+    constructor(name: String) //: this(name, null)
 
-
+    /**
+     * Ya no es obligatorio delegar en el constructor que inicializa todas las propiedades
+     */
     constructor() // : this(null, null)
 
 

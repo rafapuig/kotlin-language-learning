@@ -1,8 +1,9 @@
-package poo.person6
+package poo.evolution.primary.constructor.properties
 
 /**
- * Se puede hacer que los parámetros del constructor primario, además de parámetros, sean considerados como propiedades
- * de la clase, lo que permite usarlos en otros miembros y no solo en el bloque init
+ * Se puede hacer que los parámetros del constructor primario, además de parámetros,
+ * sean considerados como propiedades de la clase,
+ * lo que permite usarlos en otros miembros y no solo en el bloque init
  */
 class Person (private var _name: String?, private var _age: Int?) {
 
@@ -15,7 +16,7 @@ class Person (private var _name: String?, private var _age: Int?) {
 
     constructor(): this(null, null)
 
-    val name: String get() = this._name!! // podemos usar aquí _name porque es una propiedad
+    val name: String get() = _name!! // podemos usar aquí _name porque es una propiedad
     val age: Int? get() = _age
 }
 

@@ -1,4 +1,4 @@
-package poo.person4
+package poo.evolution.properties.backing.field.initialization.by.constructor.parameters
 
 
 class Person constructor(name: String?, age: Int?) {
@@ -9,14 +9,14 @@ class Person constructor(name: String?, age: Int?) {
      *
      * Lo que hace innecesario en este caso el uso del bloque init
      */
-    private var _name: String = name ?: "Anonimo"
+    private var _name: String = name ?: "Anónimo"
     private var _age: Int? = age
 
     constructor(name: String): this(name, null)
 
     constructor(): this(null, null)
 
-    val name: String get() = this._name
+    val name: String get() = _name
     val age: Int? get() = _age
 
 }

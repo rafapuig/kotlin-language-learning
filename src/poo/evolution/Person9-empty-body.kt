@@ -1,6 +1,9 @@
-package poo.person9
+package poo.evolution.empty.body
 
-class Person(val name: String = "Anonimo", val age: Int? = null)
+/**
+ * El cuerpo de la clase, si vacio, se puede incluso eliminar las {}
+ */
+class Person(val name: String = "Anónimo", val age: Int? = null)
 
 fun main() {
     val person = Person()

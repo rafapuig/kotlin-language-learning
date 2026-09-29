@@ -1,4 +1,4 @@
-package poo.person7
+package poo.evolution.primary.constructor.properties.default.values
 
 /**
  * Si hacemos uso de los valores por defecto de los parámetros de una función
@@ -14,7 +14,7 @@ class Person(
 
 //    constructor() : this(age = null)
 
-    val name: String get() = this._name
+    val name: String get() = _name
     val age: Int? get() = _age
 }
 
