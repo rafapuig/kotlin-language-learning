@@ -1,4 +1,4 @@
-package poo.construction.builder4
+package poo.construction.builder5
 
 
 @ConsistentCopyVisibility
@@ -31,6 +31,9 @@ data class Person private constructor(
 }
 
 
+fun buildPerson(init: Person.Builder.() -> Unit) =
+    Person.Builder().apply(init).build()
+
 
 fun main() {
 
@@ -40,8 +43,13 @@ fun main() {
         .married()
         .build()
 
-    val anonimoAged60 = Person.Builder().withAge(60).build()
-
     println(belen)
-    println(anonimoAged60)
+
+    val armando = buildPerson {
+        withName("Armando Bronca Segura")
+        withAge(50)
+        married()
+    }
+    println(armando)
+
 }

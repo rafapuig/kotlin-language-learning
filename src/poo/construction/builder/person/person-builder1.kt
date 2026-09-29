@@ -56,7 +56,7 @@ class PersonBuilder(
 }
 
 // Función DSL principal
-fun person(name: String, block: PersonBuilder.() -> Unit): Person {
+fun buildPerson(name: String, block: PersonBuilder.() -> Unit): Person {
     // Creamos un objeto PersonBuilder
     // para ello proporcionamos el argumento obligatorio del constructor, el nombre
     // a partir del nombre recibido como parámetro de entrada
@@ -73,7 +73,7 @@ fun person(name: String, block: PersonBuilder.() -> Unit): Person {
 
 fun main() {
 
-    val person = person("Perico Palotes") {
+    val person = buildPerson("Perico Palotes") {
         age = 30
         address {
             street = "Calle Colon 56"

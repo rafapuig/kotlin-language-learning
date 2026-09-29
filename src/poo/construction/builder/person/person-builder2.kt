@@ -90,14 +90,14 @@ class PersonBuilder(var name: String) {
 }
 
 // Función DSL principal
-fun person(name: String, block: PersonBuilder.() -> Unit): Person {
+fun buildPerson(name: String, block: PersonBuilder.() -> Unit): Person {
     val builder = PersonBuilder(name)
     builder.block()
     return builder.build()
 }
 
 fun main() {
-    val person = person("Armando Bronca Segura") {
+    val person = buildPerson("Armando Bronca Segura") {
         age = 28
         addresses {
             address {

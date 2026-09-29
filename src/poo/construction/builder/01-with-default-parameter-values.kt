@@ -8,6 +8,7 @@ data class Person(
 
 fun Person.print() = println("Name: $name, Age: $age, married: $married")
 
+
 fun main() {
     // Y por defecto, married será false
     val person = Person(name = "Rafa Puig", age = 48)
