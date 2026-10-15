@@ -27,6 +27,7 @@ fun square(number: Int) = number * number
 
 fun main() {
 
+    // Llamamos a la función referenciada por la variable operation (en este caso la función add)
     val result1 = operation(2, 3)
     println(result1)
 
@@ -35,7 +36,7 @@ fun main() {
     // del mismo tipo (Int, Int) -> Int
     operation = ::multiply
 
-    // Llamamos a applyOperation pasando la función multiply
+    // Llamamos a la función referenciada por la variable operation (función multiply)
     val result2 = operation(2, 3)
     println(result2)
 
@@ -44,6 +45,7 @@ fun main() {
     // coincide con el tipo de la variable
     //operation = ::square
 
+    // Declaramos la variable operation2 con otro tipo de tipo de función
     var operation2: (Int) -> Int
 
     // La variable operation si es del tipo de función correcto

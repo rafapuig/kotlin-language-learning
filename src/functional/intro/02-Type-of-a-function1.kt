@@ -1,4 +1,4 @@
-package functional.intro.type
+package functional.intro.type1
 
 /**
  * La función applyOperation recibe como tercer parámetro una función
@@ -33,7 +33,9 @@ var operation: (Int, Int) -> Int = ::add
 
 fun main() {
 
-    val result1 = operation(2, 3)
+    // Llamamos a la función referenciada por la variable operation
+    // mediante el metodo invoke de los objetos de tipo función
+    val result1 = operation.invoke(2, 3)
     println(result1)
 
     // La variable operation también puede guardar la referencia
@@ -41,7 +43,9 @@ fun main() {
     // del mismo tipo (Int, Int) -> Int
     operation = ::multiply
 
-    // Llamamos a applyOperation pasando la función multiply
+    // Llamamos a la función referenciada por la variable operation
+    // (no hace falta explicitar la llamada al metodo invoke, ya que invoke es el operador de llamada a función)
+    // Con esta sintaxis parece que estemos llamando a la función operation !!!
     val result2 = operation(2, 3)
     println(result2)
 }

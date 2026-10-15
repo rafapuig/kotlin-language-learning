@@ -28,6 +28,4 @@ fun main() {
     calculate(5, 2) { a, b -> a - b }
     calculate(5, 2) { a, b -> a * b }
     calculate(5, 2) { a, b -> a / b }
-
-
 }

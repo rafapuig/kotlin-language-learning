@@ -6,7 +6,7 @@ import kotlin.math.pow
 /**
  * Una expresión lambda es un literal de función
  *
- * La idea es convertir un bloque de código (o una función) en un valor
+ * La idea es tratar un bloque de código como un valor
  *
  * Sintaxis:
  * { <lista de parámetros de entrada> -> <expresión que usa los parámetros> }
@@ -43,7 +43,7 @@ val power = { x: Double, n: Int -> x.pow(n) }
 
 /**
  * Cuando el literal de función tiene un único parámetro de entrada
- * El nombre por defecto del parámetro es it
+ * El nombre por defecto implícito del parámetro es it
  * y no es necesario escribir explícitamente la lista de parámetros de entrada y la flecha ->
  */
 val f: (Int) -> Boolean = { it > 2 } // it es el parámetro de entrada de tipo Int

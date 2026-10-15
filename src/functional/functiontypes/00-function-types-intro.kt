@@ -37,7 +37,7 @@ fun implicitLambdaParameterTypesDeclaration() {
 
     val action: () -> Unit = { println("Hola lambdas") }
 
-    // En la lambda omitimos le tipo del parametro x porque se deduce del tipo de función de la variable isPositive
+    // En la lambda omitimos el tipo del parámetro x porque se deduce del tipo de función de la variable isPositive
     val isPositive: (Int) -> Boolean = { x -> x > 0 }
 }
 

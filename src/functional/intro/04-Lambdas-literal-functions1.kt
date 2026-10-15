@@ -1,7 +1,4 @@
-package functional.intro.lambdas
-
-
-
+package functional.intro.lambdas1
 
 /**
  * Se puede almacenar en una variable la referencia a una función
@@ -30,8 +27,18 @@ fun main() {
     operation = ::double
     println(operation(5))
 
+    /**
+     * La variable tiple, de tipo función (Int) -> Int
+     * guarda la referencia a la instancia que ejecuta cuando se invoca pasando un valor a number como argumento
+     * number * 3 y devuelve el resultado
+     */
     val triple : (Int) -> Int = { number -> number * 3 } // El triple
 
+    println(triple.invoke(4)) // 12
+    println(triple(10)) // 100
+
+    // Podemos asignar la referencia al objeto en la variable triple en la variable operation
+    // (son del mismo tipo)
     operation = triple
     println(operation(5))
 }

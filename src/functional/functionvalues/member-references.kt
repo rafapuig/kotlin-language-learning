@@ -54,6 +54,7 @@ val isPersonAdult = Person::isAdult
 fun main() {
     val person = Person("Raul", 29)
     println(getAgeMR(person))
+    personGreet(person)
 
     /**
      * Podemos tener una referencia a una función declarada a nivel de paquete

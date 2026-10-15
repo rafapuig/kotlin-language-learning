@@ -15,11 +15,11 @@ fun add(a: Int, b: Int): Int = a + b
 fun multiply(a: Int, b: Int) = a * b
 
 fun main() {
-    // Llamamos a applyOperation pasando la función add
+    // Llamamos a applyOperation pasando la función add (una referencia a la función add)
     val result1 = applyOperation(3,5, ::add)
     println(result1)
 
-    // LLamamos a applyOperation pasando la funcion multiply
+    // Llamamos a applyOperation pasando la función multiply
     val result2 = applyOperation(3,5, ::multiply)
     println(result2)
 }
