@@ -1,4 +1,4 @@
-package poo.construction.builder.person1
+package poo.construction.patterns.builder.person1
 
 // Clase final Person
 class Person(

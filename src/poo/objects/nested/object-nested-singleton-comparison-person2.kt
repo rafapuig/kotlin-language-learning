@@ -2,6 +2,7 @@ package poo.objects.nested.comparison.people2
 
 import java.time.LocalDate
 
+/** Obtiene el tiempo trascurrido en años que ha pasado desde una fecha LocalDate hasta hoy */
 val LocalDate?.age get() = this?.until(LocalDate.now())?.years
 
 data class Person(
@@ -16,10 +17,11 @@ data class Person(
     /**
      * La implementación de la interface Comparable
      * delega en el metodo compare del companion object
-     * Se comparar dos objetos Person según los compare el comparador por edad
+     * Se comparan dos objetos Person según los compare el comparador por edad ByAgeComparator
      */
-    override fun compareTo(other: Person)= compare(this, other)
-
+    override fun compareTo(other: Person)=
+        // Está llamado a ByAgeComparador.compare porque ByAgeComparador es el objeto companion
+        compare(this, other)
 
     /**
      * De todos los objetos anidados (anidados / nested) de la clase
@@ -32,7 +34,6 @@ data class Person(
     companion object ByAgeComparator : Comparator<Person> {
         override fun compare(p1: Person, p2: Person) =
             -compareValues(p1.birth, p2.birth)
-
     }
 
     /**

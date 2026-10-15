@@ -1,4 +1,4 @@
-package poo.operators
+package conventions.operators
 
 import imperative.functions.toRadians
 import kotlin.math.cos

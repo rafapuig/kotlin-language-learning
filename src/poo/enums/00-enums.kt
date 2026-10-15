@@ -17,16 +17,25 @@ fun testEnumEntries() {
 
 /**
  * Un enumerado se puede considerar una clase de objetos para la cual se declaran
- * explícitamente en código fuente todas sus instancias
+ * explícitamente en código fuente TODAS sus instancias
  *
  * Es decir, para el caso del tipo Palo solamente existirán 4 objetos (instancias del tipo)
  * y las referencias para acceder a estos objetos son los nombres OROS, COPAS, ESPADAS y BASTOS
- *
- * Como clases que son pueden tener atributos
  */
 
+
+/**
+ * Como clases que son pueden tener atributos (propiedades)
+ */
+
+
+/**
+ * La clase Suit
+ * Declara en el constructor la propiedad color
+ * Las cuatro instancias de tipo Suit tendrán cada una un color
+ */
 enum class Suit(val color: String) {
-    Diamonds("red"),
+    Diamonds("red"), // Al construir la instancia proporcionamos el color en el constructor
     Hearts("red"),
     Clubs("black"),
     Spades("black"),

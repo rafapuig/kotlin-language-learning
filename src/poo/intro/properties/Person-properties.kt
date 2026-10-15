@@ -1,4 +1,4 @@
-package poo.intro.properties2
+package poo.intro.properties
 
 /**
  * En Kotlin una propiedad es la combinación de lo que equivaldría en Java a:

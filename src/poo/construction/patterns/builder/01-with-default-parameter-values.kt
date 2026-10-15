@@ -1,4 +1,4 @@
-package poo.construction.builder
+package poo.construction.patterns.builder
 
 data class Person(
     val name: String = "Anónimo",

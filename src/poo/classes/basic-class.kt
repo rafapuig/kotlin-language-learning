@@ -1,4 +1,4 @@
-package poo.classes.basic
+package poo.classes
 
 class Person
 

@@ -17,13 +17,19 @@ data class Person(
 
     companion object Comparison {
 
+        // Es más joven (menor edad) el que nace despues (fecha nacimiento mayor)
         val ageComparator = Comparator<Person> { o1: Person, o2: Person ->
-            compareValues(o2.birth, o1.birth)
+            compareValues(o2.birth, o1.birth) // Ponemos invertidos o2 y o1
         }
 
         val nameComparator = Comparator<Person> { o1, o2 ->
             compareValues(o1.firstName, o2.firstName)
         }
+
+        val fullNameComparator = Comparator<Person> { p1, p2 ->
+            compareValuesBy(p1,p2, Person::lastName, Person::firstName)
+        }
+
 
         val byFullNameComparator =
             compareBy<Person> { it.lastName }.thenBy { it.firstName }

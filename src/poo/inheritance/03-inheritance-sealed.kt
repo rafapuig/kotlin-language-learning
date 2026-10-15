@@ -1,8 +1,17 @@
 package poo.inheritance.sealed
 
+/**
+ * Cuando una clase está sellada, implícitamente está abierta a la extension
+ * (no es necesario usar open)
+ *
+ * El constructor de la clase sellada es protected por defecto, no puede ser public
+ */
+sealed class Person protected constructor(val name: String)
 
-sealed class Person(val name: String)
 
+/**
+ * Las clases Man y Woman pueden llamar al constructor de Person porque hereda de ella
+ */
 class Man(name: String) : Person(name)
 class Woman(name: String) : Person(name)
 
@@ -20,4 +29,9 @@ fun main() {
 
     processPerson(man)
     processPerson(woman)
+
+    /**
+     * Como el constructor es protected no se puede crear objetos directamente de la clase sellada Person
+     */
+    //val person = Person("X") // ERROR
 }

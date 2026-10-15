@@ -1,8 +1,8 @@
 package poo.enums.dominoes
 
 enum class DominoTileType(val description: String) {
-    DOUBLE("Both sides have the same number"),
-    MIXED("Each side has a different number");
+    DOUBLE("Ambos lados tiene el mismo numero"),
+    MIXED("Cada lado tiene un número diferente");
 
     val isDouble get() = this == DOUBLE
 }

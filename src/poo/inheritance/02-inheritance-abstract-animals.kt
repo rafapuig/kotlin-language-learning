@@ -28,6 +28,7 @@ class Cat(name: String) : Animal(name) {
     }
 }
 
+
 fun useAnimal(animal: Animal) {
     animal.display()
     animal.makeSound()
@@ -36,6 +37,7 @@ fun useAnimal(animal: Animal) {
 fun Animal.use() {
     useAnimal(this)
 }
+
 
 fun main() {
     val cat = Cat("Garfield")

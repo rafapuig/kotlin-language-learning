@@ -1,11 +1,14 @@
 package poo.objects.nested.companion.factory
 
+import generics.runtime.reified.accesors.canonical
+
 
 enum class Gender { MALE, FEMALE }
 
 /**
- * La clase persona es extensible (puede ser usada como superclase)
- * para ello, hay que abrirla con la palabra clave open
+ * La clase persona debe ser extensible (puede ser usada como superclase)
+ * para ello, hay que abrirla a la extension explícitamente (hacerla heredable)
+ * con la palabra clave `open`
  */
 /**
  * El constructor es un "miembro" privado
@@ -20,7 +23,7 @@ open class Person private constructor(val name: String, val gender: Gender) {
      * en función de los parámetros de entrada del metodo factoría
      */
     companion object Factory {
-        fun create(name: String, gender: Gender): Person =
+        fun of(name: String, gender: Gender): Person =
             when (gender) {
                 Gender.MALE -> Man(name)
                 Gender.FEMALE -> Woman(name)
@@ -33,11 +36,11 @@ open class Person private constructor(val name: String, val gender: Gender) {
      * Para que un miembro sea reemplazable se debe abrir con la palabra open
      */
     open fun describe() {
-        println("$name es una persona de genero $gender")
+        println("$name es una persona de género $gender")
     }
 
     /**
-     * La clase Man es una subclase de Person
+     * La clase Man es una subclase (anidada) de Person
      * El constructor primario debe llamar al constructor de la clase base
      */
     private class Man(name: String) : Person(name, Gender.MALE) {
@@ -63,9 +66,16 @@ open class Person private constructor(val name: String, val gender: Gender) {
 
 fun main() {
 
-    val adan = Person.create("Adan", Gender.MALE)
-    val eva = Person.create("Eva", Gender.FEMALE)
+    // Creamos a Adan, que será un objeto de tipo Hombre
+    val adan = Person.of("Adan", gender = Gender.MALE)
+
+    // Creamos a Eva, que será de tipo Mujer (por usar como argumento para gender Gender.FEMALE)
+    val eva = Person.of("Eva", gender = Gender.FEMALE)
 
     adan.describe()
     eva.describe()
+
+    // Comprobamos los tipos de los objetos adan y eva
+    println(adan.javaClass.canonicalName)
+    println(eva.javaClass.name)
 }

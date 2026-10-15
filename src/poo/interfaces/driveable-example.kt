@@ -1,21 +1,23 @@
 package poo.interfaces
 
-// Definimos una interfaz
+// Definimos una interface
 interface Drivable {
     fun drive()
     fun stop()
 }
 
-// Clase que implementa la interfaz
+
+// Clase que implementa la interface
 class Car : Drivable {
     override fun drive() {
-        println("El coche está conduciendo.")
+        println("El coche se está conduciendo.")
     }
 
     override fun stop() {
         println("El coche se ha detenido.")
     }
 }
+
 
 // Otra clase que implementa la interfaz
 class Bike : Drivable {
@@ -28,8 +30,9 @@ class Bike : Drivable {
     }
 }
 
+
 // Función que recibe cualquier objeto Drivable
-fun startJourney(vehicle: Drivable) {
+fun performMovement(vehicle: Drivable) {
     vehicle.drive()
     vehicle.stop()
 }
@@ -40,8 +43,8 @@ fun main() {
     val myBike = Bike()
 
     println("Trayecto con el coche:")
-    startJourney(myCar)
+    performMovement(myCar)
 
     println("\nTrayecto con la bicicleta:")
-    startJourney(myBike)
+    performMovement(myBike)
 }

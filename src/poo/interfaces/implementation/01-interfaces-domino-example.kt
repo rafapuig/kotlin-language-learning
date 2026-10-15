@@ -1,15 +1,19 @@
-package poo.interfaces.domino
+package poo.interfaces.implementation
 
 /**
  * Interface que define el comportamiento de una ficha de dominó
  */
 interface DominoTile {
+
+    /** Propiedades abstractas de solo lectura (habrá que implementar su getter) */
     val left: Int
     val right: Int
 
     fun canConnectWith(other: DominoTile): Boolean
+
     fun flip(): DominoTile
 }
+
 
 // Implementación concreta de una ficha estándar
 class StandardTile(
@@ -17,14 +21,13 @@ class StandardTile(
     override val right: Int
 ) : DominoTile {
 
-    override fun canConnectWith(other: DominoTile): Boolean {
-        return this.right == other.left || this.right == other.right ||
+    override fun canConnectWith(other: DominoTile) =
+        this.right == other.left || this.right == other.right ||
                 this.left == other.left || this.left == other.right
-    }
 
-    override fun flip(): DominoTile {
-        return StandardTile(right, left)
-    }
+
+    override fun flip(): DominoTile = StandardTile(right, left)
+
 
     override fun toString(): String = "[$left|$right]"
 }
@@ -51,6 +54,10 @@ class Player(val name: String) {
         // Encontrar en la lista de fichas la primera que puede jugar
         val playable = hand.find { it.left == boardEnd || it.right == boardEnd }
 
+        /* Código equivalente a lo que viene a continuación pero mas Kotlin idiomatico */
+        //return playable?.also { hand.remove(it) }
+
+
         // Si se ha encontrado una ficha jugable ...
         if (playable != null) {
             // Quitarla de la lista de fichas del jugador
@@ -62,6 +69,7 @@ class Player(val name: String) {
         return null
     }
 }
+
 
 // Función principal de prueba
 fun main() {

@@ -9,25 +9,28 @@ import java.time.temporal.ChronoUnit
 
 fun LocalDate?.age() = this?.until(LocalDate.now())?.years
 
+
 data class Person(
     val firstName: String,
     val lastName: String = "",
     val birth: LocalDate? = null
 ) : Comparable<Person> {
 
+    /** Propiedad calculada age, que obtiene su valor a partir de la propiedad birth */
     val age: Int?
-        get() = birth.age()
+        get() = birth.age() // No es necesario el operador ?. para llamar a un metodo de extension con receptor anulable
 
 
     companion object Comparison {
         /**
          * Expresión Objeto
-         * utilizada para crear un objeto de tipo anónimo
+         * utilizada para crear un objeto de tipo anónimo (que implementa la interface Comparator<Person>)
+         * e inicializar la propiedad nameComparator
          */
         val nameComparator = object : Comparator<Person> {
 
             override fun compare(p1: Person, p2: Person): Int {
-                if (p1 === p2) return 0
+                if (p1 === p2) return 0 // Si son la misma persona -> igual a sí misma
                 /*val lastNameComparison = p1.lastName.compareTo(p2.lastName)
                 if (lastNameComparison != 0) return lastNameComparison*/
                 p1.lastName.compareTo(p2.lastName).also { comparison ->
@@ -64,6 +67,9 @@ data class Person(
     }
 }
 
+/**
+ * Propiedad de extension del objeto companion Comparison en Person
+ */
 val Person.Comparison.fullNameComparator: Comparator<Person>
     get() = compareBy<Person> { it.lastName }.thenBy { it.firstName }
 

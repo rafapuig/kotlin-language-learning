@@ -1,4 +1,4 @@
-import poo.intro.properties2.Person;
+import poo.intro.properties.Person;
 
 void main() {
     // Creamos en Java una instancia de la clase Person definida en Kotlin

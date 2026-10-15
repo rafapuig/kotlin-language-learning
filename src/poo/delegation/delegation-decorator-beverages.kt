@@ -23,7 +23,8 @@ class Decaf : Beverage {
 }
 
 /**
- * El objeto Espresso (mejor un singleton para las bebidas base porque no hace falta crear multiples)
+ * El objeto Espresso
+ * (mejor un singleton para las bebidas base porque no hace falta crear multiples instancias iguales)
  * Es otra concreción de bebida
  */
 
@@ -32,13 +33,25 @@ object Espresso : Beverage {
     override val cost = 3.0
 }
 
+/**
+ * Objeto LongCoffee (cafe largo)
+ */
 object LongCoffee : Beverage {
     override val description = "Café largo"
     override val cost = 3.5
 }
 
+
 /**
- * La clase Milk es un decorador
+ * Decoradores
+ *
+ * Un decorador
+ * implementa la interface (Beverage)
+ * y recibe la implementación que quiere extender por composición en lugar de heredar
+*/
+
+/**
+ * La clase Milk es un decorador de bebidas
  */
 class Milk(private val beverage: Beverage) : Beverage by beverage {
     override val cost = beverage.cost + 1.0
@@ -61,7 +74,7 @@ class Sugar(private val beverage: Beverage) : Beverage by beverage {
  */
 class Tip(amount: Double, private val beverage: Beverage) : Beverage by beverage {
     override val cost = beverage.cost + amount
-    // No se modifica la descripción
+    // No se modifica la descripción (solo el coste)
 }
 
 
@@ -90,6 +103,10 @@ class Ginger(private val beverage: Beverage) : Condiment(beverage) {
 }
 
 
+/**
+ * Funciones de extension de la interface Beverage
+ */
+
 fun Beverage.milked(): Beverage = Milk(this)
 fun Beverage.whipped(): Beverage = Whip(this)
 fun Beverage.chocolated(): Beverage = Chocolate(this)
@@ -100,6 +117,22 @@ fun Beverage.tip(amount: Double): Beverage = Tip(amount, this)
 
 fun Beverage.printInfo() {
     println("Un $description cuesta $cost")
+}
+
+
+
+fun testDecorators() {
+    val chocoMilkDecaf = Chocolate(Milk(Decaf()))
+    val milkedExpresso = Milk(Espresso)
+
+    milkedExpresso.printInfo()
+    chocoMilkDecaf.printInfo()
+
+    val whippedMilkedDecaf = Whip(Milk(Decaf()))
+    whippedMilkedDecaf.printInfo()
+
+    val doubleWhippedMilkedLongCoffee = Whip(Whip(Milk(LongCoffee)))
+    doubleWhippedMilkedLongCoffee.printInfo()
 }
 
 fun testExtensionFunctions() {
@@ -128,16 +161,6 @@ fun testExtensionFunctions() {
 }
 
 fun main() {
-    val chocoMilkDecaf = Chocolate(Milk(Decaf()))
-    val milkedExpresso = Milk(Espresso)
-
-    milkedExpresso.printInfo()
-    chocoMilkDecaf.printInfo()
-
-    val whippedMilkedDecaf = Whip(Milk(Decaf()))
-    whippedMilkedDecaf.printInfo()
-
-    val doubleWhippedMilkedLongCoffee = Whip(Whip(Milk(LongCoffee)))
-
+    testDecorators()
     testExtensionFunctions()
 }

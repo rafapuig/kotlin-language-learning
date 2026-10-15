@@ -44,7 +44,9 @@ class Employee private constructor(
 
 }
 
+
 fun main() {
+    // Crea un objeto Employee mediante el constructor secundario
     val manEmployee = Employee("Armando Bronca Segura", 35, 1900)
 
     println(manEmployee.name)
@@ -52,5 +54,8 @@ fun main() {
     println(manEmployee.salary)
 
     val person: Person = manEmployee
+    println(person.name)
+    println(person.age)
+    //println(person.salary) // ERROR, salary no forma parte de la interfaz de Person
 }
 

@@ -13,10 +13,8 @@ class Person(val name: String) {
      * lo que implica una sintaxis equivalente a Java
      * (En este caso Person)
      * - No es necesario asignar un nombre al objeto companion, por defecto tendrá como nombre `Companion`
-     *
      */
     companion object {
-
         /**
          * La propiedad `population` pertenece al objeto companion
          * Desde fuera de la clase se accede mediante Person.population
@@ -73,7 +71,7 @@ fun Person.printConyugeInfo() =
 
 
 /**
- * Metodo de extension de un companion object
+ * Metodo de extensión de un companion object
  * Añadimos el metodo al objeto companion (no a la clase contenedora)
  * La sintaxis es fun <nombre-clase-contenedora>.<nombre-objeto-companion>.<nombre-metodo>
  * Si no se ha explicitado nombre del objeto companion, entonces el nombre es Companion

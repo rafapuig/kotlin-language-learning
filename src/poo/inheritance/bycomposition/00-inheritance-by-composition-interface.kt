@@ -9,6 +9,8 @@ package poo.inheritance.composition.interfaces
 interface Person {
     var name: String
     var age: Int
+
+    fun greet()
 }
 
 
@@ -21,7 +23,9 @@ interface Person {
 class PersonImpl(
     override var name: String,
     override var age: Int
-) : Person
+) : Person {
+    override fun greet() = println("Hola, me llamo $name")
+}
 
 /**
  * La clase Employee
@@ -78,9 +82,16 @@ class Employee(
             _super.age = value
         }
 
+    /**
+     * La implementación de greet delega en la implementación de la
+     * persona que todo empleado lleva dentro
+     */
+    override fun greet() = _super.greet()
+
 }
 
 fun main() {
+    // Creamos un objeto Employee
     val employee = Employee("Armando Bronca Segura", 35, 1900)
 
     /**
@@ -94,6 +105,7 @@ fun main() {
         println(name)
         println(age)
         println(salary)
+        greet()
     }
 
     /**
@@ -106,6 +118,7 @@ fun main() {
     with(person) {
         println(name)
         println(age)
+        greet()
     }
 
 }

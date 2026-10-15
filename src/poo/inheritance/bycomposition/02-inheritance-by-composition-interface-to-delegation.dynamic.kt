@@ -44,8 +44,8 @@ class Employee(var _super: Person, var salary: Int) : Person {
 
 fun printEmployeeInfo(manEmployee: Employee) {
     with(manEmployee) {
-        println("Genero: $gender")
         println("Nombre: $name")
+        println("Genero: $gender")
         println("Edad: $age años")
         println("Salario: $salary €")
     }

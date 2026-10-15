@@ -16,6 +16,7 @@ value class Kilometer(val value: Int) : Distance {
         get() = value * 1000
 }
 
+
 object DistanceAdder {
 
     var total : Int = 0
@@ -25,7 +26,8 @@ object DistanceAdder {
     }
 }
 
-operator fun Distance.plus(distance: Distance): Distance = Meter(amount + distance.amount)
+operator fun Distance.plus(distance: Distance): Distance =
+    Meter(amount + distance.amount)
 
 
 fun main() {

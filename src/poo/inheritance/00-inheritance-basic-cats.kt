@@ -40,7 +40,7 @@ open class WildCat(name: String) : Cat(name) {
     /**
      * El metodo makeSound es reemplazado en la clase derivada,
      * pero a su vez es declarado no reemplazable en las subclases
-     * mediante la palabra clave final
+     * mediante la palabra clave `final`
      */
     final override fun makeSound() {
         println("FFFFFFF!!!")
@@ -74,6 +74,7 @@ class BigWildCat(name: String) : WildCat(name) {
         println("Y morisco!!!")
     }
 }
+
 
 fun useCat(cat: Cat) {
     println("Testeando el gato ${cat.name} de tipo ${cat.javaClass.simpleName}")

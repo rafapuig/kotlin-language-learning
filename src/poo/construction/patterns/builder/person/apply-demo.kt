@@ -1,4 +1,4 @@
-package poo.construction.builder.person
+package poo.construction.patterns.builder.person
 
 data class Person(var name: String, var age: Int)
 

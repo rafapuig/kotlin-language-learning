@@ -14,6 +14,16 @@ interface Moveable {
     }
 }
 
+
+class Shape : Moveable {
+    /**
+     * Implementación de las propiedades abstractas en el cuerpo de la clase
+     */
+    override var x: Double = 0.0
+    override var y: Double = 0.0
+}
+
+
 /**
  * Clase Actor
  * implementadora de la interface Moveable
@@ -43,17 +53,6 @@ class Actor(
 }
 
 
-
-class Shape : Moveable {
-    /**
-     * Implementación de las propiedades abstractas en el cuerpo de la clase
-     */
-    override var x: Double = 0.0
-    override var y: Double = 0.0
-}
-
-
-
 fun testMoveableActor() {
     val moveable: Moveable = Actor(10.0,10.0)
 
@@ -70,7 +69,7 @@ fun testMoveableActor() {
 
 
 fun testMoveableShape() {
-    //val shape = Shape(10.0, 10.0) // ERROR, aqui no podemos inicializar las propiedades durante la contrucción
+    //val shape = Shape(10.0, 10.0) // ERROR, aquí no podemos inicializar las propiedades durante la contrucción
 
     val shape = Shape()
     println(shape)
