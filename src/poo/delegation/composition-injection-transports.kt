@@ -73,19 +73,27 @@ class Human(val name: String) : Driver() {
 
 fun main() {
 
-    val humanDriver = Human("Bautista")
-
+    // Creamos un coche con motor de combustion pilotado por el robot
     val autopilotCombustionEngineCar: Transport = Car(CombustionEngine).setDriver(Robot)
     autopilotCombustionEngineCar.deliver("Madrid", "Paquete 001")
 
+    // Creamos un conductor humano
+    val humanDriver = Human("Bautista")
+
+    // Creamos un camion con motor eléctrico
     val electricEngineTruck: Transport = Truck(ElectricEngine())
     with(electricEngineTruck) {
+        // Establecemos el robot como conductor
         setDriver(Robot)
+        // Hacemos una entrega
         deliver("Valencia", "Paquete 002")
+        // Ahora, establecemos al humano como conductor
         setDriver(humanDriver)
+        // Y hacemos otra entrega
         deliver("Barcelona", "Paquete 003")
     }
 
+    // Creamos un camion con motor de combustión
     val combustionEngineTruck: Transport = Truck(CombustionEngine)
     combustionEngineTruck.setDriver(humanDriver).deliver("Bilbao", "Paquete 004")
 

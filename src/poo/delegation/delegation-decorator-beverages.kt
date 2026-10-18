@@ -103,22 +103,9 @@ class Ginger(private val beverage: Beverage) : Condiment(beverage) {
 }
 
 
-/**
- * Funciones de extension de la interface Beverage
- */
-
-fun Beverage.withMilk(): Beverage = Milk(this)
-fun Beverage.whipped(): Beverage = Whip(this)
-fun Beverage.withChocolate(): Beverage = Chocolate(this)
-fun Beverage.withSugar(): Sugar = Sugar(this)
-fun Beverage.withGinger(): Beverage = Ginger(this)
-fun Beverage.tipped(amount: Double): Beverage = Tip(amount, this)
-
-
 fun Beverage.printInfo() {
     println("Un $description cuesta $cost")
 }
-
 
 
 fun testDecorators() {
@@ -134,6 +121,18 @@ fun testDecorators() {
     val doubleWhippedMilkedLongCoffee = Whip(Whip(Milk(LongCoffee)))
     doubleWhippedMilkedLongCoffee.printInfo()
 }
+
+
+/**
+ * Funciones de extension de la interface Beverage
+ */
+
+fun Beverage.withMilk(): Beverage = Milk(this)
+fun Beverage.whipped(): Beverage = Whip(this)
+fun Beverage.withChocolate(): Beverage = Chocolate(this)
+fun Beverage.withSugar(): Sugar = Sugar(this)
+fun Beverage.withGinger(): Beverage = Ginger(this)
+fun Beverage.tipped(amount: Double): Beverage = Tip(amount, this)
 
 
 fun testExtensionFunctions() {
