@@ -39,21 +39,26 @@ val cities = mutableListOf<String>() // En la función genérica, explicitamos e
 /**
  * CLASES E INTERFACES GENÉRICAS
  *
- * Para declarar una clase (o interfaces) como genérica
+ * Para declarar una clase (o interface) como genérica
  * se usan los <> después del nombre de la clase
  * con los nombres de los parámetros de tipo dentro de los <>
  *
  * Los parámetros de tipo se pueden usar dentro del cuerpo de la clase
  * Para indicar
  * - el tipo de una propiedad
- * - el tipo un parámetro de entrada de un metodo
+ * - el tipo de un parámetro de entrada de un metodo
  * - el tipo de retorno de un metodo
  * - el argumento de tipo si en alguno de los casos anteriores se trata de un tipo genérico
  */
 
 class MyGenericClass<T, R>(intProp: R) {
+    // R indica el tipo de la propiedad
     var prop: R = intProp
+
+    // T indica el tipo del parámetro de entrada y R el tipo de retorno del metodo
     fun method1(param: T): R = prop
+
+    // R es el argumento de tipo del tipo genérico List
     val listProp: List<R> = listOf(prop)
 }
 
@@ -78,6 +83,7 @@ class DoubleList() : List<Double> by ArrayList<Double>()
  * El argumento de tipo puede ser específico como en los ejemplos anteriores
  * o, si la subclase es genérica (habremos declarado algún parámetro de tipo)
  * el parámetro de tipo declarado en la subclase se puede usar como argumento de tipo
+ * para el tipo genérico de la clase base
  */
 
 class MyList<T> : ArrayList<T>()

@@ -50,6 +50,7 @@ class Beverages {
 
 }
 
+/* Condiments */
 
 class Milk implements Beverage {
 

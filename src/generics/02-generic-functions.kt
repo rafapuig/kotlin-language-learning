@@ -3,19 +3,19 @@ package generics.functions
 /**
  * FUNCIONES GENÉRICAS
  *
- * Además de tipos (clase o interfaces) genéricas
+ * Además de tipos (clases o interfaces) genéricas
  * también podemos declarar funciones genéricas
  *
- * Las funciones genéricas declaran parámetros de tipo
+ * Las funciones genéricas declaran parámetros de tipo.
  * Cuando se llama a una función genérica,
  * además de proporcionar los argumentos de los parámetros de entrada,
  * debemos proporcionar los argumentos de tipo para especificar los
- * valores de los parámetros de tipo de la función genérica
+ * valores de los parámetros de tipo de la función genérica.
  */
 
 /**
- * La función es genérica dado que declara un parámetro de tipo
- * con identificador T
+ * La función printAndReturn es genérica
+ * dado que declara un parámetro de tipo con identificador T
  * El parámetro de tipo se puede usar para
  * - declarar el tipo del parámetro de entrada
  * - declarar el tipo de retorno
@@ -51,22 +51,25 @@ val friends = listOf("Emilio", "Ramon", "Raul", "Rafa")
 val fruits: List<String> = listOf<String>("Manzana", "Banana", "Piña")
 
 
-fun testInferredArgumentTypeCall() {
-    val n = printAndReturn(45)
-    n.display()
-    val reversed = process(friends)
-    reversed.display()
-    val middle = fruits.middle
-}
-
-
 fun testExplicitArgumentTypeCall() {
+    // Al llamar a la función genérica proporcionamos
+    // - los argumentos de tipo: T - Int
+    // - los argumentos para los parámetros de entrada: t - 45, como t es de tipo T -> t es Int
     val n = printAndReturn<Int>(45)
     n.display<Int>()
     val reversed = process<String>(friends)
     reversed.display<List<String>>()
 
     //val middle = fruits.middle<String> // En propiedades no se puede explicitar
+    val middle = fruits.middle
+}
+
+
+fun testInferredArgumentTypeCall() {
+    val n = printAndReturn(45)
+    n.display()
+    val reversed = process(friends)
+    reversed.display()
     val middle = fruits.middle
 }
 

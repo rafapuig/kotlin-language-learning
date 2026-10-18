@@ -2,8 +2,9 @@ package generics.type.parameter.constraints
 
 
 /**
- * Las restricciones aplicadas a un parámetro de tipo
+ * RESTRICCIONES A LOS PARÁMETROS DE TIPO
  *
+ * Las restricciones aplicadas a un parámetro de tipo
  * nos permiten limitar los tipos que se pueden usar como argumento
  */
 

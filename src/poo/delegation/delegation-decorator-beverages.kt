@@ -107,12 +107,12 @@ class Ginger(private val beverage: Beverage) : Condiment(beverage) {
  * Funciones de extension de la interface Beverage
  */
 
-fun Beverage.milked(): Beverage = Milk(this)
+fun Beverage.withMilk(): Beverage = Milk(this)
 fun Beverage.whipped(): Beverage = Whip(this)
-fun Beverage.chocolated(): Beverage = Chocolate(this)
-fun Beverage.sugar(): Sugar = Sugar(this)
-fun Beverage.ginger(): Beverage = Ginger(this)
-fun Beverage.tip(amount: Double): Beverage = Tip(amount, this)
+fun Beverage.withChocolate(): Beverage = Chocolate(this)
+fun Beverage.withSugar(): Sugar = Sugar(this)
+fun Beverage.withGinger(): Beverage = Ginger(this)
+fun Beverage.tipped(amount: Double): Beverage = Tip(amount, this)
 
 
 fun Beverage.printInfo() {
@@ -123,9 +123,9 @@ fun Beverage.printInfo() {
 
 fun testDecorators() {
     val chocoMilkDecaf = Chocolate(Milk(Decaf()))
-    val milkedExpresso = Milk(Espresso)
+    val milkedEspresso = Milk(Espresso)
 
-    milkedExpresso.printInfo()
+    milkedEspresso.printInfo()
     chocoMilkDecaf.printInfo()
 
     val whippedMilkedDecaf = Whip(Milk(Decaf()))
@@ -135,30 +135,32 @@ fun testDecorators() {
     doubleWhippedMilkedLongCoffee.printInfo()
 }
 
+
 fun testExtensionFunctions() {
 
-    val chocoMilkDecaf = Decaf().milked().chocolated()
+    val chocoMilkDecaf = Decaf().withMilk().withChocolate()
     val dobleWhipDecaf = Decaf().whipped().whipped()
 
-    val milkedEspresso = Espresso.milked()
-    val whippedChocoLong = LongCoffee.whipped().chocolated()
-    val doubleWhippedMilkedLongCoffee = LongCoffee.whipped().whipped().milked()
+    val espressoWithMilk = Espresso.withMilk()
+    val longCoffeeWhippedWithChocolate = LongCoffee.whipped().withChocolate()
+    val longCoffeeDoubleWhippedWithMilk = LongCoffee.whipped().whipped().withMilk()
 
-    val longCoffeeWithSugar = LongCoffee.sugar()
-    val milkedLongCoffeeWithSugar = LongCoffee.milked().sugar()
-    val espressoWithGinger = Espresso.ginger()
+    val longCoffeeWithSugar = LongCoffee.withSugar()
+    val longCoffeeWithMilkAndSugar = LongCoffee.withMilk().withSugar()
+    val espressoWithGinger = Espresso.withGinger()
 
-    val espressoWithSugarWithTip = Espresso.tip(0.6).sugar().milked()
+    val espressoTippedWithSugarAndMilk = Espresso.tipped(0.6).withSugar().withMilk()
 
-    milkedEspresso.printInfo()
+    espressoWithMilk.printInfo()
     chocoMilkDecaf.printInfo()
     dobleWhipDecaf.printInfo()
-    whippedChocoLong.printInfo()
+    longCoffeeWhippedWithChocolate.printInfo()
     longCoffeeWithSugar.printInfo()
-    milkedLongCoffeeWithSugar.printInfo()
+    longCoffeeWithMilkAndSugar.printInfo()
     espressoWithGinger.printInfo()
-    espressoWithSugarWithTip.printInfo()
+    espressoTippedWithSugarAndMilk.printInfo()
 }
+
 
 fun main() {
     testDecorators()
