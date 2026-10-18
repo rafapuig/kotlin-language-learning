@@ -51,7 +51,7 @@ fun findMaxByName() {
     }
 
     val max = friends.findMax(byNameComparator)
-    println("Último alfabeticamente = $max")
+    println("Último alfabéticamente = $max")
 }
 
 

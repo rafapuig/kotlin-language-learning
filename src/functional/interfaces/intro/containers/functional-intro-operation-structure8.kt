@@ -24,6 +24,7 @@ fun <T ,K: Comparable<K>> Array<T>.findMaxBy(extractor: KeyExtractor<T,K>): T? {
         var maxKey : K = this.extract(maxElement)
         for (elem in slice(1 until size)) {
             val key = this.extract(elem)
+            // Comparamos el valor clave de elemento con el valor clave del elemento con el máximo valor de la clave
             if (key > maxKey) {
                 maxElement = elem
                 maxKey = this.extract(elem)

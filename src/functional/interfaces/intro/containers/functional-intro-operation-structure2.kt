@@ -11,7 +11,7 @@ val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
  */
 object ByAgeComparator : Comparator<Person> {
     override fun compare(p1: Person, p2: Person): Int {
-        return compareValues(p1.age, p1.age)
+        return compareValues(p1.age, p2.age)
     }
 }
 
@@ -22,11 +22,11 @@ object ByAgeComparator : Comparator<Person> {
  */
 
 object ByNameComparator : Comparator<Person> {
-    override fun compare(p1: Person, p2: Person) = compareValues(p1.age, p1.age)
+    override fun compare(p1: Person, p2: Person) = compareValues(p1.name, p1.name)
 }
 
 /**
- * Estos singletones representan distintas estrategias para comparar objetos Person
+ * Estos singletons representan distintas estrategias para comparar objetos Person
  * Como implementan la misma interface son intercambiables entre si
  *
  * La función findMax que espera una referencia a un objeto que implemente Comparable<Person>

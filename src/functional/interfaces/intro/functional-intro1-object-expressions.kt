@@ -1,11 +1,11 @@
-package functional.intro1
+package functional.interfaces.intro1
 
 interface IntToInt {
     fun apply(number: Int) : Int
 }
 
 
-fun testInToIntInterfaceWithObjectExpresion1() {
+fun testIntToIntInterfaceWithObjectExpresion1() {
 
     // Mediante un objeto expresión creamos una instancia de un objeto que implementa la interface
     // al mismo tiempo que indicamos la implementación del metodo abstracto de la interface
@@ -34,7 +34,7 @@ fun testInToIntInterfaceWithObjectExpresion2() {
 
 
 fun main() {
-    testInToIntInterfaceWithObjectExpresion1()
+    testIntToIntInterfaceWithObjectExpresion1()
     testInToIntInterfaceWithObjectExpresion2()
 }
 

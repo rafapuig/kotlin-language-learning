@@ -1,4 +1,4 @@
-package functional.intro.buttons5
+package functional.interfaces.intro.observer6.functiontypes
 
 abstract class View
 
@@ -15,7 +15,7 @@ class Button : View() {
         onClick = listener
     }
 
-    fun onClick() {
+    fun performClick() {
         onClick?.invoke(this)
     }
 
@@ -27,16 +27,25 @@ fun demo1() {
     val listener = { v: View -> println("button is clicked") }
 
     button.setOnClickListener(listener)
-    button.onClick()
+    button.performClick()
 }
 
 fun demo2() {
     val button = Button()
     button.setOnClickListener { println("He sido pulsado") }
-    button.onClick()
+    button.performClick()
+}
+
+
+fun demo3() {
+    with(Button()) {
+        setOnClickListener { println("Button clicked") }
+        performClick()
+    }
 }
 
 fun main() {
     demo1()
     demo2()
+    demo3()
 }

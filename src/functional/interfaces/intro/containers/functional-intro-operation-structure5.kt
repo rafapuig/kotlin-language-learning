@@ -8,7 +8,7 @@ val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
 fun Array<Person>.findMax(comparator: Comparator<Person>): Person? {
     if (isEmpty()) return null
     var max: Person = this[0]
-    for (person in slice(1 until size)) {
+    for (person in slice(1..<size)) {
         if (comparator.compare(person, max) > 0) {
             max = person
         }

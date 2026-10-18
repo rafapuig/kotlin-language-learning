@@ -1,10 +1,7 @@
-package functional.intro.buttons2
+package functional.interfaces.intro.observer4
 
 abstract class View
 
-/**
- * Añadimos fun para convertirlo en un interface funcional
- */
 fun interface OnClickListener {
     fun onClick(button: View)
 }
@@ -18,27 +15,30 @@ class Button : View() {
         clickListener = listener
     }
 
-    fun onClick() {
+    fun performClick() {
         clickListener?.onClick(this)
     }
 
 }
 
+
 fun demo1() {
     val button = Button()
 
-    val listener = OnClickListener { button: View -> println("button is clicked") }
+    val listener = OnClickListener { println("button is clicked") }
 
     button.setOnClickListener(listener)
-    button.onClick()
+    button.performClick()
 }
+
 
 fun demo2() {
     val button = Button()
-    // Se mueve la trailing lambda fuera de los paréntesis
-    button.setOnClickListener (){ button: View -> println("He sido pulsado") }
-    button.onClick()
+    // Se simplifica si la lambda solamente tiene un parámetro (it)
+    button.setOnClickListener { println("He sido pulsado") }
+    button.performClick()
 }
+
 
 fun main() {
     demo1()

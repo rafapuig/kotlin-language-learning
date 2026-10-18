@@ -1,227 +1,122 @@
-package functional.lambdas
+package functional.lambdas.receivers1
 
 /**
+ * Lambdas con receptor (lambdas with receiver)
+ *
  * Permiten llamar a los métodos de un objeto
  * dentro del cuerpo de la lambda
  * sin tener que usar cualificadores (this)
- */
-
-/**
- * with
- * Sirve para realizar operaciones multiples sobre el mismo objeto
- */
-
-/**
- * En esta implementación de la función alphabet
- * se llama varias veces a métodos usando la referencia
- * result
- */
-fun alphabet(): String {
-    val result = StringBuilder()
-    for (letter in 'A'..'Z') {
-        result.append(letter)
-    }
-    result.append("\nNow I know the alphabet!")
-    return result.toString()
-}
-
-/**
- * Ahora usando la scope function with
- */
-
-
-/**
- * La función with que recibe dos parámetros:
- * un receiver de tipo T
- * una lambda con receiver
- * with convierte el primer argumento
- * en el receiver de la lambda pasada como segundo
- * dentro del bloque lambda se accede al receiver con la
- * referencia this
- */
-
-fun alphabetWithVerbose(): String {
-    with(
-        receiver = StringBuilder(),
-        block = {
-            for (letter in 'A'..'Z') {
-                this.append(letter)
-            }
-            this.append("\nNow I know the alphabet!")
-            return toString()
-        })
-}
-
-/**
- * Sacamos el segundo argumento (al ser una lambda) fuera de los paréntesis
- */
-fun alphabetWithExplicitThis(): String {
-    with(StringBuilder()) {
-        for (letter in 'A'..'Z') {
-            this.append(letter)
-        }
-        this.append("\nNow I know the alphabet!")
-        return this.toString()
-    }
-}
-
-
-/**
- * Más simplificada
- * no hace falta calificar las llamadas a métodos del objeto con this.metodo
- * podemos llamar directamente al método
- */
-fun alphabetWith(): String {
-    with(StringBuilder()) {
-        for (letter in 'A'..'Z') {
-            append(letter)
-        }
-        append("\nNow I know the alphabet!")
-        return toString()
-    }
-}
-
-/**
- * El valor que retorna la función with
- * es el resultado de la ejecución del código del cuerpo de la lambda
  *
- * El resultado de una lambda
- * es el resultado de la ultima expresión
- */
-fun alphabetWithExpresionBody() = with(StringBuilder()) {
-    for (letter in 'A'..'Z') {
-        append(letter)
-    }
-    append("\nNow I know the alphabet!")
-    toString() // ultima expresión, es el resultado de la lambda
-}
-
-/**
- * apply
+ * Cumplen el papel de los metodos de instancia
+ * Cuando se ejecuta el código de una lambda con receptor se habrá un objeto receptor
+ * sobre el cual se ha ejecutado la invocación de la lambda (igual que en los metodos de instancia)
  *
- * Se diferencia de with en que
- * - devuelve el objeto receiver (no el resultado de la lambda)
- * - es una función de extensión
- * Su uso más característico es el de inicializar y configurar objetos
- * Ayuda a implementar el patron de diseño Builder
+ * Por tanto, para invocar una lambda con receptor se necesita una referencia a un objeto,
+ * que será el receptor
+ * Dentro del cuerpo de la lambda accedemos a este objeto mediante this
  */
-
-fun alphabetApplyVerbose() = StringBuilder().apply(
-    block = {
-        for (letter in 'A'..'Z') {
-            this.append(letter)
-        }
-        this.append("\nNow I know the alphabet!")
-    }
-).toString()
-
-fun alphabetApply() = StringBuilder().apply {
-    for (letter in 'A'..'Z') {
-        append(letter)
-    }
-    append("\nNow I know the alphabet!")
-}.toString()
-
 
 /**
- * La clase persona es inmutable
+ * El tipo del receptor se indica en el tipo de función de la variable
+ * mediante su clase seguida de un punto y después van los paréntesis para el resto de parámetros
  */
-data class Person(val name: String, val age: Int)
-
-class PersonBuilder {
-    var name = "Anonimo"
-    var age = 0
-    fun build(): Person = Person(name, age)
-}
-
-fun buildPerson(name: String, age: Int): Person =
-    PersonBuilder().apply {
-        this.name = name
-        this.age = age
-    }.build()
 
 /**
- * función build
- *
- * Muy común que Kotlin exista una función buildXXX siendo XXX el nombre de una
- * clase de objetos, que ayuda a construir una instancia de esa clase de objetos
- */
-fun alphabetBuild() = buildString {
-    for (letter in 'A'..'Z') {
-        append(letter)
-    }
-    append("\nNow I know the alphabet!")
-}
-
-fun alphabetBuildVerbose() = buildString(
-    builderAction = {
-        for (letter in 'A'..'Z') {
-            this.append(letter)
-        }
-        this.append("\nNow I know the alphabet!")
-    })
-
-fun buildPerson(builderAction: PersonBuilder.() -> Unit) =
-    PersonBuilder().apply(builderAction).build()
-
-
-/**
- * En Kotlin hay funciones builder que ayudan a crear
- * listas, conjuntos y map de solo lectura como resultado,
- * pero que durante la creación son mutables
- */
-val fibonacci = buildList {
-    addAll(listOf(1, 2))
-    add(3)
-    add(index = 0, element = 1)
-    this += 5
-}
-
-const val shouldAdd = true
-
-val fruits = buildSet {
-    add("manzana")
-    if (shouldAdd) {
-        addAll(listOf("manzana", "banana", "cereza"))
-    }
-}
-
-val medals = buildMap {
-    put("Oro", 1)
-    putAll(listOf("Plata" to 2, "Bronce" to 3))
-}
-
-
-/**
- * also
- *
- * Realizar acciones adicionales con un objeto
- * Es como apply, pero en este caso se accede al receptor de also
- * como argumento de la lambda (dando un nombre o usando el nombre por defecto it)
- * Es más conveniente que apply cuando
- * vamos a llamar a métodos para pasarles como argumento el objeto receiver
- *
- * Devuelve el objeto receptor mediante el cual se llamó a also
+ * Las lambdas con receptor se pueden invocar como si fueran funciones globales (no metodos de instancia)
+ * que reciben como primer argumento el receptor
  */
 
-fun alsoDemo() {
-    val fruits = listOf("manzana", "banana", "cereza")
 
-    // Creamos una lista para guardar los nombres en mayúscula
-    val uppercaseFruits = mutableListOf<String>()
+val textLength: String.() -> Int = {
+    this.length
+}
 
-    // Lista en orden inverso con los nombres de frutas de más de 5 letras
-    val reversedLongFruits = fruits
-        .map { it.uppercase() }
-        .also { uppercaseFruits.addAll(it) } // acción adicional
-        .filter { it.length > 5 }
-        .also { println(it) } // Acción adicional con el objeto
-        .reversed()
 
-    println(uppercaseFruits)
-    println(reversedLongFruits)
+data class Circle(var radius: Float)
+
+val setRadius: Circle.(Float) -> Unit = { newRadius ->
+    this.radius = newRadius
+}
+
+val changeRadius: Circle.(Float) -> Unit = {
+    this.radius = it
+}
+
+
+val translateRectangle: Rectangle.(Int, Int) -> Unit = { offsetX, offsetY ->
+    this.width += offsetX
+    this.height += offsetY
+}
+
+data class Rectangle(var width: Int, var height: Int)
+
+val scaleRectangle: Rectangle.(Int) -> Unit = {
+    this.width *= it
+    this.height *= it
+}
+
+fun testWithStringReceiver() {
+    // El objeto receptor es el String "Perico Palotes" que será this en el cuerpo de la lambda con receptor
+    println("Perico Palotes".textLength())
+
+    // La variable text guarda la referencia a un objeto de tipo String
+    val text = "Hola Kotlin"
+
+    // Se usa text como referencia al objeto receptor en la invocación de la lambda
+    val length = text.textLength()
+    println(length)
+
+    // Invocación de la lambda a traves de la variable textLength
+    // que guarda su referencia como si fuera una función global
+    // El primer argumento de la "llamada" debe ser un valor del tipo del receptor
+    val len = textLength(text)
+    println(len)
+}
+
+
+fun testWithCircleReceiver() {
+
+    val circle = Circle(100f)
+    println(circle)
+
+    circle.setRadius(50f)
+    println(circle)
+
+    circle.changeRadius(80f)
+    println(circle)
+
+    // Invocación de la lambda con receptor de tipo Circle
+    // a traves de la variable que guarda su referencia como si fuera una función global
+    // El primer argumento debe ser un objeto de tipo Circle, el segundo el del parámetro de la lambda (Float)
+    setRadius(circle, 20f)
+    // Invocación de la lambda con receptor de tipo Circle a traves de la variable changeRadius
+    // que guarda su referencia como si fuera una función global
+    changeRadius(circle, 30f)
+}
+
+fun testWithRectangleReceiver() {
+    val rectangle: Rectangle = Rectangle(4, 7)
+    println(rectangle)
+
+    rectangle.scaleRectangle(2)
+    println(rectangle)
+
+    rectangle.translateRectangle(3, 4)
+    println(rectangle)
+
+    // Invocación de la lambda con receptor a traves de la variable que guarda su referencia
+    // como si fuera una función global
+    // Pasamos como primer argumento un objeto Rectangle y luego el resto de argumentos
+    scaleRectangle(rectangle, 2)
+    println(rectangle)
+
+    // Invocación de la lambda a traves de la variable que guarda su referencia como si fuera una función global
+    translateRectangle(rectangle, -1, -2)
+    println(rectangle)
 }
 
 fun main() {
-    alsoDemo()
+    testWithStringReceiver()
+    testWithCircleReceiver()
+    testWithRectangleReceiver()
 }

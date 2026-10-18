@@ -1,13 +1,13 @@
-package functional.intro3
+package functional.interfaces.intro3
 
 interface IntToInt {
     fun apply(number: Int): Int
 }
 
 /**
- * Ahora a la función le vamos a proporcionar ambas casos
- * el comportamiento, operación que debe realizar con el dato
- * y el dato sobre el cual tiene que realizar la operación
+ * Ahora, a la función le vamos a proporcionar ambas cosas
+ * - el comportamiento, operación que debe realizar con el dato
+ * - y el dato sobre el cual tiene que realizar la operación
  */
 fun applyIntToIntOperationToNumber(number: Int, operation: IntToInt): Int {
     val result = operation.apply(number)
@@ -37,16 +37,16 @@ fun testIntToIntInterfaceWithObjectExpression() {
         }
     }
 
-    val result1 = applyIntToIntOperationToNumber(5, square)
-    val result2 = applyIntToIntOperationToNumber(5, triple)
+    val result1 = applyIntToIntOperationToNumber(5, triple)
+    val result2 = applyIntToIntOperationToNumber(5, square)
 
     println("result1 = $result1")
     println("result2 = $result2")
 
-    val result3 = 2.applyIntToIntOperation(square)
+    val result3 = 2.applyIntToIntOperation(triple)
     println("result3 = $result3")
 
-    val result4 = 2.applyIntToIntOperation(triple)
+    val result4 = 2.applyIntToIntOperation(square)
     println("result4 = $result4")
 }
 

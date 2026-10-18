@@ -2,9 +2,6 @@ package functional.intro.buttons3
 
 abstract class View
 
-/**
- * Añadimos fun para convertirlo en un interface funcional
- */
 fun interface OnClickListener {
     fun onClick(button: View)
 }
@@ -18,7 +15,7 @@ class Button : View() {
         clickListener = listener
     }
 
-    fun onClick() {
+    fun performClick() {
         clickListener?.onClick(this)
     }
 
@@ -30,14 +27,14 @@ fun demo1() {
     val listener = OnClickListener { button: View -> println("button is clicked") }
 
     button.setOnClickListener(listener)
-    button.onClick()
+    button.performClick()
 }
 
 fun demo2() {
     val button = Button()
     // Eliminamos los paréntesis de llamada a setOnClickListener porque quedan vacíos
     button.setOnClickListener { button: View -> println("He sido pulsado") }
-    button.onClick()
+    button.performClick()
 }
 
 fun main() {

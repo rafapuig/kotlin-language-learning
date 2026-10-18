@@ -2,7 +2,8 @@ package functional.interfaces.intro
 
 /**
  * Interface StringToInt
- * Es un interface para el cual solamente se define un metodo sin implementation por defecto (Single Abstract Method - SAM)
+ * Es un interface para el cual solamente se define un metodo sin implementation por defecto
+ * (Single Abstract Method - SAM)
  */
 interface StringToInt {
     fun apply(string: String) : Int

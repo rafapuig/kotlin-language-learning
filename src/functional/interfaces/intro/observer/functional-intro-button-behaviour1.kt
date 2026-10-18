@@ -18,7 +18,7 @@ class Button : View() {
         clickListener = listener
     }
 
-    fun onClick() {
+    fun performClick() {
         clickListener?.onClick(this)
     }
 
@@ -27,17 +27,22 @@ class Button : View() {
 fun demo1() {
     val button = Button()
 
+    // Ahora para crear el objeto OnClickListener podemos usar el constructor SAM
     val listener = OnClickListener { button: View -> println("button is clicked") }
 
     button.setOnClickListener(listener)
-    button.onClick()
+    button.performClick()
 }
 
 fun demo2() {
     val button = Button()
+
+    // Si se trata de un argumento no es necesario explicitar la llamada al constructor SAM
     button.setOnClickListener ({ button: View -> println("He sido pulsado") })
-    button.onClick()
+
+    button.performClick()
 }
+
 
 fun main() {
     demo1()

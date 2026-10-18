@@ -22,9 +22,16 @@ val greetToConsoleEx = fun Person.() = this.greet()
 
 
 fun main() {
+
     val person = Person("Perico", 23)
-    println(getAgeFunBB(person))
+
+    // Llamada a la función anónima referenciada por la variable getAgeFunBB
+    val personAge = getAgeFunBB(person)
+    println(personAge)
+
     println(getAgeFunEB(person))
+
+    // Llamada a la función anónima referenciada por la variable greetToConsole
     greetToConsole(person)
 
     // Llamada a la función de extensión pasando el receptor como primer argumento

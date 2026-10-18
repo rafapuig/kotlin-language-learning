@@ -1,8 +1,10 @@
 package functional.functiontypes
 
 /**
+ * TIPOS FUNCION (objetos función como instancias de tipo función)
+ * ---------------------------------------------------------------------------------------------
  * En Kotlin existen los tipos función
- * Sus valores pueden ser:
+ * Sus valores (objetos) pueden ser:
  * - referencias a funciones o miembros
  * - funciones anónimas
  * o directamente literales de función (lambdas)
@@ -16,8 +18,8 @@ package functional.functiontypes
  * La lista de parámetros podría estar vacía si se trata de representar funciones que no reciben ningún argumento
  *
  * El tipo Unit se usa para especificar que una función no devuelve un valor
- * Se puede omitir en la declaración de una función regular
- * Pero en una declaración de tipo de función NO se puede omitir
+ * Se puede omitir en la declaración de una función regular,
+ * pero en una declaración de tipo de función NO se puede omitir
  * porque siempre hay que especificar el tipo de retorno
  */
 fun explicitLambdaParameterTypesDeclaration() {

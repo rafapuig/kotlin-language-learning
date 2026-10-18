@@ -34,7 +34,9 @@ val greetToConsoleLIT: (Person) -> Unit = { it.greet() }
 val greetToConsoleWithReceiver: Person.() -> Unit = { this.greet() }
 
 
+
 fun main() {
+
     val person = Person("Perico Palotes", 29)
 
     var age = getAge(person)

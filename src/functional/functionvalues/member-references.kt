@@ -14,6 +14,7 @@ val getAgeMR = Person::age
 
 val personGreet = Person::greet
 
+val personGreetWithReceiver: Person.() -> Unit = Person::greet
 
 
 fun greet() {
@@ -52,18 +53,29 @@ val isPersonAdult = Person::isAdult
 
 
 fun main() {
+
     val person = Person("Raul", 29)
+
+    // Llamada a una referencia a miembro, la propiedad age de un Person
     println(getAgeMR(person))
+
+    // Llamada a una referencia a miembro, el método greet de un Person
     personGreet(person)
+
+    person.personGreetWithReceiver();
+
 
     /**
      * Podemos tener una referencia a una función declarada a nivel de paquete
      */
     val greetFun = ::greet
     println(greetFun())
+
     run(greetFun)
     run(::greet)
 
+    // la variable createPerson contiene la referencia al constructor de Person,
+    // por tanto, se llama al constructor de la clase Person
     val p = createPerson("Perico", 33)
     println(p)
 

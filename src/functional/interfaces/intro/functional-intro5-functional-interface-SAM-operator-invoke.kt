@@ -1,4 +1,4 @@
-package functional.intro5
+package functional.interfaces.intro5
 
 /**
  * La interface funcional puede declarar como método SAM
@@ -34,7 +34,8 @@ fun testInToIntInterfaceWithLambda() {
     println("result11 = $result11")
 
 
-    val square: IntToInt = IntToInt { number -> number * number }
+    // Si indicamos el tipo de la variable, no es necesario la llamada explicita al constructor SAM
+    val square: IntToInt = { number -> number * number }
     val result2 = square(5)
 
     println("result2 = $result2")
