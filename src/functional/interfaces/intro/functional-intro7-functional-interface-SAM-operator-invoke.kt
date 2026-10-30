@@ -1,8 +1,8 @@
-package functional.interfaces.intro5
+package functional.interfaces.intro7
 
 /**
  * La interface funcional puede declarar como método SAM
- * la sobrecarga del operador de invocación de funciones
+ * la sobrecarga del operador de invocación de funciones: `invoke`
  *
  * En este caso, con simplemente indicar la referencia al objeto seguida de los paréntesis
  * de invocación, se llamará al metodo invoke de la interface
@@ -11,30 +11,29 @@ fun interface IntToInt {
     operator fun invoke(number: Int): Int
 }
 
-fun applyIntToIntOperationToNumber(number: Int, operation: IntToInt): Int {
-    return operation(number)
-}
+fun applyIntToIntOperationToNumber(number: Int, operation: IntToInt) =
+    operation.invoke(number) // Podemos usar explícitamente la llamada al metodo invoke
 
-fun Int.applyIntToIntOperation(operation: IntToInt): Int {
-    return operation(this)
-}
+fun Int.applyIntToIntOperation(operation: IntToInt) =
+    operation(this) // O podemos usar la convención de operador de llamada y solamente usar ()
 
 
 fun testInToIntInterfaceWithLambda() {
 
     val triple: IntToInt = IntToInt { number -> number * 3 }
 
-    // Llamada al metodo invoke usando la sintaxis de operador de llamada ()
-    val result1 = triple(5)
-
     // Llamada explicita al metodo invoke mediante la sintaxis receptor.metodo()
     val result11 = triple.invoke(5)
 
-    println("result1 = $result1")
+    // Llamada al metodo invoke usando la sintaxis de operador de llamada ()
+    val result12 = triple(5)
+
     println("result11 = $result11")
+    println("result12 = $result12")
 
 
-    // Si indicamos el tipo de la variable, no es necesario la llamada explicita al constructor SAM
+    // Si indicamos el tipo de la variable explícitamente,
+    // no es necesario la llamada explicita al constructor SAM
     val square: IntToInt = { number -> number * number }
     val result2 = square(5)
 

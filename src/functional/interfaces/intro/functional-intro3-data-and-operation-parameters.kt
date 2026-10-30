@@ -18,7 +18,7 @@ fun applyIntToIntOperationToNumber(number: Int, operation: IntToInt): Int {
 /**
  * Podemos hacer que el dato sea el objeto receptor si escribimos la función como un metodo de extensión
  */
-fun Int.applyIntToIntOperation(operation: IntToInt) : Int {
+fun Int.applyIntToIntOperation(operation: IntToInt): Int {
     return operation.apply(this)
 }
 
@@ -26,27 +26,26 @@ fun Int.applyIntToIntOperation(operation: IntToInt) : Int {
 fun testIntToIntInterfaceWithObjectExpression() {
 
     val triple: IntToInt = object : IntToInt {
-        override fun apply(number: Int): Int {
-            return number * 3
-        }
+        override fun apply(number: Int) = number * 3
     }
 
     val square: IntToInt = object : IntToInt {
-        override fun apply(number: Int): Int {
-            return number * number
-        }
+        override fun apply(number: Int) = number * number
     }
 
+    /* Llamamos a la función pasando el dato (5) y la operación a realizar con el dato */
     val result1 = applyIntToIntOperationToNumber(5, triple)
     val result2 = applyIntToIntOperationToNumber(5, square)
 
     println("result1 = $result1")
     println("result2 = $result2")
 
-    val result3 = 2.applyIntToIntOperation(triple)
-    println("result3 = $result3")
 
+    /* El dato se puede pasar como un objeto receptor si se usa una función de extension */
+    val result3 = 2.applyIntToIntOperation(triple)
     val result4 = 2.applyIntToIntOperation(square)
+
+    println("result3 = $result3")
     println("result4 = $result4")
 }
 

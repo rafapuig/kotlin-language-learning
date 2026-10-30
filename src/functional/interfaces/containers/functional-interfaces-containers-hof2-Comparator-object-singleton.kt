@@ -22,7 +22,8 @@ object ByAgeComparator : Comparator<Person> {
  */
 
 object ByNameComparator : Comparator<Person> {
-    override fun compare(p1: Person, p2: Person) = compareValues(p1.name, p1.name)
+    override fun compare(p1: Person, p2: Person) =
+        compareValues(p1.name, p1.name)
 }
 
 /**
@@ -52,7 +53,8 @@ object ByNameComparator : Comparator<Person> {
 fun Array<Person>.findMax(comparator: Comparator<Person>): Person? {
     if (isEmpty()) return null
     var max: Person = this[0]
-    for (person in this.slice(1 until size)) {
+    for (person in slice(1 until size)) {
+        // Delegación en el objeto comparador para resolver quien es mayor
         if (comparator.compare(person, max) > 0) {
             max = person
         }

@@ -1,4 +1,4 @@
-package functional.interfaces.intro.observer
+package functional.interfaces.observer
 
 abstract class View
 

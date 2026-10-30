@@ -10,8 +10,8 @@ val friends = arrayOf(Person("Raul", 29), Person("Ramon", 31))
  * El parámetro extract es de tipo función T.() -> K (una función aplicada a un receiver de tipo T)
  */
 fun <T, K : Comparable<K>> Array<T>.findMaxBy(extract: T.() -> K): T? {
-    var max: T = this.firstOrNull() ?: return null
-    for (elem in slice(1 until size)) {
+    var max: T = firstOrNull() ?: return null
+    for (elem in slice(1..lastIndex)) {
         if (elem.extract() > max.extract()) {
             max = elem
         }
@@ -31,6 +31,10 @@ fun findMaxPersonByAge() {
 
 
 fun findMaxPersonByName() {
+    /**
+     * No es necesario el uso del calificador this
+     * (y this.name se puede simplificar como name)
+     */
     val maxPerson = friends.findMaxBy { name }
     println("Último por orden alfabético = $maxPerson")
 }

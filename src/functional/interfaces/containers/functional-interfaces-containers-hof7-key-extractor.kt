@@ -38,16 +38,19 @@ val nameExtractor: KeyExtractor<Person, String> = object : KeyExtractor<Person, 
 
 fun <T, K : Comparable<K>> Array<T>.findMaxBy(extractor: KeyExtractor<T, K>): T? {
     if (isEmpty()) return null
-    var maxElement: T = this[0]
+
+    // El primer elemento se supone el de valor máximo para la clave dada
+    var maxElement: T = first()
 
     // Usamos el extractor para obtener el valor sobre el cual queremos comparar del elemento
     var maxKey: K = extractor.extract(maxElement)
 
-    for (elem  in  slice(1..<size)) {
-        // Extraemos el valor que comparamos del elemento
+    for (elem in slice(1..lastIndex)) {
+        // Extraemos el valor que comparamos del elemento i-estimo
         val key = extractor.extract(elem)
 
-        // Comparamos el valor clave de elemento con el valor clave del elemento con el máximo valor de la clave
+        // Comparamos el valor clave de elemento
+        // con el valor clave del elemento con el máximo valor de la clave
         if (key.compareTo(maxKey) > 0) {
             maxElement = elem
             maxKey = key

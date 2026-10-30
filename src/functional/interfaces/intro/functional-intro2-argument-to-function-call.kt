@@ -1,17 +1,19 @@
 package functional.interfaces.intro2
 
 interface IntToInt {
-    fun apply(number: Int) : Int
+    fun apply(number: Int): Int
 }
 
 /**
- * Supongamos que queremos aplicar una operación, que se proporcionará como valor argumento,
- * sobre un dato del cual disponemos y que se lo proporcionaremos a su vez la operación
+ * Supongamos que queremos aplicar una operación,
+ * que se proporcionará en la llamada a la función como valor argumento,
+ * sobre un dato del cual disponemos en la función y que se lo proporcionaremos a su vez la operación.
  */
-fun applyIntToIntOperationToFive(operation: IntToInt) : Int {
+fun applyIntToIntOperationToFive(operation: IntToInt): Int {
     // Dato del cual disponemos, valor sobre el que queremos aplicar la operación
     val number = 5
     // Pasamos el dato number, a la operación recibida como argumento para obtener un resultado
+    // cuando llamamos a su metodo apply
     val result = operation.apply(number)
     return result
 }
@@ -26,18 +28,14 @@ fun testIntToIntInterfaceWithObjectExpression() {
      * del valor proporcionado como argumento de llamada
      */
     val triple: IntToInt = object : IntToInt {
-        override fun apply(number: Int): Int {
-            return number * 3
-        }
+        override fun apply(number: Int) = number * 3
     }
 
     /**
      * La variable square, igual pero devolviendo el valor al cuadrado
      */
     val square: IntToInt = object : IntToInt {
-        override fun apply(number: Int): Int {
-            return number * number
-        }
+        override fun apply(number: Int) = number * number
     }
 
     // Al llamar a la función applyIntToIntOperationToFive
@@ -49,8 +47,6 @@ fun testIntToIntInterfaceWithObjectExpression() {
     println("El triple de 5 = $tripleOfFive")
     println("5 al cuadrado = $squareOfFive")
 }
-
-
 
 
 fun main() {

@@ -34,8 +34,8 @@ fun <T,K: Comparable<K>> Array<T>.findMaxBy(extractor: KeyExtractor<T, K>): T? {
 fun findMaxPersonByAge() {
     /**
      * Si se usa una lambda como argumento de llamada a una función que espera una referencia
-     * a una instancia de objeto que implemente una interface funcional, no es necesario llamar explícitamente
-     * al constructor SAM
+     * a una instancia de objeto que implemente una interface funcional,
+     * no es necesario llamar explícitamente al constructor SAM
      */
     val oldest = friends.findMaxBy(KeyExtractor { person -> person.age })
     println("Más Viejo = $oldest")
@@ -45,8 +45,8 @@ fun findMaxPersonByAge() {
 fun findMaxPersonByName() {
     /**
      * Si se usa una lambda como argumento de llamada a una función que espera una referencia
-     * a una instancia de objeto que implemente una interface funcional, no es necesario llamar explícitamente
-     * al constructor SAM
+     * a una instancia de objeto que implemente una interface funcional,
+     * no es necesario llamar explícitamente al constructor SAM
      */
     val maxPerson = friends.findMaxBy({ person -> person.name })
     println("Máximo = $maxPerson")

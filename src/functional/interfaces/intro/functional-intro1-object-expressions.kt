@@ -23,9 +23,7 @@ fun testIntToIntInterfaceWithObjectExpresion1() {
 fun testInToIntInterfaceWithObjectExpresion2() {
 
     val square: IntToInt = object : IntToInt {
-        override fun apply(number: Int): Int {
-            return number * number
-        }
+        override fun apply(number: Int) = number * number  // Esta vez, usamos expression body
     }
 
     val result = square.apply(5)

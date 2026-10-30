@@ -14,7 +14,7 @@ fun findOldest(people: Array<Person>): Person? {
     if (people.isEmpty()) return null
 
     // Variable para almacenar la edad de la persona con mayor edad
-    var maxAge : Int = Int.MIN_VALUE
+    var maxAge: Int = Int.MIN_VALUE
     // Variable para almacenar la referencia a la persona de mayor edad
     var oldestPerson: Person? = null
 
@@ -88,11 +88,11 @@ fun findOldest4(people: Array<Person>): Person? {
     if (people.isEmpty()) return null
     var oldestPerson: Person = people[0]
 
-   people.slice(1..<people.size).forEach {person ->
-       if (person.age > oldestPerson.age) {
-           oldestPerson = person
-       }
-   }
+    people.slice(1..<people.size).forEach { person ->
+        if (person.age > oldestPerson.age) {
+            oldestPerson = person
+        }
+    }
 
     return oldestPerson
 }
