@@ -47,17 +47,26 @@ object LongCoffee : Beverage {
  *
  * Un decorador
  * implementa la interface (Beverage)
- * y recibe la implementación que quiere extender por composición en lugar de heredar
+ * y recibe la implementación que quiere extender por composición en lugar de herencia
 */
 
 /**
  * La clase Milk es un decorador de bebidas
+ * Recibe en el constructor una bebida (un objeto que implementa la interface Beverage)
+ * (este objeto puede ser una bebida decorada o no, puesto que una bebida decorada es también una bebida)
+ * Implementa la interface Beverage delegando en el objeto Beverage recibido en el constructor
+ * Reemplaza las propiedades cost y description a partir de la bebida recibida en el constructor
  */
-class Milk(private val beverage: Beverage) : Beverage by beverage {
-    override val cost = beverage.cost + 1.0
+class Milk(
+    private val beverage: Beverage // Bebida base inyectada en el constructor
+) : Beverage by beverage { // implementa la interface delegando en el objeto bebida base
+    override val cost = beverage.cost + 1.0 // Conste de la bebida base mas 1 euro
     override val description = "${beverage.description} con leche"
 }
 
+/**
+ * La clase Chocolate es un decorador de bebidas
+ */
 class Chocolate(private val beverage: Beverage) : Beverage by beverage {
     override val cost = beverage.cost + 0.5
     override val description: String get() = "${beverage.description} con chocolate"
@@ -65,7 +74,12 @@ class Chocolate(private val beverage: Beverage) : Beverage by beverage {
 
 class Sugar(private val beverage: Beverage) : Beverage by beverage {
     // El azúcar es gratis (no modifica el coste)
-    //override val cost: Double get() = beverage.cost + 0.0
+    /**
+     * Al haber delegado mediante by la implementación de Beverage
+     * no es necesario implementar la propiedad cost, ya que por defecto
+     * será equivalente a esto
+     */
+    //override val cost: Double get() = beverage.cost
     override val description = "${beverage.description} con azúcar"
 }
 
@@ -103,6 +117,11 @@ class Ginger(private val beverage: Beverage) : Condiment(beverage) {
 }
 
 
+/**
+ * Función de extensión con receptor de tipo Beverage
+ *
+ * Para imprimir por la consola la información de una bebida
+ */
 fun Beverage.printInfo() {
     println("Un $description cuesta $cost")
 }
@@ -137,7 +156,10 @@ fun Beverage.tipped(amount: Double): Beverage = Tip(amount, this)
 
 fun testExtensionFunctions() {
 
+    // Crear un cafe descafeinado con leche y chocolate
     val chocoMilkDecaf = Decaf().withMilk().withChocolate()
+
+    // Crear un cafe descafeinado con doble de nata
     val dobleWhipDecaf = Decaf().whipped().whipped()
 
     val espressoWithMilk = Espresso.withMilk()

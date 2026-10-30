@@ -7,14 +7,14 @@ import imperative.types.age
  *
  * let, run, with, apply y also
  *
- * Algunas son funciones de extensión
- * otras son globales
+ * Algunas son funciones de extensión: let, also y apply
+ * otras son globales: run, with
  *
- * Algunas devuelven el resultado de la lambda
- * otras (si son de extensión) devuelven el receptor
+ * Algunas devuelven el resultado de la lambda: run, with, let
+ * otras (si son de extensión) devuelven el receptor: also, apply
  *
- * Algunas usan una lambda regular
- * otras una lambda con receptor
+ * Algunas usan una lambda regular: run, let, also --> it
+ * otras una lambda con receptor: with, apply --> this
  */
 
 data class Person(var name: String = "", var age: Int = 0)
@@ -76,7 +76,7 @@ fun main() {
         name = "Pedro"
         age = 48
     }.also {
-        age++
+        it.age++
         println(it)
     }
 
