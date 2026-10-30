@@ -12,9 +12,19 @@ fun <T> Collection<T>.display(title: String) {
     this.forEach { println(it) }
 }
 
+fun Number?.toNumericFormat(): String =
+    "${this?.let { number -> 
+        NumberFormat.getNumberInstance().format(number) 
+    } ?: 0}"
 
-fun Int?.toPopulationFormat(): String =
-    "${this?.let { NumberFormat.getNumberInstance().format(it) } ?: 0} habs."
+fun Number?.toPopulationFormat(): String =
+    "${toNumericFormat()} habs."
+
+fun Number?.toPercentFormat(fractionalDigits: Int = 2): String =
+    NumberFormat.getPercentInstance().apply {
+        minimumFractionDigits = fractionalDigits
+        maximumFractionDigits = fractionalDigits
+    }.format(this)
 
 
 inline fun <T, A, B, R> Iterable<T>.teeing(

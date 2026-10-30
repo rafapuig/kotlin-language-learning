@@ -1,6 +1,8 @@
-package containers.collections.exercises.geography
+package containers.collections.exercises.geography.queries
 
+import containers.collections.exercises.geography.display
 import containers.collections.exercises.geography.model.Countries
+import containers.collections.exercises.geography.toPopulationFormat
 
 fun printMostPopulatedCountryByContinent() {
     val result = Countries.WORLD_COUNTRIES
@@ -8,7 +10,9 @@ fun printMostPopulatedCountryByContinent() {
         .groupBy { it.continent }
         .mapValues { it.value.maxByOrNull { it.population!! } }
 
-    result.entries.display("Pais más poblado por continente:")
+    result
+        .mapValues { it.value?.name to it.value?.population.toPopulationFormat() }
+        .entries.display("Pais más poblado por continente:")
 }
 
 fun printMostPopulatedCountryByContinent2() {
@@ -21,7 +25,9 @@ fun printMostPopulatedCountryByContinent2() {
             }
         }
 
-    result.entries.display("Pais más poblado por continente:")
+    result
+        .mapValues { it.value?.first to it.value?.second.toPopulationFormat() }
+        .entries.display("Pais más poblado por continente:")
 }
 
 fun main() {

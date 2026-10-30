@@ -1,6 +1,11 @@
-package containers.collections.exercises.geography
+package containers.collections.exercises.geography.queries
 
+import containers.collections.exercises.geography.display
+import containers.collections.exercises.geography.model.Continent
 import containers.collections.exercises.geography.model.Countries
+import containers.collections.exercises.geography.model.Country
+import containers.collections.exercises.geography.teeing
+import containers.collections.exercises.geography.toPopulationFormat
 
 
 fun printMostAndLeastPopulatedCountryByContinent() {
@@ -13,7 +18,7 @@ fun printMostAndLeastPopulatedCountryByContinent() {
             listOf(most, least)
         }
 
-    result.entries.display("Pais mas y menos poblado por continente:")
+    printResult(result)
 }
 
 fun printMostAndLeastPopulatedCountryByContinent2() {
@@ -26,7 +31,23 @@ fun printMostAndLeastPopulatedCountryByContinent2() {
             ) { most, least -> listOf(most, least) }
         }
 
-    result.entries.display("Pais mas y menos poblado por continente:")
+    printResult(result)
+}
+
+private fun printResult(result: Map<Continent?, List<Country?>>) {
+    result.entries
+        .map {
+            listOf(
+                it.key?.displayName,
+                "mas poblado",
+                it.value.first()?.name,
+                it.value.first()?.population.toPopulationFormat(),
+                "menos poblado",
+                it.value.last()?.name,
+                it.value.last()?.population.toPopulationFormat()
+            )
+        }
+        .display("Pais mas y menos poblado por continente:")
 }
 
 fun main() {

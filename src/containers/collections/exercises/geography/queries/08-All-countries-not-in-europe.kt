@@ -1,5 +1,6 @@
-package containers.collections.exercises.geography
+package containers.collections.exercises.geography.queries
 
+import containers.collections.exercises.geography.display
 import containers.collections.exercises.geography.model.Continent
 import containers.collections.exercises.geography.model.Countries
 import kotlin.collections.contains

@@ -1,46 +1,54 @@
-package containers.collections.exercises.geography
+package containers.collections.exercises.geography.queries
 
 import containers.collections.exercises.geography.model.Countries
+import containers.collections.exercises.geography.toNumericFormat
+import containers.collections.exercises.geography.toPopulationFormat
 import java.text.NumberFormat
 
 fun printWorldPopulation() {
     val result = Countries.WORLD_COUNTRIES
-        .mapNotNull { it.population }
+        .mapNotNull { it.population?.toLong() }
         .sum()
 
-    println("Poblacion total mundial = ${NumberFormat.getNumberInstance().format(result)} habs.")
+    printResults(result)
 }
+
+
 
 fun printWorldPopulation2() {
     val result = Countries.WORLD_COUNTRIES
         .filter { it.population != null }
-        .map { it.population!! }
+        .map { it.population!!.toLong() }
         .sum()
 
-    println("Poblacion total mundial = ${NumberFormat.getNumberInstance().format(result)} habs.")
+    printResults(result)
 }
 
 fun printWorldPopulation3() {
     val result = Countries.WORLD_COUNTRIES
         .filter { it.population != null }
-        .sumOf { it.population!! }
+        .sumOf { it.population!!.toLong() }
 
-    println("Poblacion total mundial = ${NumberFormat.getNumberInstance().format(result)} habs.")
+    printResults(result)
 }
 
 fun printWorldPopulation4() {
     val result = Countries.WORLD_COUNTRIES
-        .sumOf { it.population ?: 0 }
+        .sumOf { it.population?.toLong() ?: 0L }
 
-    println("Poblacion total mundial = ${NumberFormat.getNumberInstance().format(result)} habs.")
+    printResults(result)
 }
 
 fun printWorldPopulation5() {
     val result = Countries.WORLD_COUNTRIES
-        .mapNotNull { it.population }
+        .mapNotNull { it.population?.toLong() }
         .reduce { acc, population -> acc + population }
 
-    println("Poblacion total mundial = ${NumberFormat.getNumberInstance().format(result)} habs.")
+    printResults(result)
+}
+
+private fun printResults(result: Long) {
+    println("Poblacion total mundial = ${result.toPopulationFormat()}")
 }
 
 fun main() {

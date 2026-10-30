@@ -1,6 +1,6 @@
-package containers.collections.exercises.geography
+package containers.collections.exercises.geography.queries
 
-import containers.collections.exercises.geography.model.Area
+import containers.collections.exercises.geography.display
 import containers.collections.exercises.geography.model.Countries
 import containers.collections.exercises.geography.model.Surface
 

@@ -1,4 +1,4 @@
-package containers.collections.exercises.geography
+package containers.collections.exercises.geography.queries
 
 import containers.collections.exercises.geography.model.Continent
 import containers.collections.exercises.geography.model.Countries
@@ -14,7 +14,7 @@ fun printAllEuropeanCountriesSorted() {
 
     println("Todos los países de ${Continent.EUROPE} por orden natural:")
     println("----------------------------------------------------------")
-    result.forEach { println(it) }
+    result.forEach { println(it.name) }
 }
 
 

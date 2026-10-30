@@ -1,8 +1,8 @@
-package containers.collections.exercises.geography
+package containers.collections.exercises.geography.queries
 
 import containers.collections.exercises.geography.model.Continent
 import containers.collections.exercises.geography.model.Countries
-import java.text.NumberFormat
+import containers.collections.exercises.geography.toPopulationFormat
 
 fun printEuropePopulation() {
     val result = Countries.WORLD_COUNTRIES
