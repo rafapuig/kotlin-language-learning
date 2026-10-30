@@ -15,6 +15,7 @@ data class Country private constructor(
 
     val continent: Continent? = region?.continent
 
+    // Propiedad calculada de solo lectura y cacheada
     val populationDensity = run {
         if (population == null) return@run null
         //if(surface == null) return@run null
@@ -24,8 +25,12 @@ data class Country private constructor(
     }
 
 
+    // El código hash lo determina el código ISO3
+    // (Si dos países son iguales tienen el mismo código hash)
+    // (Si tienen el mismo código hash no tienen por qué ser iguales)
     override fun hashCode() = iso3.hashCode()
 
+    // Dos países son iguales si tienen el mismo código ISO3
     override fun equals(other: Any?) =
         (other as? Country)?.let { iso3 == it.iso3 } ?: false
 
@@ -153,4 +158,3 @@ fun buildCountry(
     Country.Builder(iso3, name)
         .apply(block)
         .build()
-
