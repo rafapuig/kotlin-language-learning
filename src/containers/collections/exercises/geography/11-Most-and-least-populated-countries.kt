@@ -69,11 +69,7 @@ fun printMostAndLeastPopulatedCountries3() {
 }
 
 
-inline fun <T, A, B, R> Iterable<T>.teeing(
-    f1: (Iterable<T>) -> A,
-    f2: (Iterable<T>) -> B,
-    merge: (A, B) -> R
-): R = merge(f1(this), f2(this))
+
 
 
 fun printMostAndLeastPopulatedCountries4() {
