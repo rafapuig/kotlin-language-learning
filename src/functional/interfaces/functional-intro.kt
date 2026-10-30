@@ -1,4 +1,4 @@
-package functional.interfaces.intro
+package functional.interfaces
 
 /**
  * Interface StringToInt
