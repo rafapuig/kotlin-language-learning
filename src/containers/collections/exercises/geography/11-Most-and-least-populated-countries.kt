@@ -1,0 +1,106 @@
+package containers.collections.exercises.geography
+
+import containers.collections.exercises.geography.model.Countries
+
+
+fun printMostAndLeastPopulatedCountries() {
+
+    val result = Countries.WORLD_COUNTRIES
+        .filter { it.population != null }
+        .let {
+            val most = it.maxByOrNull { country -> country.population!! }
+            val least = it.minByOrNull { country -> country.population!! }
+            listOf(most, least)
+        }
+
+    /** Al usar ?. ya dentro del bloque it no pude ser nulo */
+    result[0]?.let {
+        println("El país mas poblado es ${it.name} con ${it.population} habitantes")
+    }
+
+    /** Al usar ?. ya dentro del bloque this no pude ser nulo */
+    result[1]?.apply {
+        println("El pais menos poblado es $name con $population habitantes")
+    }
+}
+
+
+fun printMostAndLeastPopulatedCountries2() {
+    val result = Countries.WORLD_COUNTRIES
+        .filter { it.population != null }
+        .let {
+            val (most, least) =
+                it.maxByOrNull { country -> country.population!! } to
+                        it.minByOrNull { country -> country.population!! }
+            listOf(most, least)
+        }
+
+
+    result.first()?.let {
+        println("El país mas poblado es ${it.name} con ${it.population} habitantes")
+    }
+
+    result.last()?.apply {
+        println("El país menos poblado es $name con $population habitantes")
+    }
+}
+
+fun printMostAndLeastPopulatedCountries3() {
+    val result = Countries.WORLD_COUNTRIES
+        .filter { it.population != null }
+        .let {
+            it.maxByOrNull { country ->
+                country.population!!
+            } to it.minByOrNull { country ->
+                country.population!!
+            }
+        }
+
+
+    with(result) {
+        first?.let {
+            println("El país más poblado es ${it.name} con ${it.population} habitantes")
+        }
+
+        second?.apply {
+            println("El país menos poblado es $name con $population habitantes")
+        }
+    }
+}
+
+
+inline fun <T, A, B, R> Iterable<T>.teeing(
+    f1: (Iterable<T>) -> A,
+    f2: (Iterable<T>) -> B,
+    merge: (A, B) -> R
+): R = merge(f1(this), f2(this))
+
+
+fun printMostAndLeastPopulatedCountries4() {
+    val result = Countries.WORLD_COUNTRIES
+        .filter { it.population != null }
+        .teeing(
+            { it.maxByOrNull { country -> country.population!! } },
+            { it.minByOrNull { country -> country.population!! } }
+        ) { most, least -> listOf(most, least) }
+
+
+
+    with(result) {
+
+        first()?.let {
+            println("El país más poblado es ${it.name} con ${it.population} habitantes")
+        }
+
+        last()?.apply {
+            println("El país menos poblado es $name con $population habitantes")
+        }
+    }
+}
+
+fun main() {
+    printMostAndLeastPopulatedCountries()
+    printMostAndLeastPopulatedCountries2()
+    printMostAndLeastPopulatedCountries3()
+    printMostAndLeastPopulatedCountries4()
+}

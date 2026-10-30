@@ -2,7 +2,6 @@ package flows.cold
 
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.runBlocking
-import model.geography.City
 
 val cities = listOf(
     "Valencia",

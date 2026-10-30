@@ -1,4 +1,4 @@
-package model.geography
+package containers.collections.exercises.geography.model
 
 import imperative.functions.power
 import java.text.DecimalFormat
