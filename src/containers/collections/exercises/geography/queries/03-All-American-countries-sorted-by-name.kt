@@ -57,7 +57,7 @@ fun getAllAmericanCountriesSortedByName6() =
 private fun List<Country>.print() {
     println("Todos los países de ${Continent.AMERICAS} ordenados por nombre:")
     println("----------------------------------------------------------")
-    forEach { println(it.name) }
+    joinToString { it.name }.let { println(it) }
 }
 
 fun main() {

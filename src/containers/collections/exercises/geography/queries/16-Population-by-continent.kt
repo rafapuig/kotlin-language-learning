@@ -1,31 +1,88 @@
 package containers.collections.exercises.geography.queries
 
+import containers.collections.exercises.formatting.ColumnAlignment
+import containers.collections.exercises.formatting.builders.asTable
 import containers.collections.exercises.geography.display
 import containers.collections.exercises.geography.model.Countries
-import containers.collections.exercises.geography.toPercentFormat
 import containers.collections.exercises.geography.toPopulationFormat
 
+
+fun getPopulationByContinent() =
+    Countries.WORLD_COUNTRIES
+        .filterNot { it.continent == null }
+        .groupBy { it.continent!! } // Para que el primer argumento de tipo del Map no sea anulable
+        .mapValues { entry ->
+            entry.value
+                .mapNotNull { it.population }
+                .map { it.toLong() }.sum()
+        }
+
+
+fun getPopulationByContinent2() =
+    Countries.WORLD_COUNTRIES
+        .filterNot { it.continent == null }
+        .groupBy { it.continent!! }
+        .mapValues { entry ->
+            entry.value
+                .mapNotNull { it.population }
+                .sumOf { it.toLong() }
+        }
+
+
+fun getPopulationByContinent3() =
+    Countries.WORLD_COUNTRIES
+        .filterNot { it.continent == null }
+        .groupBy { it.continent!! }
+        .mapValues { entry ->
+            entry.value.sumOf { it.population?.toLong() ?: 0L }
+        }
+
+
+fun getPopulationByContinent4() =
+    Countries.WORLD_COUNTRIES
+        .filterNot { it.continent == null }
+        .groupBy { it.continent!! }
+        .mapValues { entry ->
+            entry.value
+                .mapNotNull { it.population }
+                .map { it.toLong() }
+                .reduce { acc, population -> acc + population }
+        }
+
+
 fun printPopulationByContinent() {
-    val result = Countries.WORLD_COUNTRIES
-        .groupBy { it.continent }
-        .mapValues { it.value.mapNotNull { it.population?.toLong() }.sum() }
+    val result = getPopulationByContinent()
 
     result.entries
         .map { it.key to it.value.toPopulationFormat() }
         .display("Poblacion total por continente:")
 }
 
+
 fun printPopulationByContinent2() {
-    val result = Countries.WORLD_COUNTRIES
-        .groupBy { it.continent }
-        .mapValues {
-            it.value.mapNotNull { it.population?.toLong() }
-                .reduce { acc, population -> acc + population }
-        }
+    val result = getPopulationByContinent2()
 
     result.entries
-        .map { it.key to it.value.toPopulationFormat() }
-        .display("Poblacion total por continente:")
+        .map {
+            object {
+                val continent = it.key
+                val population = it.value
+            }
+        }
+        .asTable {
+            column {
+                label = "continente"
+                length = 12
+                value = { it.continent }
+            }
+            column {
+                label = "población"
+                length = 20
+                alignment = ColumnAlignment.End
+                value = { it.population.toPopulationFormat() }
+            }
+        }.display("Poblacion total por continente:")
+
 }
 
 fun main() {

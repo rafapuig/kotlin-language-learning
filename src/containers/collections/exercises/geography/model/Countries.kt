@@ -102,7 +102,7 @@ object Countries {
     }
 
     val USA = buildCountry("USA") {
-        name = "Estados Unidos de America"
+        name = "EE.UU."
         region = NORTH_AMERICA
         surface = 9_831_510.km2
         population = 339_996_564

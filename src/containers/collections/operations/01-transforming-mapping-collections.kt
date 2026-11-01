@@ -1,8 +1,5 @@
 package containers.collections.operations.transforming.mapping.collections
 
-
-import java.util.Locale.getDefault
-
 /**
  * Las operaciones de mapeo consisten en aplicar una función de transformación
  * a cada elemento de una colección y añadir el resultado de la transformación (elemento transformado)
@@ -11,17 +8,25 @@ import java.util.Locale.getDefault
  * - map
  * - mapNotNull (no añade a la lista resultante los elementos cuya transformation da como resultado el valor null)
  * - mapIndexed (si para realizar la trasformación además del elemento es necesario la posición que ocupa en la colección)
+ * - mapIndexedNotNull (igual que mapNotNull y además con índices)
+ *
+ * Las mismas pero acabadas en to
+ * - mapTo
+ * - mapNotNullTo
+ * - mapIndexedTo
+ * - mapIndexedNotNullTo
  */
 
 fun testMap() {
-    val fruits = listOf("banana", "avocado", "apple", "kiwi")
-    val capitalizedFruits = fruits.map {fruit ->
+    val fruits = listOf("banana", "aguacate", "manzana", "kiwi")
+    val capitalizedFruits = fruits.map { fruit ->
         fruit.replaceFirstChar {
-            if (it.isLowerCase()) it.titlecase(getDefault()) else it.toString()
+            if (it.isLowerCase()) it.uppercaseChar() else it
         }
     }
     println(capitalizedFruits)
 }
+
 
 fun testMapNotNull() {
     val numbers =
@@ -32,6 +37,7 @@ fun testMapNotNull() {
     println(result)
 }
 
+
 fun testMapIndexed() {
     val rank = listOf("Oro", "Plata", "Bronce")
 
@@ -41,13 +47,25 @@ fun testMapIndexed() {
     println(numberedRank)
 }
 
+
 fun testMapIndexedNotNull() {
     val rank = listOf("Oro", "Plata", "Bronce")
 
     val numberedRank = rank.mapIndexedNotNull { index, element ->
+        // Si el nombre de la medalla no tiene más de 3 caracteres se transforma en null (el oro)
         if (element.length > 3) "(${index + 1}) $element" else null
     }
     println(numberedRank)
+}
+
+
+fun testMapIndexedNotNull2() {
+    val weekDays = listOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
+
+    val evenWeekDays = weekDays.mapIndexedNotNull { index, day ->
+        if (index % 2 != 0) "(${index + 1}) $day" else null
+    }
+    println(evenWeekDays)
 }
 
 /**
@@ -68,6 +86,7 @@ fun main() {
     testMapNotNull()
     testMapIndexed()
     testMapIndexedNotNull()
+    testMapIndexedNotNull2()
     testMapTo()
 }
 

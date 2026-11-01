@@ -1,17 +1,42 @@
 package containers.collections.exercises.geography.queries
 
-import containers.collections.exercises.geography.display
+import containers.collections.exercises.formatting.ColumnAlignment
+import containers.collections.exercises.formatting.builders.asTable
 import containers.collections.exercises.geography.model.Countries
 import containers.collections.exercises.geography.toPopulationFormat
 
-fun printFiveMostPopulatedCountries() {
-    val result = Countries.WORLD_COUNTRIES
+
+fun getFiveMostPopulatedCountries() =
+    Countries.WORLD_COUNTRIES
         .sortedByDescending { it.population }
         .take(5)
 
-    result
-        .map { it.name to it.population.toPopulationFormat() }
-        .display("Los 5 países más poblados del mundo:")
+fun printFiveMostPopulatedCountries() {
+
+    getFiveMostPopulatedCountries()
+        //.map { it.name to it.population.toPopulationFormat() }
+        .map {
+            object {
+                val countryName = it.name
+                val population = it.population
+            }
+        }
+        .asTable {
+            column {
+                label = "Pais"
+                length = 15
+                alignment = ColumnAlignment.Center
+                value = { it.countryName }
+            }
+            column {
+                label = "Población"
+                length = 20
+                alignment = ColumnAlignment.End
+                value = { it.population.toPopulationFormat() }
+            }
+        }.let(::println)
+
+    //.display("Los 5 países más poblados del mundo:")
 }
 
 fun main() {
