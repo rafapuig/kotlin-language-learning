@@ -26,7 +26,7 @@ fun testFirst() {
 }
 
 fun testLast() {
-    val lastAdult = people.first { it.isAdult() }
+    val lastAdult = people.last { it.isAdult() }
     println(lastAdult.name)
 }
 
@@ -82,6 +82,27 @@ fun testFind() {
 }
 
 
+fun testSingleOrNull() {
+    val aged15 = people.singleOrNull { it.age == 15 }
+    println(aged15)
+
+    val aged31 = people.singleOrNull { it.age == 31 } //?: throw NoSuchElementException()
+    println(aged31)
+}
+
+fun testIndexOfFirst() {
+    val position = people.sortedBy { it.age }.indexOfFirst { it.isAdult() }
+
+    // Position equivale al número de personas menores de la edad de adulto
+    println("El primer mayor de edad esta en la posición $position")
+}
+
+fun testIndexOfLast() {
+    val lastPosition = people.sortedBy { it.age }.indexOfLast { it.age <= 65 }
+    println(lastPosition)
+
+}
+
 
 fun main() {
     testFirst()
@@ -89,4 +110,7 @@ fun main() {
     testFirstOrNull()
     testLastOrNull()
     testFind()
+    testSingleOrNull()
+    testIndexOfFirst()
+    testIndexOfLast()
 }

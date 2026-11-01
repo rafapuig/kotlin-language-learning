@@ -8,9 +8,23 @@ import containers.collections.model.people
  * pero además obtenemos una lista con los que no lo cumplen
  */
 
-fun <T> Iterable<T>.particion(predicate: (T) -> Boolean): Pair<List<T>, List<T>> {
+/**
+ * partition
+ *
+ * Divide los elementos en dos grupos según cumplan o no la condición
+ */
+
+
+/**
+ * Version casera de la función partition
+ */
+fun <T> Iterable<T>.myPartition(
+    predicate: (T) -> Boolean)
+: Pair<List<T>, List<T>> {
+
     val pass = mutableListOf<T>()
     val rest = mutableListOf<T>()
+
     forEach {elem ->
         with(if (predicate(elem)) pass else rest) {
             add(elem)
@@ -19,12 +33,14 @@ fun <T> Iterable<T>.particion(predicate: (T) -> Boolean): Pair<List<T>, List<T>>
     return pass.toList() to rest.toList()
 }
 
+
 fun testPartition() {
     val numbers = listOf(56, 69, 34, 11, 73, 90, 5)
     val partition = numbers.partition { it % 2 == 0 }
     println(partition.first) // Números pares (cumplen el predicado)
     println(partition.second) // Resto de números de la lista
 }
+
 
 fun partitionDemo() {
     /**

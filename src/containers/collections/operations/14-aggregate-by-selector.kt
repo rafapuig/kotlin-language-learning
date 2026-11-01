@@ -7,7 +7,7 @@ import containers.collections.model.people
  * Las operaciones de agregado devuelven un valor simple
  * basado en el contenido de la colección
  *
- * Tenemos: *
+ * Tenemos:
  * - minOrNull y maxOrNull que devuelven el mínimo y máximo, null si vacía
  * - average devuelve la media de una colección de Number
  * - sum devuelve la suma de los elementos de una colección de Number

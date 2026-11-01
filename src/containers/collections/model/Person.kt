@@ -14,4 +14,5 @@ val people = listOf(
     Person("Marta Baco", 29, Gender.FEMALE),
     Person("Pedro Gado", 17, Gender.MALE),
     Person("Armando Bronca", 31, Gender.FEMALE),
+    Person("Lorenzo Penco", 15, Gender.MALE),
 )
