@@ -71,7 +71,7 @@ fun testGenerateSequence2() {
     val naturalNumbers = generateSequence(0) { it + 1 }
 
     /**
-     * El foreach no termina nunca
+     * El foreach sobre una secuencia infinita no terminaría nunca
      */
     val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }
     val sum = numbersTo100.sum() // Operación terminal sum
