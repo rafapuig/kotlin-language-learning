@@ -67,7 +67,7 @@ fun main() {
     sb.append("si")
     sb.append("no")
 
-    with(sb) { // Clean sintaxis, lambda con receptor
+    with(StringBuilder()) { // Clean sintaxis, lambda con receptor
         append("si")    // Dentro del bloque lambda el receiver es this
         append("no")    // no es necesario usar explícitamente this para llamar a un método
     }
