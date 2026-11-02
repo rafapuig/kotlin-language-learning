@@ -16,7 +16,8 @@ fun getAllEuropeanCountriesSorted() =
 fun printAllEuropeanCountriesSorted() {
     println("Todos los países de ${Continent.EUROPE} por orden natural:")
     println("----------------------------------------------------------")
-    getAllEuropeanCountriesSorted().forEach { println(it.name) }
+    getAllEuropeanCountriesSorted()
+        .forEach { println(it.name) } // Imprimimos solamente los nombres
 }
 
 

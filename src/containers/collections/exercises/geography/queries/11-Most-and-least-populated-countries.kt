@@ -1,9 +1,8 @@
 package containers.collections.exercises.geography.queries
 
 import containers.collections.exercises.geography.model.Countries
-import containers.collections.exercises.geography.model.Country
-import containers.collections.exercises.geography.teeing
 import containers.collections.exercises.geography.toNumericFormat
+import containers.collections.exercises.operations.teeing
 
 
 fun printMostAndLeastPopulatedCountries() {

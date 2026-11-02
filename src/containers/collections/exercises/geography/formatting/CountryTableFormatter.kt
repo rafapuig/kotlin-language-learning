@@ -6,6 +6,11 @@ import containers.collections.exercises.geography.model.Country
 import containers.collections.exercises.geography.model.Surface
 import java.text.NumberFormat
 
+
+/**
+ * Creamos un TableFormatter a medida para formatear en forma de tabla
+ * los elementos de una colección cuando son tipo Country
+ */
 val countryTableFormatter = buildTableFormatter {
     column {
         label = "ISO3"
@@ -54,9 +59,22 @@ val countryTableFormatter = buildTableFormatter {
     }
 }
 
-fun List<Country>.toTable() = toTable(countryTableFormatter)
+/**
+ * Para convertir una colección de objetos Country en un String con formato de tabla
+ * llamamos a la función de extension toTable de Iterable<T>
+ * pasando como argumento para el parámetro TableFormatter el countryTableFormatter
+ */
+fun Iterable<Country>.toTable() = toTable(countryTableFormatter)
 
-fun List<Country>.printAsTable(title:String = "") = toTable().let {
-    if(title.isNotBlank()) println(title)
-    print(it)
-}
+
+/**
+ * Para imprimir por consola una colección de objetos Country en formato de tabla
+ * llamamos a la función toTable sin argumentos específica para Iterable<Country>
+ * y el String resultante se imprime después de imprimir una línea con un título
+ * si se especifica como argumento de llamada.
+ */
+fun Iterable<Country>.printAsTable(title: String = "") =
+    toTable().let {
+        if (title.isNotBlank()) println(title)
+        print(it)
+    }

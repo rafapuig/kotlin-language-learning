@@ -12,15 +12,24 @@ value class Surface(val value: Float) : Comparable<Surface> {
     }
 
     override fun compareTo(other: Surface) =
-        value.compareTo(other.value)
+        compareValuesBy(this,other) {it.value}
+        //value.compareTo(other.value)
 
     override fun toString() = value.let {
+        // Si el valor supera el millón los pasamos de m2 a Km2
         val number = if (it > M2_PER_KM2) it / M2_PER_KM2 else it
+        // Y el sufijo pasa de m2 a Km2
         val suffix = if (it > M2_PER_KM2) "km²" else "m²"
         "${formatter.format(number)} $suffix"
     }
 }
 
+
+/**
+ * Propiedades de extensión
+ *
+ * Si a un número le añadimos la llamada a la propiedad m2 o km2 se convierte en una Surface
+ */
 
 val Float.m2 get() = Surface(this)
 
@@ -35,6 +44,7 @@ fun Surface.toArea(): Area {
     val number = if (value > M2_PER_KM2) value / M2_PER_KM2 else value
     return Area(number, units)
 }
+
 
 fun main() {
 

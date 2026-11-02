@@ -12,10 +12,12 @@ fun getAllCountriesNamesSorted() =
         .map { it.name }
         .sorted()
 
+
 fun printAllCountriesNamesSorted() {
     val result = getAllCountriesNamesSorted()
-    result.display("Todos los nombres países ordenados:")
+    result.display("Todos los nombres de países ordenados alfabéticamente:")
 }
+
 
 fun main() {
     printAllCountriesNamesSorted()

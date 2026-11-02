@@ -1,5 +1,6 @@
 package containers.collections.exercises.geography.model
 
+import containers.collections.exercises.geography.model.builders.CityBuilder
 import java.text.NumberFormat
 
 @ConsistentCopyVisibility
@@ -8,7 +9,6 @@ data class Country private constructor(
     val name: String,
     val region: Region? = null,
     val capital: City? = null,
-    val area: Area? = null,
     val surface: Surface? = null,
     val population: Int? = null
 ) : Comparable<Country> {
@@ -17,10 +17,10 @@ data class Country private constructor(
 
     // Propiedad calculada de solo lectura y cacheada
     val populationDensity = run {
-        if (population == null) return@run null
-        //if(surface == null) return@run null
         surface?.let {
-            population / surface.value * Surface.M2_PER_KM2
+            // Smart cast de surface
+            // (dentro del bloque se considera de tipo no anulable)
+            population?.div(surface.value * Surface.M2_PER_KM2)
         }
     }
 
@@ -46,60 +46,46 @@ data class Country private constructor(
         "name" to name,
         "region" to region,
         "capital" to capital,
-        "area" to area,
         "surface" to surface,
-        "population" to population?.let { "${NumberFormat.getNumberInstance().format(it)} habs" },
-        "density" to populationDensity?.let { "${"%.2f".format(it)} habs/Km²" }
+        "population" to population?.let {
+            "${NumberFormat.getNumberInstance().format(it)} habs"
+        },
+        "density" to populationDensity?.let {
+            "${"%.2f".format(it)} habs/Km²"
+        }
     ).entries
         .filterNot { it.value == null }
-        .map { (k, v) ->
-            "$k${if (k.isNotBlank()) "=" else ""}$v"
+        .map { (key, value) ->
+            "${if (key.isNotBlank()) "$key=" else ""}$value"
         }
 
 
     override fun toString() = buildString {
         append("Country")
-        append(properties.joinToString(separator = ", ", prefix = "(", postfix = ")"))
-    }
-
-
-    class CapitalBuilder {
-        var name: String? = null
-        var population: Int? = null
-
-        fun build() = run {
-
-            require(!name.isNullOrBlank()) {
-                "El nombre de la ciudad po puede ser nulo o vacío"
-            }
-            // Creamos la instancia de City con los datos recopilados por el CapitalBuilder
-            City(
-                name = name!!,
-                population = population?.let { Population(it) }
+        append(
+            properties.joinToString(
+                separator = ", ",
+                prefix = "(",
+                postfix = ")"
             )
-        }
+        )
     }
 
-    class AreaBuilder {
-        var value: Long? = null
-        var units: ISUnit = ISUnit.KILO
-
-        fun build() = run {
-            require(value != null) { "El valor del area no puede ser nulo" }
-            Area(value?.toFloat() ?: 0f, units)
-        }
-    }
 
     /**
      * Builder de instancias Country
+     * Tiene que ser una clase interna anidada en la clase Country
+     * para poder tener acceso al constructor de Country (que es privado)
      */
     class Builder(
         val iso3: String, // El código ISO3 es obligatorio en el constructor
         var name: String? = null // name lo podemos proporcionar en el constructor
     ) {
+        // Otras propiedades para recopilar datos con los que construir el objeto Country
         var region: Region? = null
         private var capital: City? = null
-        private var area: Area? = null
+
+        //private var area: Area? = null
         var surface: Surface? = null
         var population: Int? = null
 
@@ -108,19 +94,19 @@ data class Country private constructor(
         /**
          * Función que construye una instancia de City (la capital del país)
          */
-        fun capital(block: CapitalBuilder.() -> Unit) = apply {
+        fun capital(block: CityBuilder.() -> Unit) = apply {
             // Creamos un nuevo objeto CapitalBuilder
             // para que sea el receptor de la llamada a apply
-            capital = CapitalBuilder()
+            capital = CityBuilder()
                 // a apply se le pasa el objeto función referenciado por block
                 .apply(block) // block se invoca dentro de apply
                 // apply devuelve su receptor (El CapitalBuilder) para poder llamar a build
                 .build()
         }
 
-        fun area(block: AreaBuilder.() -> Unit) = apply {
+        /*fun area(block: AreaBuilder.() -> Unit) = apply {
             area = AreaBuilder().apply { block() }.build()
-        }
+        }*/
 
         fun surface(block: () -> Surface) =
             apply { surface = block() }
@@ -136,9 +122,7 @@ data class Country private constructor(
             require(!name.isNullOrBlank()) {
                 "El nombre del país no ser nulo o blanco"
             }
-            Country(iso3, name!!, region, capital, area, surface,
-                population
-            )
+            Country(iso3, name!!, region, capital, surface, population)
         }
     }
 }
@@ -155,6 +139,4 @@ fun buildCountry(
     name: String? = null,
     block: Country.Builder.() -> Unit
 ) =
-    Country.Builder(iso3, name)
-        .apply(block)
-        .build()
+    Country.Builder(iso3, name).apply { block() }.build()
