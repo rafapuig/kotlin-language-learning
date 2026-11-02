@@ -76,7 +76,7 @@ fun main() {
         name = "Pedro"
         age = 48
     }.also {
-        age++
+        it.age++
         println(it)
     }
 

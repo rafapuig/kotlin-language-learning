@@ -10,6 +10,22 @@ fun multiply(a: Int, b: Int) = a * b
 fun divide(a: Int, b: Int) = a / b
 
 
+fun apply(operation: (Int, Int) -> Int) {
+    val x = 10
+    val y = 2
+    val result = operation(x, y)
+    println("result: $result")
+}
+
+fun testApply() {
+    apply(::add)
+    apply(::subtract)
+    apply(::multiply)
+    apply(::divide)
+    apply { a, b ->  a % b }
+}
+
+
 fun applyAllOperations(x: Int, y: Int) {
     val operations = listOf(::add, ::subtract, ::multiply, ::divide)
 

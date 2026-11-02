@@ -88,11 +88,11 @@ fun demo5() {
 }
 
 fun demo6() {
-    val favoriteNumber = run {
+    val favoriteNumber =  {
         println("Pensando un numero...")
         println("Ya casi lo tenemos...")
         77// El resultado devuelto por una lambda es el de avaluar la última instrucción (no es necesario el return)
-    }
+    }()
     println(favoriteNumber)
 }
 

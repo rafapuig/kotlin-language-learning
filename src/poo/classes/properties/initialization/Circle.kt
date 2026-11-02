@@ -12,9 +12,7 @@ class Circle {
 
     // Como la propiedad radius puede mutar, siempre que se pide la circumference hay que calcular
     // con el valor actual de la propiedad radius
-    fun circumference(): Double {
-        return 2 * PI * radius
-    }
+    fun circumference(): Double = 2 * PI * radius
 
     // Es una inicialización de una propiedad (solo se evalúa la expresión al crear el objeto)
     // Como el valor del radio puede cambiar,

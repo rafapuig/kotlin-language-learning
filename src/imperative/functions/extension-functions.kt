@@ -17,7 +17,7 @@ fun String.numVowels(): Int {
     return this.filter { it in "aeiou" }.length
 }
 
-fun String.lastChar(): Char = this.get(this.length - 1)
+fun String.lastChar(): Char = this[this.length - 1]
 
 /**
  * Podemos omitir la referencia explícita a this igual que en los métodos de instancia de la clase
@@ -25,6 +25,8 @@ fun String.lastChar(): Char = this.get(this.length - 1)
 fun String.lastChar2(): Char = get(length - 1)
 
 fun main() {
+    val word = "Ejemplo"
+    val result = word.numVowels()
     val vowels = "Murcielago".numVowels()
     println(vowels)
 }

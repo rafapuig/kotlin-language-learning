@@ -106,7 +106,7 @@ fun testIntToIntInterfaceWithFunctionTypes() {
     val result2 = num.applyIntToIntOperation(triple) // Pasamos directamente el objeto función
 
     val halfFunction = { number : Int -> number / 2 }
-    val halfInterface = IntToInt { number -> number / 2 }
+    val halfInterface:IntToInt = IntToInt { number -> number / 2 }
     val halfFunToInterface = IntToInt(halfFunction)
 
     val result3 = halfFunction.invoke(num)

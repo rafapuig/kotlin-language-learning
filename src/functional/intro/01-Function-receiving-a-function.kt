@@ -8,7 +8,7 @@ fun applyOperation(
     b: Int,
     operation: (Int, Int) -> Int // tipo función
 ) : Int {
-    return operation(a, b)
+    return operation.invoke(a, b)
 }
 
 fun add(a: Int, b: Int): Int = a + b

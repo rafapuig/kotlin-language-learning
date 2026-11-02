@@ -8,7 +8,7 @@ class Person {
      * Crea un campo
      */
     @JvmField
-    var _name: String = "Anónimo"
+    private var _name: String = "Anónimo"
 
     /**
      * Una propiedad que no hace uso de field

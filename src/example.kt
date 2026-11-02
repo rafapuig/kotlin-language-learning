@@ -2,22 +2,17 @@
  * data class DTO (POJO)
  * Redefine los métodos equals, hashCode y toString
  */
-data class Person (val name: String, val age: Int? = null) {}
-
+data class Person constructor(val name: String, val age: Int? = null) {}
 
 fun main() {
-
-    val person = Person("Alicia", 29)
-    println(person)
+    val person = Person("Alice", 29)
 
     val persons = listOf(
-        Person("Alicia", age = 29),
-        Person("Roberto"),
-        Person(name ="Rafa", age = 49),
-        Person(age = 33, name ="Perico")
+        Person("Alice", age = 29),
+        Person("Bob"),
     )
 
-    val oldest = persons.maxBy { it.age ?: Int.MIN_VALUE }
+    val oldest = persons.maxBy { it.age ?: 0 }
 
-    println("La persona de más edad es: $oldest")
+    println("The oldest is: $oldest")
 }
