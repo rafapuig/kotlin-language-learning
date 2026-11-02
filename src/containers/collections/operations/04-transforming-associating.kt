@@ -13,9 +13,9 @@ package containers.collections.operations.associating
  * en un par clave-valor y añadirá dicho par como entrada al mapa resultado
  */
 
-data class Person(val name: String, val age: Int)
+private data class Person(val name: String, val age: Int)
 
-val people = listOf(
+private val people = listOf(
     Person("Jose", 29),
     Person("Maria", 18),
     Person("Juan", 29),
@@ -23,6 +23,8 @@ val people = listOf(
 
 
 fun testAssociate() {
+    // La transformación genera un Pair a partir de un elemento de la colección
+    // Cada par genera una entrada en el mapa resultante
     val nameToAgeMap = people.associate { it.name to it.age }
 
     nameToAgeMap.forEach { (name, age) ->
@@ -34,20 +36,22 @@ fun testAssociate() {
  * Si lo que queremos es crear una asociación entre los elementos
  * de la colección y un determinado valor:
  *
- * - associateWith (elementos de la colección -> claves) valores via lambda
- * - associateBy (elementos de la colección -> valores) claves via lambda
+ * - associateWith (elementos de la colección -> claves) calcula valores via lambda
+ * - associateBy (elementos de la colección -> valores) calcula claves via lambda
  *
  */
 
 fun testAssociateWith() {
-    // Crea un mapa cuyas claves son personas y valor asociado su edad
+    // Crea un mapa cuyas claves son personas (el elemento de la colección)
+    // y valor asociado su edad (calculado mediante la lambda)
     val personToAgeMap = people.associateWith { it.age }
     println(personToAgeMap)
 }
 
 fun testAssociateBy() {
-    // Crea un mapa cuyas claves son enteros (edad) y valor asociado una Persona
-    // (en este caso la última persona de la lista con esa edad)
+    // Crea un mapa cuyas claves son enteros (edad)
+    // y valor asociado una Persona (el elemento de la colección esta vez se usa como valor)
+    // (en este caso la última persona de la lista con esa edad, edades repetidas se reemplazan)
     val ageToPersonMap = people.associateBy { it.age }
 
     // Juan tiene la misma edad 29 que Jose
@@ -61,24 +65,30 @@ fun testAssociateBy() {
  * IMPORTANTE:
  * Tener en cuenta que las claves de un mapa deben ser únicas
  * Si la función de transformación proporcionada a las operaciones associate,
- * associateWith o associateBy da como resultado la misma clave más de una
- * vez, la más clave reciente reemplaza a la entrada con esa misma clave en el mapa
+ * associateWith o associateBy da como resultado la misma clave más de una vez,
+ * la más clave reciente reemplaza a la entrada con esa misma clave en el mapa.
  */
 
 fun exampleAssociate() {
     data class FullName(val firstName: String, val lastName: String)
 
-    fun parseFullName(fullName: String): FullName {
-        val nameParts = fullName.split(" ")
+    fun String.parseFullName() =
+        with(split(" ")) {
+            if (size == 2) FullName(firstName = first(), lastName = last())
+            else throw Exception("Wrong name format")
+        }
+
+    /*{
+        val nameParts = this.split(" ")
         return if (nameParts.size == 2)
             FullName(nameParts[0], nameParts[1])
         else throw Exception("Wrong name format")
-    }
+    }*/
 
-    val names = listOf("Belen Tilla", "Victor Nado", "Pedro Gado")
+    val peopleFullNames = listOf("Belen Tilla", "Victor Nado", "Pedro Gado")
 
-    val lastNameToFirstName = names.associate { name ->
-        parseFullName(name).let { it.lastName to it.firstName }
+    val lastNameToFirstName = peopleFullNames.associate { fullName ->
+        fullName.parseFullName().let { it.lastName to it.firstName }
     }
 
     println(lastNameToFirstName)

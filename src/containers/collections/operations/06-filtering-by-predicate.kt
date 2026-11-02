@@ -1,22 +1,20 @@
 package containers.collections.operations.filtering
 
-fun testFilterOnMap() {
-    val numbersToNames =
-        mapOf(1 to "uno", 2 to "dos", 3 to "tres", 4 to "cuatro", 5 to "cinco")
+/**
+ * filter
+ * conserva en la colección resultante los elementos que cumple el predicado
+ */
+fun testFilter() {
 
-    /**
-     * Cuando filtramos sobre un mapa el resultado es otro mapa
-     */
-    val filteredMap =
-        numbersToNames.filter { it.key % 2 == 1 }
+    val names =
+        listOf("Pedro", "Pablo", "Luis", "Jose", "Rafa", "Miguel", "Oscar")
 
-    println(filteredMap)
+    val namesWithLetterO =
+        names.filter { it.contains("o",  true) }
 
-    val shortNamesMap = numbersToNames.filter {
-        it.value.length <= 4
-    }
-    println(shortNamesMap)
+    println(namesWithLetterO)
 }
+
 
 fun testFilterNot() {
     val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -31,11 +29,33 @@ fun testFilterNotNull() {
     println(notNullNumbers)
 }
 
+fun testFilterIndexed() {
+    val names =
+        listOf("Pedro", "Pablo", "Luis", "Jose", "Rafa", "Miguel", "Oscar")
+
+    // Pablo y Jose no pasan el filtro porque están en posición de índice impar
+    val namesWithLetterO =
+        names.filterIndexed { index, name ->
+            name.contains("o",  true) && index % 2 == 0
+        }
+
+    println(namesWithLetterO)
+}
+
+
+/**
+ * filterIsInstance
+ *
+ * Conserva los elementos del tipo indicado
+ * - como argumento de tipo
+ * - como argumento de clase literal ::class.java
+ */
 
 fun testFilterIsInstance() {
     val list : List<Any?> =
         listOf(null, 1, "dos", 3.0, "cuatro", '5')
 
+    /* El argumento de tipo (String) es un argumento de tipo revivido (reified) */
     val strings = list.filterIsInstance<String>()
     println(strings)
 
@@ -51,9 +71,11 @@ fun testFilterIsInstance() {
 
 
 fun main() {
+    testFilter()
     testFilterOnMap()
     testFilterNot()
     testFilterNotNull()
+    testFilterIndexed()
     testFilterIsInstance()
 }
 

@@ -1,0 +1,56 @@
+package functional.interfaces.intro3
+
+interface IntToInt {
+    fun apply(number: Int): Int
+}
+
+/**
+ * Ahora, a la función le vamos a proporcionar ambas cosas
+ * - el comportamiento, operación que debe realizar con el dato
+ * - y el dato sobre el cual tiene que realizar la operación
+ */
+fun applyIntToIntOperationToNumber(number: Int, operation: IntToInt): Int {
+    val result = operation.apply(number)
+    return result
+}
+
+
+/**
+ * Podemos hacer que el dato sea el objeto receptor si escribimos la función como un metodo de extensión
+ */
+fun Int.applyIntToIntOperation(operation: IntToInt): Int {
+    return operation.apply(this)
+}
+
+
+fun testIntToIntInterfaceWithObjectExpression() {
+
+    val triple: IntToInt = object : IntToInt {
+        override fun apply(number: Int) = number * 3
+    }
+
+    val square: IntToInt = object : IntToInt {
+        override fun apply(number: Int) = number * number
+    }
+
+    /* Llamamos a la función pasando el dato (5) y la operación a realizar con el dato */
+    val result1 = applyIntToIntOperationToNumber(5, triple)
+    val result2 = applyIntToIntOperationToNumber(5, square)
+
+    println("result1 = $result1")
+    println("result2 = $result2")
+
+
+    /* El dato se puede pasar como un objeto receptor si se usa una función de extension */
+    val result3 = 2.applyIntToIntOperation(triple)
+    val result4 = 2.applyIntToIntOperation(square)
+
+    println("result3 = $result3")
+    println("result4 = $result4")
+}
+
+
+fun main() {
+    testIntToIntInterfaceWithObjectExpression()
+}
+

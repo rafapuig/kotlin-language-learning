@@ -1,0 +1,55 @@
+package containers.collections.exercises.geography.model
+
+import containers.collections.exercises.geography.model.Surface.Companion.M2_PER_KM2
+import java.text.DecimalFormat
+
+@JvmInline
+value class Surface(val value: Float) : Comparable<Surface> {
+
+    companion object {
+        const val M2_PER_KM2 = 1_000_000
+        private val formatter = DecimalFormat.getNumberInstance()
+    }
+
+    override fun compareTo(other: Surface) =
+        value.compareTo(other.value)
+
+    override fun toString() = value.let {
+        val number = if (it > M2_PER_KM2) it / M2_PER_KM2 else it
+        val suffix = if (it > M2_PER_KM2) "km²" else "m²"
+        "${formatter.format(number)} $suffix"
+    }
+}
+
+
+val Float.m2 get() = Surface(this)
+
+val Number.m2 get() = toFloat().m2
+
+val Number.km2 get() = (toFloat() * M2_PER_KM2).m2
+
+
+
+fun Surface.toArea(): Area {
+    val units = if (value > M2_PER_KM2) ISUnit.KILO else ISUnit.NONE
+    val number = if (value > M2_PER_KM2) value / M2_PER_KM2 else value
+    return Area(number, units)
+}
+
+fun main() {
+
+    val surface1 = 500.97.km2
+    val surface2 = 5.7f.km2
+    val surface3 = 1200.m2
+    val surface4 = 1200L.m2
+    val surface5 = 1_500_000L.m2
+
+    println(surface1)
+    println(surface2)
+    println(surface3)
+    println(surface4)
+    println(surface5)
+
+    val area1 = surface5.toArea()
+    println("Area=$area1")
+}

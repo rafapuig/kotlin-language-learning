@@ -1,19 +1,30 @@
 package containers.collections.merge
 
-data class Person(val name: String, val age: Int)
+private data class Person(val name: String, val age: Int)
 
 fun testZip() {
     val firstNames = listOf("Sandra", "Consuelo", "Victor")
     val lastNames = listOf("Mática", "Teria", "Nado")
 
+    // zip combina elementos de dos contenedores por parejas
+    // El resultado es una lista de pares
+    // Cuando se usa esta version se puede usar notación infija !!
     val result = firstNames zip lastNames
     println(result)
+
+    val transformed =
+        (firstNames zip lastNames).map { (firstName, lastName) ->
+            "$firstName $lastName"
+        }
+    println(transformed)
 }
+
 
 fun testZipWithTransform() {
     val firstNames = listOf("Sandra", "Consuelo", "Victor")
     val lastNames = listOf("Mática", "Teria", "Nado")
 
+    // El zip con transformación combina ambos elementos mediante una función de transformación
     val result =
         firstNames.zip(lastNames) { firstName, lastName ->
             "$firstName $lastName"
@@ -21,11 +32,12 @@ fun testZipWithTransform() {
     println(result)
 }
 
+
 fun testZipPersons() {
     val names = listOf("Pedro", "Pablo", "Luis", "Jose")
     val ages = listOf(56, 78, 23, 50)
 
-    val zipped: List<Pair<String, Int>> = names.zip(ages)
+    val zipped = names.zip(ages)
     println(zipped)
 
     val people = names.zip(ages) { name, age ->
@@ -33,6 +45,7 @@ fun testZipPersons() {
     }
     println(people)
 }
+
 
 fun testZipPeople() {
     val firstNames = listOf("Sandra", "Consuelo", "Victor")
@@ -73,6 +86,7 @@ fun testUnzip() {
     val unzipped = zipped.unzip()
     println(unzipped)
 }
+
 
 fun testUnzipPerson() {
     val names = listOf("Pedro", "Pablo", "Luis", "Jose")
