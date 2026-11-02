@@ -7,7 +7,8 @@ package containers.collections.construction.factory
  * listOf, setOf, mutableListOf, mutableSetOf
  */
 
-val articles = setOf("el", "la", "los", "las", "un", "una", "unos", "unas")
+val articles =
+    setOf("el", "la", "los", "las", "un", "una", "unos", "unas")
 
 // Cuando se crea una colección vacía el compilador no puede inferir el tipo de los elementos
 val emptySet = emptySet<String>() //Hay que indicar el tipo
@@ -15,7 +16,8 @@ val emptySet = emptySet<String>() //Hay que indicar el tipo
 val words = mutableSetOf<String>() // Crea un LinkedHashSet
 
 
-val names = listOf("Rafa", "Miguel", "Rafa", "Pedro", "Luis", "Ramón", "Luis")
+val names =
+    listOf("Rafa", "Miguel", "Rafa", "Pedro", "Luis", "Ramón", "Luis")
 val emptyStringList = emptyList<String>()
 
 val fruits = mutableListOf<String>() // Crea un ArrayList

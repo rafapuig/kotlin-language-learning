@@ -7,7 +7,7 @@ class Person {
      * El compilador no genera getters y setters
      * Crea un campo
      */
-    @JvmField
+    //@JvmField
     private var _name: String = "Anónimo"
 
     /**
