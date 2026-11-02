@@ -83,7 +83,6 @@ fun main() {
         println(card)
     }
 
-    //val aCard = Card(Card.Rank.As, Card.Suit.ESPADAS)
     val aCard = Card.of(Card.Rank.As, Card.Suit.ESPADAS)
     val aCard2 = Card.of(Card.Rank.As, Card.Suit.ESPADAS)
 

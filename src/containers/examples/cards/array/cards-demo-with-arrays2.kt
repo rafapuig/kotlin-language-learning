@@ -28,7 +28,7 @@ class Card private constructor(
                         this += Card(rank, suit)
                     }
                 }
-            }.toTypedArray()
+            }.toTypedArray() // Convierte la List<Card> en un Array<Card>
 
 
         // Lista inmutable, pero vinculada a los contenidos del array
@@ -56,6 +56,8 @@ class Card private constructor(
              */
             _cards[rank, suit]
 
+
+        operator fun invoke(rank: Rank, suit: Suit): Card = of(rank, suit)
     }
 }
 
@@ -92,4 +94,13 @@ fun main() {
 
     // Alternativamente, podemos usar el nombre explícito de la función correspondiente asociada al operador []
     val card4 = Card.cards.get(Rank.Caballo, Suit.COPAS)
+
+    // Utilizando el metodo invoke del companion object
+    val card5 = Card.invoke(Rank.Caballo, Suit.COPAS)
+    println(card5)
+
+    // Parece una llamada al constructor de Card, pero no lo es
+    // (recordemos que tiene acceso privado)
+    // Es la llamada al metodo invoke con la convención operador de llamada ()
+    val card6 = Card(Rank.Caballo, Suit.COPAS)
 }

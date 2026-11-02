@@ -25,6 +25,9 @@ class Card private constructor(
         private fun getRank(index: Int): Rank = Rank.entries[getRankOrdinal(index)]
         private fun getSuit(index: Int): Suit = Suit.entries[getSuitOrdinal(index)]
 
+        // Crear un array de cartas
+        // El objeto carta se crea calculando su palo y número
+        // a partir del índice del elemento en el array
         private val _cards = Array<Card>(totalCards) { index ->
             Card(getRank(index), getSuit(index))
         }
@@ -34,12 +37,19 @@ class Card private constructor(
         val cards = _cards.asList() //get() = _cards.copyOf()
 
 
+        /**
+         * Obtiene el índice que corresponde a una carta dados un palo y un número
+         */
         private fun calculateIndex(rank: Rank, suit: Suit) =
             suit.ordinal * Rank.entries.size + rank.ordinal
 
 
+        /**
+         * Recupera una carta cacheada en el array de cartas
+         * a partir de un valor de número y otro de palo proporcionados
+         */
         fun of(rank: Rank, suit: Suit): Card {
-            return cards[calculateIndex(rank, suit)]
+            return _cards[calculateIndex(rank, suit)]
         }
     }
 

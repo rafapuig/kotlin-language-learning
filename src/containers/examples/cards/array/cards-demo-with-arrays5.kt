@@ -45,7 +45,7 @@ data class Card private constructor(val rank: Rank, val suit: Suit) {
                     /**
                      * Se hace uso del operador set de Array<Card?>
                      */
-                    _cards[rank,suit] = Card(rank, suit)
+                    _cards[rank, suit] = Card(rank, suit)
                 }
             }
         }

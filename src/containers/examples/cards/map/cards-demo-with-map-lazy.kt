@@ -1,6 +1,14 @@
 package containers.examples.cards.map.lazy
 
+import containers.examples.cards.map.lazy.Card.Suit
+import containers.examples.cards.map.lazy.Card.Rank
 import java.util.Objects
+
+/**
+ * En este ejemplo se usa una estrategia de cacheo perezosa
+ * Una carta concreta solamente se crea si no existe previamente una carta con el mismo número y palo
+ * en el mapa que hace de caché
+ */
 
 /**
  * Clase Card
@@ -55,6 +63,8 @@ class Card private constructor(
                 _cardsMap.getOrPut(cardHashCode) { Card(rank, suit) }
             }
 
+        operator fun invoke(rank: Rank, suit: Suit): Card = of(rank, suit)
+
         // Version inmutable del mapa para acceso público
         val cardsMap get() = _cardsMap.toMap()
 
@@ -67,16 +77,25 @@ class Card private constructor(
 
 fun main() {
 
-    //val aCard = Card(Card.Rank.As, Card.Suit.ESPADAS)
-    val card1 = Card.of(Card.Rank.As, Card.Suit.ESPADAS)
-    val card2 = Card.of(Card.Rank.As, Card.Suit.ESPADAS)
+    // Como el as de espadas no se ha utilizado aun se crea y se cachea
+    val card1 = Card.of(Rank.As, Suit.ESPADAS)
 
-    val card3 = Card.of(Card.Rank.Rey, Card.Suit.COPAS)
-    val card4 = Card.of(Card.Rank.Sota, Card.Suit.OROS)
-    val card5 = Card.of(Card.Rank.Caballo, Card.Suit.BASTOS)
+    // la segunda vez ya no se crea otra vez la misma carta, sino que se devuelve
+    // la referencia al mismo objeto desde el mapa caché
+    val card2 = Card.of(Rank.As, Suit.ESPADAS)
+
+    // Aquí llamamos al metodo invoke, que a su vez delega en el metodo of,
+    // por lo tanto, tampoco se crea una nueva instancia Card con número Caballo y palo Espadas
+    // se obtiene una referencia a la misma carta cacheada en el mapa
+    val card = Card(Rank.Caballo, Suit.ESPADAS)
 
 
-    // Imprimir todas las cartas generadas en el mapa
+    val card3 = Card.of(Rank.Rey, Suit.COPAS)
+    val card4 = Card.of(Rank.Sota, Suit.OROS)
+    val card5 = Card.of(Rank.Caballo, Suit.BASTOS)
+
+
+    // Imprimir todas las cartas generadas en el mapa caché
     for (card in Card.cardsMap.values) {
         println(card)
     }
