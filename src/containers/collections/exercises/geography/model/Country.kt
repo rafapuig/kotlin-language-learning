@@ -20,7 +20,7 @@ data class Country private constructor(
         surface?.let {
             // Smart cast de surface
             // (dentro del bloque se considera de tipo no anulable)
-            population?.div(surface.value * Surface.M2_PER_KM2)
+            population?.toFloat()?.div(surface.value / Surface.M2_PER_KM2)
         }
     }
 

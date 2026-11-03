@@ -1,5 +1,6 @@
 package containers.collections.exercises.geography.formatting
 
+import containers.collections.exercises.formatting.builders.buildColumnInfo
 import containers.collections.exercises.formatting.builders.buildTableFormatter
 import containers.collections.exercises.formatting.builders.toTable
 import containers.collections.exercises.geography.model.Country
@@ -78,3 +79,34 @@ fun Iterable<Country>.printAsTable(title: String = "") =
         if (title.isNotBlank()) println(title)
         print(it)
     }
+
+
+val standardCountryNameColumn = buildColumnInfo {
+    label = "nombre"
+    length = 13
+    value = Country::name
+}
+
+val standardCountryPopulationColumn = buildColumnInfo {
+    label = "habitantes"
+    length = 13
+    format = NumberFormat.getIntegerInstance()
+    value = Country::population
+}
+
+val standardCountrySurfaceColumn = buildColumnInfo {
+    label = "superficie Km2"
+    format = NumberFormat.getNumberInstance()
+    value = { country: Country -> country.surface?.value?.div(Surface.M2_PER_KM2) }
+}
+
+val standardCountryPopulationDensityColumn = buildColumnInfo {
+    label = "densidad habs/km2"
+    //length = 2
+    format = NumberFormat.getNumberInstance()
+        .apply {
+            minimumFractionDigits = 2
+            maximumFractionDigits = 2
+        }
+    value = Country::populationDensity
+}

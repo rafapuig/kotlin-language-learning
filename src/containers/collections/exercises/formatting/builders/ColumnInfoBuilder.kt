@@ -23,3 +23,6 @@ class ColumnInfoBuilder<T> {
         return ColumnInfo(label, length, alignment, format, value!!)
     }
 }
+
+fun <T> buildColumnInfo(block: ColumnInfoBuilder<T>.() -> Unit): ColumnInfo<T> =
+    ColumnInfoBuilder<T>().apply(block).build()
