@@ -81,13 +81,18 @@ data class Country private constructor(
     ) {
         // Otras propiedades para recopilar datos con los que construir el objeto Country
         var region: Region? = null
-        private var capital: City? = null
-
-        //private var area: Area? = null
         var surface: Surface? = null
         var population: Int? = null
+        private var capital: City? = null
 
-        //fun region(region: Region) = apply { this.region = region }
+        fun region(region: Region) =
+            apply { this.region = region }
+
+        fun surface(block: () -> Surface) =
+            apply { surface = block() }
+
+        fun population(population: Int) =
+            apply { this.population = population }
 
         /**
          * Función que construye una instancia de City (la capital del país)
@@ -102,16 +107,6 @@ data class Country private constructor(
                 .build()
         }
 
-        /*fun area(block: AreaBuilder.() -> Unit) = apply {
-            area = AreaBuilder().apply { block() }.build()
-        }*/
-
-        fun surface(block: () -> Surface) =
-            apply { surface = block() }
-
-        //fun population(population: Int) =
-        //    apply { this.population = population }
-
 
         /**
          * Metodo build que fabrica el objeto Country
@@ -120,6 +115,8 @@ data class Country private constructor(
             require(!name.isNullOrBlank()) {
                 "El nombre del país no ser nulo o blanco"
             }
+            // Llamada al constructor privado de la clase Country
+            // se puede llamar porque Builder es una clase interna anidada dentro de Country
             Country(iso3, name!!, region, capital, surface, population)
         }
     }

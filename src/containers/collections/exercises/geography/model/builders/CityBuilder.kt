@@ -31,21 +31,31 @@ class CityBuilder {
 
 fun buildCity(block: CityBuilder.() -> Unit) =
      CityBuilder().apply { block() }.build()
-    /*val cityBuilder = CityBuilder()
-    cityBuilder.block()
-    return cityBuilder.build()*/
-
-
-fun main() {
+    /*
     val cityBuilder = CityBuilder()
-    //cityBuilder.name = "Valencia"
+    cityBuilder.block()
+    return cityBuilder.build()
+    */
+
+
+
+fun testCityBuilder() {
+    val cityBuilder = CityBuilder()
+    cityBuilder.name = "Valencia"
     cityBuilder.population = 800_000
     val valencia = cityBuilder.build()
     println(valencia)
+}
 
+fun testBuildCity() {
     val madrid = buildCity {
         name = "Madrid"
         population = 6_000_000
     }
     println(madrid)
+}
+
+fun main() {
+    testCityBuilder()
+    testBuildCity()
 }

@@ -39,13 +39,6 @@ val Number.km2 get() = (toFloat() * M2_PER_KM2).m2
 
 
 
-fun Surface.toArea(): Area {
-    val units = if (value > M2_PER_KM2) ISUnit.KILO else ISUnit.NONE
-    val number = if (value > M2_PER_KM2) value / M2_PER_KM2 else value
-    return Area(number, units)
-}
-
-
 fun main() {
 
     val surface1 = 500.97.km2
@@ -59,7 +52,4 @@ fun main() {
     println(surface3)
     println(surface4)
     println(surface5)
-
-    val area1 = surface5.toArea()
-    println("Area=$area1")
 }

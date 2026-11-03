@@ -4,8 +4,6 @@ import containers.collections.exercises.formatting.builders.buildColumnInfo
 import containers.collections.exercises.formatting.builders.buildTableFormatter
 import containers.collections.exercises.formatting.builders.toTable
 import containers.collections.exercises.geography.model.City
-import containers.collections.exercises.geography.model.Country
-import containers.collections.exercises.geography.model.Surface
 import java.text.NumberFormat
 
 val standardCityNameColumn = buildColumnInfo {
