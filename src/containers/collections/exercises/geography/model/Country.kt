@@ -16,12 +16,10 @@ data class Country private constructor(
     val continent: Continent? = region?.continent
 
     // Propiedad calculada de solo lectura y cacheada
-    val populationDensity = run {
-        surface?.let {
-            // Smart cast de surface
-            // (dentro del bloque se considera de tipo no anulable)
-            population?.toFloat()?.div(surface.value / Surface.M2_PER_KM2)
-        }
+    val populationDensity = surface?.let {
+        // Smart cast de surface
+        // (dentro del bloque se considera de tipo no anulable)
+        population?.toFloat()?.div(surface.value / Surface.M2_PER_KM2)
     }
 
 
@@ -32,7 +30,7 @@ data class Country private constructor(
 
     // Dos países son iguales si tienen el mismo código ISO3
     override fun equals(other: Any?) =
-        (other as? Country)?.let { iso3 == it.iso3 } ?: false
+        (other as? Country)?.let { iso3 == other.iso3 } ?: false
 
 
     // Implementación de la comparación natural: Comparable
@@ -140,3 +138,8 @@ fun buildCountry(
     block: Country.Builder.() -> Unit
 ) =
     Country.Builder(iso3, name).apply { block() }.build()
+
+
+fun main() {
+    println(Countries.SPAIN)
+}

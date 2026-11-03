@@ -6,6 +6,7 @@ import containers.collections.exercises.geography.model.Population
 class CityBuilder {
     // Recopila el nombre que le queremos poner a la ciudad
     var name: String? = null
+
     // Recopila valor entero del número de habitantes de la ciudad
     var population: Int? = null
 
@@ -26,4 +27,25 @@ class CityBuilder {
             population = population?.let { Population(it) }
         )
     }
+}
+
+fun buildCity(block: CityBuilder.() -> Unit) =
+     CityBuilder().apply { block() }.build()
+    /*val cityBuilder = CityBuilder()
+    cityBuilder.block()
+    return cityBuilder.build()*/
+
+
+fun main() {
+    val cityBuilder = CityBuilder()
+    //cityBuilder.name = "Valencia"
+    cityBuilder.population = 800_000
+    val valencia = cityBuilder.build()
+    println(valencia)
+
+    val madrid = buildCity {
+        name = "Madrid"
+        population = 6_000_000
+    }
+    println(madrid)
 }
