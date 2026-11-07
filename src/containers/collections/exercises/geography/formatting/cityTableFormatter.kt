@@ -4,19 +4,17 @@ import containers.collections.exercises.formatting.builders.buildColumnInfo
 import containers.collections.exercises.formatting.builders.buildTableFormatter
 import containers.collections.exercises.formatting.builders.toTable
 import containers.collections.exercises.geography.model.City
-import containers.collections.exercises.geography.model.Country
-import containers.collections.exercises.geography.model.Surface
 import java.text.NumberFormat
 
 val standardCityNameColumn = buildColumnInfo {
     label = "nombre"
-    length = 13
+    width = 13
     value = City::name
 }
 
 val standardCityPopulationColumn = buildColumnInfo {
     label = "habitantes"
-    length = 13
+    width = 13
     format = NumberFormat.getIntegerInstance()
     value = { city: City -> city.population?.value }
 }

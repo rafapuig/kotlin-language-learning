@@ -1,5 +1,6 @@
 package containers.collections.exercises.formatting.testing
 
+import com.sun.org.apache.xalan.internal.lib.ExsltDatetime.year
 import containers.collections.exercises.formatting.ColumnAlignment
 import containers.collections.exercises.formatting.ColumnInfo
 import java.time.LocalDate
@@ -31,6 +32,9 @@ val ageColumn =
 
 
 fun main() {
+    println(idColumn(armando))
     println(nameColumn.fieldValueExtractor(armando))
     println(lastNameColumn.fieldValueExtractor(armando))
+    println(birthColumn.fieldValueExtractor(armando))
+    println(ageColumn(armando))
 }

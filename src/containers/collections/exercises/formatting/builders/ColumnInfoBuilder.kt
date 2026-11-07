@@ -6,23 +6,35 @@ import java.text.Format
 
 class ColumnInfoBuilder<T> {
     /**
-     * Si no se especifica longitud de la columna, el tamaño de la etiqueta se toma por defecto
+     * Si no se especifica longitud de la columna,
+     * el tamaño de la etiqueta se toma por defecto como el de la longitud del texto
      */
     var label: String = ""
         set(value) {
             field = value
-            length = value.length
+            width = value.length
         }
 
-    var length: Int = 0
+    var width: Int = 0
     var alignment: ColumnAlignment = ColumnAlignment.Default
     var format: Format? = null
     var value: ((T) -> Any?)? = null
 
-    fun build(): ColumnInfo<T> {
-        return ColumnInfo(label, length, alignment, format, value!!)
-    }
+    /**
+     * Fabrica el objeto ColumnInfo
+     * mediante una llamada al constructor
+     * pasándole toda la información recopilada
+     */
+    fun build(): ColumnInfo<T> = ColumnInfo(
+        name = label,
+        width = width,
+        columnAlignment = alignment,
+        formatter = format,
+        fieldValueExtractor = value!!
+    )
+
 }
 
-fun <T> buildColumnInfo(block: ColumnInfoBuilder<T>.() -> Unit): ColumnInfo<T> =
-    ColumnInfoBuilder<T>().apply(block).build()
+fun <T> buildColumnInfo(
+    block: ColumnInfoBuilder<T>.() -> Unit
+): ColumnInfo<T> = ColumnInfoBuilder<T>().apply(block).build()

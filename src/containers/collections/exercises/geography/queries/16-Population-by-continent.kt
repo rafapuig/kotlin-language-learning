@@ -72,12 +72,12 @@ fun printPopulationByContinent2() {
         .asTable {
             column {
                 label = "continente"
-                length = 12
+                width = 12
                 value = { it.continent }
             }
             column {
                 label = "población"
-                length = 20
+                width = 20
                 alignment = ColumnAlignment.End
                 value = { it.population.toPopulationFormat() }
             }

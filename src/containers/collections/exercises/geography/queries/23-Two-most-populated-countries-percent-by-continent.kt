@@ -60,7 +60,7 @@ private fun Map<Continent, Double>.prettyPrint() {
         .asTable {
             column {
                 label = "continente"
-                length = 11
+                width = 11
                 value = { it.first }
             }
             column {
@@ -78,7 +78,7 @@ fun printTwoMostPopulatedCountriesPercentByContinent() {
         .asTable {
             column {
                 label = "continente"
-                length = 11
+                width = 11
                 value = { it.first }
             }
             column {

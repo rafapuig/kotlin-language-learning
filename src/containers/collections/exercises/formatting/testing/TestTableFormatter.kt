@@ -4,7 +4,7 @@ import containers.collections.exercises.formatting.TableFormatter
 import java.time.LocalDate
 
 class Employee(id:Int, val salary: Double)
-    : Person(id,"","", LocalDate.now(),0)
+    : Person(id,"Marta","Baco", LocalDate.now(),30)
 
 
 
@@ -23,5 +23,8 @@ fun main() {
         println(armando.asRow())
         people.asRows().forEach(::println)
         //println(people.toTable())
+        people.asRows().forEach { row->
+            println(row.value.joinToString(separator = " "))
+        }
     }
 }

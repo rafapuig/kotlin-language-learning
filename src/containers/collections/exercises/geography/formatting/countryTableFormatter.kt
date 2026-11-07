@@ -19,17 +19,17 @@ val countryTableFormatter = buildTableFormatter {
     }
     column {
         label = "nombre"
-        length = 13
+        width = 13
         value = Country::name
     }
     column {
         label = "region"
-        length = 25
+        width = 25
         value = Country::region
     }
     column {
         label = "capital"
-        length = 16
+        width = 16
         value = { it.capital?.name }
     }
     column {
@@ -44,7 +44,7 @@ val countryTableFormatter = buildTableFormatter {
     }
     column {
         label = "habitantes"
-        length = 13
+        width = 13
         format = NumberFormat.getIntegerInstance()
         value = Country::population
     }
@@ -83,13 +83,13 @@ fun Iterable<Country>.printAsTable(title: String = "") =
 
 val standardCountryNameColumn = buildColumnInfo {
     label = "nombre"
-    length = 13
+    width = 13
     value = Country::name
 }
 
 val standardCountryPopulationColumn = buildColumnInfo {
     label = "habitantes"
-    length = 13
+    width = 13
     format = NumberFormat.getIntegerInstance()
     value = Country::population
 }

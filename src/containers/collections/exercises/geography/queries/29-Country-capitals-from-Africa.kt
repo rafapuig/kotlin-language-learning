@@ -28,17 +28,17 @@ fun printCountryCapitalsFromAfricaWithCountryName() {
         .asTable {
             column {
                 label = "país"
-                length = 12
+                width = 12
                 value = { it.first }
             }
             column {
                 label = "capital"
-                length = 12
+                width = 12
                 value = { it.second?.name }
             }
             column {
                 label = "poblacion"
-                length = 10
+                width = 10
                 format = NumberFormat.getNumberInstance()
                 value = { it.second?.population?.value }
             }

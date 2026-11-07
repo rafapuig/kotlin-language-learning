@@ -18,12 +18,12 @@ fun main() {
         )
         column {
             name = "nombre"
-            length = 12
+            width = 12
             value = Person::firstName
         }
         column {
             name = "apellidos"
-            length = 15
+            width = 15
             value = Person::lastName
         }
         column(birthColumn)

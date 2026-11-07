@@ -63,7 +63,7 @@ private fun Map<Continent, Double>.prettyPrint() {
         .asTable {
             column {
                 label = "continente"
-                length = 11
+                width = 11
                 value = { it.first }
             }
             column {
@@ -86,12 +86,12 @@ private fun Map<Continent, Pair<Country, Double>>.prettyPrint2() {
     }.asTable {
         column {
             label = "continente"
-            length = 11
+            width = 11
             value = { it.continent }
         }
         column {
             label = "país"
-            length = 11
+            width = 11
             value = { it.country.name }
         }
         column {

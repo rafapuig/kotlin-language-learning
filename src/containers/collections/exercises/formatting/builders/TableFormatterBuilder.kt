@@ -8,9 +8,17 @@ class TableFormatterBuilder<T> {
     private val columns =
         mutableListOf<ColumnInfo<T>>()
 
+    /**
+     * Añadir una columna para el TableFormatter
+     * a partir de un ColumnInfo
+     */
     fun column(column: ColumnInfo<T>) =
         columns.add(column)
 
+    /**
+     * Añadir una columna
+     * a partir del código que debe aplicarse a un ColumInfoBuilder
+     */
     fun column(block: ColumnInfoBuilder<T>.() -> Unit) {
         columns +=
             ColumnInfoBuilder<T>()
@@ -18,6 +26,9 @@ class TableFormatterBuilder<T> {
                 .build()
     }
 
+    /**
+     * Fabrica el TableFormatter para elementos de tipo T
+     */
     fun build(): TableFormatter<T> =
         TableFormatter(*columns.toTypedArray())
 }

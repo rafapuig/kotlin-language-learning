@@ -24,13 +24,13 @@ fun printFiveMostPopulatedCountries() {
         .asTable {
             column {
                 label = "Pais"
-                length = 15
+                width = 15
                 alignment = ColumnAlignment.Center
                 value = { it.countryName }
             }
             column {
                 label = "Población"
-                length = 20
+                width = 20
                 alignment = ColumnAlignment.End
                 value = { it.population.toPopulationFormat() }
             }
