@@ -1,10 +1,12 @@
 package functional.examples.strategy4
 
+/**
+ * En este caso usaremos tipos función en lugar de interfaces funcionales
+ */
 
 data class Person(val firstName: String) {
 
-
-    // Delegado, ahora tipo funcion
+    // Delegado, ahora tipo función
     var greeter: (() -> Unit)? = null
 
     fun greet() {
@@ -14,12 +16,12 @@ data class Person(val firstName: String) {
 }
 
 /**
- * Polite Greeter es un objeto de tipo funcion () -> Unit
+ * Polite Greeter es un objeto de tipo función () -> Unit
  * que implementa la estrategia de saludo de manera educada
  * (implementado la interface Greeter)
  */
 val PoliteGreeter = {
-    println("Buenos dias, que tal esta usted!")
+    println("Buenos días, que tal esta usted!")
 }
 
 fun main() {

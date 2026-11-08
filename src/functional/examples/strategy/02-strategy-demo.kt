@@ -1,7 +1,7 @@
 package functional.examples.strategy2
 
 /**
- * Convertirmos a Greeter en un interface funcional
+ * Convertimos a Greeter en un interface funcional
  */
 fun interface Greeter {
     fun greet()
@@ -42,8 +42,8 @@ fun main() {
     person.greet() // Saludar educadamente
 
     /**
-     * Podemos crear un objeto de tipo anonimo
-     * mediante una expresion objeto que implemente
+     * Podemos crear un objeto de tipo anónimo
+     * mediante una expresión objeto que implemente
      * la interface Greeter,
      * la estrategia de saludo de manera informal
      */

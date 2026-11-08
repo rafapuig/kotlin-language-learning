@@ -27,7 +27,7 @@ data class Person(val firstName: String) {
  */
 object PoliteGreeter : Greeter {
     override fun greet() {
-        println("Buenos dias, que tal esta usted!")
+        println("Buenos días, que tal esta usted!")
     }
 }
 
@@ -38,8 +38,8 @@ fun main() {
     person.greet() // Saludar educadamente
 
     /**
-     * Podemos crear un objeto de tipo anonimo
-     * mediante una expresion objeto que implemente
+     * Podemos crear un objeto de tipo anónimo
+     * mediante una expresión objeto que implemente
      * la interface Greeter,
      * la estrategia de saludo de manera informal
      */

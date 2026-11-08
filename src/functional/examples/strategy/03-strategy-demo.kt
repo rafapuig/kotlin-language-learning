@@ -1,7 +1,7 @@
 package functional.examples.strategy3
 
 /**
- * Convertirmos a Greeter en un interface funcional
+ * Convertimos a Greeter en un interface funcional
  */
 fun interface Greeter {
     fun greet()
