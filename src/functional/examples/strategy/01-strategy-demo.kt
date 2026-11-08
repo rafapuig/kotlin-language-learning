@@ -33,7 +33,7 @@ object PoliteGreeter : Greeter {
 
 fun main() {
     val person = Person("Lorenzo Penco")
-    // Establecemos que person saludar de forma educada
+    // Establecemos que person saluda de forma educada
     person.setGreeter(PoliteGreeter)
     person.greet() // Saludar educadamente
 
