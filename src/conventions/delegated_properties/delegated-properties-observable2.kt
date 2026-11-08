@@ -83,7 +83,7 @@ class Person(val name: String, age: Int, salary: Int) : Observable() {
     var salary: Int
         get() = _salary.getValue()
         set(newValue) {
-           _salary.setValue(newValue)
+            _salary.setValue(newValue)
         }
 }
 

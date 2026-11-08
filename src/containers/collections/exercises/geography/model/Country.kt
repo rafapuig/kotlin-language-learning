@@ -16,12 +16,10 @@ data class Country private constructor(
     val continent: Continent? = region?.continent
 
     // Propiedad calculada de solo lectura y cacheada
-    val populationDensity = run {
-        surface?.let {
-            // Smart cast de surface
-            // (dentro del bloque se considera de tipo no anulable)
-            population?.toFloat()?.div(surface.value / Surface.M2_PER_KM2)
-        }
+    val populationDensity = surface?.let {
+        // Smart cast de surface
+        // (dentro del bloque se considera de tipo no anulable)
+        population?.toFloat()?.div(surface.value / Surface.M2_PER_KM2)
     }
 
 
@@ -32,7 +30,7 @@ data class Country private constructor(
 
     // Dos países son iguales si tienen el mismo código ISO3
     override fun equals(other: Any?) =
-        (other as? Country)?.let { iso3 == it.iso3 } ?: false
+        (other as? Country)?.let { iso3 == other.iso3 } ?: false
 
 
     // Implementación de la comparación natural: Comparable
@@ -83,13 +81,18 @@ data class Country private constructor(
     ) {
         // Otras propiedades para recopilar datos con los que construir el objeto Country
         var region: Region? = null
-        private var capital: City? = null
-
-        //private var area: Area? = null
         var surface: Surface? = null
         var population: Int? = null
+        private var capital: City? = null
 
-        //fun region(region: Region) = apply { this.region = region }
+        fun region(region: Region) =
+            apply { this.region = region }
+
+        fun surface(block: () -> Surface) =
+            apply { surface = block() }
+
+        fun population(population: Int) =
+            apply { this.population = population }
 
         /**
          * Función que construye una instancia de City (la capital del país)
@@ -104,16 +107,6 @@ data class Country private constructor(
                 .build()
         }
 
-        /*fun area(block: AreaBuilder.() -> Unit) = apply {
-            area = AreaBuilder().apply { block() }.build()
-        }*/
-
-        fun surface(block: () -> Surface) =
-            apply { surface = block() }
-
-        //fun population(population: Int) =
-        //    apply { this.population = population }
-
 
         /**
          * Metodo build que fabrica el objeto Country
@@ -122,6 +115,8 @@ data class Country private constructor(
             require(!name.isNullOrBlank()) {
                 "El nombre del país no ser nulo o blanco"
             }
+            // Llamada al constructor privado de la clase Country
+            // se puede llamar porque Builder es una clase interna anidada dentro de Country
             Country(iso3, name!!, region, capital, surface, population)
         }
     }
@@ -140,3 +135,8 @@ fun buildCountry(
     block: Country.Builder.() -> Unit
 ) =
     Country.Builder(iso3, name).apply { block() }.build()
+
+
+fun main() {
+    println(Countries.SPAIN)
+}

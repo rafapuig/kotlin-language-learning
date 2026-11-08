@@ -43,11 +43,11 @@ fun BODY.listWithToc(block: LISTWITHTOC.() -> Unit) {
         this.block()
         ul {
             for ((index, entry) in entries.withIndex()) {
-                li { a("$index") { +entry.first } }
+                li { a("#$index") { +entry.first } }
             }
         }
         for ((index, entry) in entries.withIndex()) {
-            h2 { id = "$index"; +entry.second }
+            h2 { id = "$index"; +entry.first }
             p { +entry.second }
         }
     }
